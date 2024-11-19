@@ -8,9 +8,118 @@ const AuthOtp = require("../../../models/authOtp");
 const SavedJob = require("../../../models/savedApplication");
 
 
-const nodemailer = require("nodemailer");
-
 require("dotenv").config();
+
+
+const sendEmail = require("../../../models/nodemailer");  
+
+const nodemailer = require("nodemailer");
+module.exports.acceptApplication = async function (req, res) {
+  try {
+    // Find the application by its ID
+    let application = await Application.findById(req.body.applicationid);
+
+    // Log the application object to check if applicantEmail is present
+    console.log(application); // Check the structure of the application object
+
+    // Ensure that applicantEmail exists
+    if (!application.applicantemail) {
+      return res.status(400).json({
+        message: "Applicant email is missing from the application",
+      });
+    }
+
+    // Update the status of the application to "accepted" (you can modify this as per your logic)
+    application.status = "1"; 
+
+    // Save the updated application
+    await application.save();
+
+    // Prepare email details
+    const applicantEmail = application.applicantemail;
+    const subject = "Your Application Has Been Accepted!";
+    const text = "Congratulations! Your application has been accepted by the manager.";
+
+    // Send the email to the applicant
+    try {
+      sendEmail(applicantEmail, subject, text);
+      console.log('Email sent successfully');
+    } catch (emailError) {
+      console.error('Error sending email:', emailError);
+      // Handle the email failure by notifying the user
+      return res.status(500).json({
+        message: "Application is updated, but email could not be sent.",
+        error: emailError,
+      });
+    }
+
+    // Send the success response back to the client
+    res.status(200).json({
+      message: "Application is updated successfully, and email has been sent.",
+      data: {
+        application,
+      },
+      success: true,
+    });
+
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};
+
+
+  module.exports.rejectApplication = async function (req, res) {
+    try {
+      // Find the application by ID
+      let application = await Application.findById(req.body.applicationid);
+  
+      // Check if the application exists
+      if (!application) {
+        return res.status(404).json({
+          message: "Application not found",
+        });
+      }
+  
+      // Update the application status to "rejected" (status code 2)
+      application.status = "2";
+      await application.save();
+  
+      // Send rejection email to the applicant
+      const mailOptions = {
+        from: 'softwareengineering510@gmail.com', // Your email address
+        to: application.applicantemail, // Applicant's email address
+        subject: 'Your Job Application Status',
+        text: 'We regret to inform you that your application has been rejected. Thank you for applying, and we encourage you to apply for future opportunities.',
+      };
+  
+      // Call the sendEmail function (assuming it's defined in nodemailer.js)
+      nodemailer.sendMail(mailOptions, function (err, info) {
+        if (err) {
+          console.error('Error sending rejection email:', err);
+          return res.status(500).json({
+            message: 'Failed to send email notification',
+          });
+        }
+        console.log('Rejection email sent:', info.response);
+      });
+  
+      // Return success response
+      res.set("Access-Control-Allow-Origin", "*");
+      return res.json(200, {
+        message: "Application rejected successfully, and applicant has been notified via email.",
+        data:  { application, applicantEmail },
+        success: true,
+      });
+    } catch (err) {
+      console.error('Error rejecting application:', err);
+      return res.status(500).json({
+        message: "Internal Server Error",
+      });
+    }
+  };
 
 module.exports.createSession = async function (req, res) {
   try {
@@ -401,66 +510,8 @@ module.exports.modifyApplication = async function (req, res) {
   }
 };
 
-module.exports.acceptApplication = async function (req, res) {
-  try {
-    let application = await Application.findById(req.body.applicationId);
 
-    application.status = "1";
-
-    application.save();
-    res.set("Access-Control-Allow-Origin", "*");
-    return res.json(200, {
-      message: "Application is updated Successfully",
-
-      data: {
-        //user.JSON() part gets encrypted
-
-        // token: jwt.sign(user.toJSON(), env.jwt_secret, {
-        //   expiresIn: "100000",
-        // }),
-        application,
-      },
-      success: true,
-    });
-  } catch (err) {
-    console.log(err);
-
-    return res.json(500, {
-      message: "Internal Server Error",
-    });
-  }
-};
-
-module.exports.rejectApplication = async function (req, res) {
-  try {
-    let application = await Application.findById(req.body.applicationId);
-
-    application.status = "2";
-
-    application.save();
-    res.set("Access-Control-Allow-Origin", "*");
-    return res.json(200, {
-      message: "Application is updated Successfully",
-
-      data: {
-        //user.JSON() part gets encrypted
-
-        // token: jwt.sign(user.toJSON(), env.jwt_secret, {
-        //   expiresIn: "100000",
-        // }),
-        application,
-      },
-      success: true,
-    });
-  } catch (err) {
-    console.log(err);
-
-    return res.json(500, {
-      message: "Internal Server Error",
-    });
-  }
-};
-
+  
 module.exports.closeJob = async function (req, res) {
   try {
     let job = await Job.findById(req.body.jobid);
@@ -490,6 +541,73 @@ module.exports.closeJob = async function (req, res) {
     });
   }
 };
+
+module.exports.deleteJob = async function (req, res) {
+  try {
+    // Find the job by ID and remove it from the database
+    const job = await Job.findByIdAndDelete(req.body.jobid);
+
+    if (!job) {
+      return res.status(404).json({
+        message: "Job not found",
+        success: false,
+      });
+    }
+
+    // Respond with a success message
+    res.set("Access-Control-Allow-Origin", "*");
+    return res.status(200).json({
+      message: "Job deleted successfully",
+      success: true,
+    });
+  } catch (err) {
+    console.log(err);
+
+    return res.status(500).json({
+      message: "Internal Server Error",
+      success: false,
+    });
+  }
+};
+module.exports.editJob = async function (req, res) {
+  try {
+    const job = await Job.findById(req.body.jobid);
+
+    if (!job) {
+      return res.status(404).json({
+        message: "Job not found",
+        success: false,
+      });
+    }
+
+
+    job.name = req.body.name || job.name;
+    job.description = req.body.description || job.description;
+    job.type = req.body.type || job.type;
+    job.location = req.body.location || job.location;
+    job.requiredSkills = req.body.requiredSkills || job.requiredSkills;
+    job.pay = req.body.pay || job.pay;
+
+
+    await job.save();
+
+    res.set("Access-Control-Allow-Origin", "*");
+    return res.status(200).json({
+      message: "Job updated successfully",
+      success: true,
+      job,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      message: "Internal Server Error",
+      success: false,
+    });
+  }
+};
+
+
+
 
 function getTransport() {
   return nodemailer.createTransport({

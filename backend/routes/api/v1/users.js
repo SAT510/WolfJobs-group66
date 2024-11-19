@@ -25,6 +25,8 @@ router.post("/generateOTP", usersApi.generateOtp);
 router.post("/verifyOTP", usersApi.verifyOtp);
 router.post("/rejectapplication", usersApi.rejectApplication);
 router.post("/closejob", jsonParser, usersApi.closeJob);
+router.delete("/deletejob", jsonParser, usersApi.deleteJob);
+router.put("/editjob", jsonParser, usersApi.editJob);
 router.post("/createapplication", jsonParser, usersApi.createApplication);
 router.post("/saveJob",jsonParser,usersApi.saveJob);
 router.get("/saveJobList/:id",jsonParser,usersApi.saveJobList);
