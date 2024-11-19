@@ -579,7 +579,7 @@ module.exports.editJob = async function (req, res) {
         success: false,
       });
     }
-
+ 
 
     job.name = req.body.name || job.name;
     job.description = req.body.description || job.description;
