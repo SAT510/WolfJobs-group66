@@ -1,5 +1,6 @@
 // nodemailer.js
-import { createTransport } from 'nodemailer';
+// import { createTransport } from 'nodemailer';
+const { createTransport } = require('nodemailer');
 
 const transporter = createTransport(
 
@@ -9,7 +10,7 @@ const transporter = createTransport(
       port: 465,
       auth:{
         user: 'softwareengineering510@gmail.com',
-        pass: 'tdndhbposnhsgnwh'
+        pass: 'pljrdnigbqkmqqem'
       }
   }
 );
@@ -23,6 +24,7 @@ function sendMail(to,sub,msg) {
     console.log("Email Sent");
 }
 
-// sendMail("softwareengineering510@gmail.com","This is SUBJECT 2","This is test message");
+module.exports = sendMail;
+// sendMail("shaziamuckram@gmail.com","This is SUBJECT 3","This is test message");
 
 

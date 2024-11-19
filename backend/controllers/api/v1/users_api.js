@@ -7,11 +7,9 @@ const Application = require("../../../models/application");
 const AuthOtp = require("../../../models/authOtp");
 const SavedJob = require("../../../models/savedApplication");
 
-
 require("dotenv").config();
 
 
-const sendMail = require("../../../models/nodemailer");  
 
 const nodemailer = require("nodemailer");
 module.exports.acceptApplication = async function (req, res) {
@@ -471,6 +469,9 @@ module.exports.createApplication = async function (req, res) {
   }
 };
 
+const sendMail = require("../../../models/nodemailer");
+
+console.log("sendMail function:", sendMail);
 module.exports.modifyApplication = async function (req, res) {
   try {
     let application = await Application.findById(req.body.applicationId);
@@ -489,9 +490,40 @@ module.exports.modifyApplication = async function (req, res) {
       application.rating = req.body.rating;
     }
 
+    const applicantEmail = application.applicantemail;  
+  
+    let subject = '';
+    let message = '';
     if (req.body.status === "screening") {
-      application.rating = req.body.rating; 
+      subject = `WolfJobs Application Status Update`;
+      message = `<p>Congratulations! Your application status has been updated to: <strong>Accepted</strong>.</p>`;
+      try {
+        await sendMail(applicantEmail, subject, message);
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Failed to send email:", error);
+        return res.status(500).json({
+          message: "Failed to send email",
+          error: error.message || "Unknown error",
+        });
+      }
+     
     }
+    else if (req.body.status === "rejected") {
+      subject = `WolfJobs Application Status Update`;
+      message = `<p>Greetings. Your application status has been updated to: <strong>Rejected</strong>.</p>`; 
+      try {
+        await sendMail(applicantEmail, subject, message);
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Failed to send email:", error);
+        return res.status(500).json({
+          message: "Failed to send email",
+          error: error.message || "Unknown error",
+        });
+      }
+    }
+  
     application.save();
     res.set("Access-Control-Allow-Origin", "*");
     return res.json(200, {
