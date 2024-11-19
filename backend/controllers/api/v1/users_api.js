@@ -490,7 +490,7 @@ module.exports.modifyApplication = async function (req, res) {
     }
 
     if (req.body.status === "screening") {
-      application.rating = req.body.rating;
+      application.rating = req.body.rating; 
     }
     application.save();
     res.set("Access-Control-Allow-Origin", "*");
