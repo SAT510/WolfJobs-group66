@@ -56,6 +56,11 @@ const jobSchema = new mongoose.Schema({
   saved:{
     type: Boolean,
     deafult: false
+  },
+
+  jobDeadline: {
+    type: String,
+    deafult: ""
   }
 });
 
