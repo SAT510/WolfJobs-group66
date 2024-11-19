@@ -471,12 +471,13 @@ module.exports.createApplication = async function (req, res) {
 
 const sendMail = require("../../../models/nodemailer");
 
-console.log("sendMail function:", sendMail);
+
 module.exports.modifyApplication = async function (req, res) {
   try {
     let application = await Application.findById(req.body.applicationId);
 
     application.status = req.body.status;
+    console.log("Request Body:", req.body);
 
     //change answer only from screening to grading
     if (req.body.status === "grading") {
@@ -496,7 +497,8 @@ module.exports.modifyApplication = async function (req, res) {
     let message = '';
     if (req.body.status === "screening") {
       subject = `WolfJobs Application Status Update`;
-      message = `<p>Congratulations! Your application status has been updated to: <strong>Accepted</strong>.</p>`;
+      message = `<p>Congratulations ${req.body.applicantname}! Your application for the ${req.body.jobname} role
+                has made it to the next stage. Please fill out the related interview questions on the job portal.</p>`;
       try {
         await sendMail(applicantEmail, subject, message);
         console.log("Email sent successfully");
@@ -511,7 +513,70 @@ module.exports.modifyApplication = async function (req, res) {
     }
     else if (req.body.status === "rejected") {
       subject = `WolfJobs Application Status Update`;
-      message = `<p>Greetings. Your application status has been updated to: <strong>Rejected</strong>.</p>`; 
+      message = `<p>Greetings ${req.body.applicantname}. Your application status for the ${req.body.jobname} role
+                 has been updated to: <strong>Rejected</strong>.</p>`; 
+      try {
+        await sendMail(applicantEmail, subject, message);
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Failed to send email:", error);
+        return res.status(500).json({
+          message: "Failed to send email",
+          error: error.message || "Unknown error",
+        });
+      }
+    }
+  
+    application.save();
+    res.set("Access-Control-Allow-Origin", "*");
+    return res.json(200, {
+      message: "Application is updated Successfully",
+      data: {
+        application,
+      },
+      success: true,
+    });
+  } catch (err) {
+    console.log(err);
+
+    return res.json(500, {
+      message: "Internal Server Error",
+    });
+  }
+};
+
+module.exports.modifyApplicationFinalStage = async function (req, res) {
+  try {
+    let application = await Application.findById(req.body.applicationId);
+
+    application.status = req.body.status;
+  
+
+    const applicantEmail = application.applicantemail;  
+  
+    let subject = '';
+    let message = '';
+    if (req.body.status === "accepted") {
+      subject = `WolfJobs Application Status Update`;
+      message = `<p>Congratulations ${req.body.applicantname}! Your application status for the 
+                  ${req.body.jobname} role has been updated to: <strong>Accepted</strong>.</p>`;
+              
+      try {
+        await sendMail(applicantEmail, subject, message);
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Failed to send email:", error);
+        return res.status(500).json({
+          message: "Failed to send email",
+          error: error.message || "Unknown error",
+        });
+      }
+     
+    }
+    else if (req.body.status === "rejected") {
+      subject = `WolfJobs Application Status Update`;
+      message = `<p>Greetings  ${req.body.applicantname}. Your application status for the 
+                 ${req.body.jobname} role has been updated to: <strong>Rejected</strong>.</p>`; 
       try {
         await sendMail(applicantEmail, subject, message);
         console.log("Email sent successfully");
