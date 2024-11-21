@@ -50,14 +50,14 @@ describe("LoginPage Tests", () => {
       </MemoryRouter>
     );
   });
-// Test Case 4
+  // Test Case 4
   it("Test Case 4: Check for presence of the submit button", () => {
     render(
       <MemoryRouter>
         <LoginPage />
       </MemoryRouter>
     );
-  
+
     // Check if the login button is present in the document
     const loginButton = screen.getByRole("button", { name: /login/i });
     expect(loginButton).toBeInTheDocument();

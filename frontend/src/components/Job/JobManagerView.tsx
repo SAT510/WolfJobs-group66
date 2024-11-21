@@ -41,6 +41,149 @@ const JobManagerView = (props: any) => {
         location.reload();
       });
   };
+  const handleDeleteJob = (e: any) => {
+    e.preventDefault();
+    console.log("Delete job");
+
+    const body = {
+      jobid: jobData._id,
+    };
+
+    axios
+      .delete("http://localhost:8000/api/v1/users/deletejob", { data: body })
+      .then((res) => {
+        if (res.status !== 200) {
+          toast.error("Failed to delete job");
+          return;
+        }
+        toast.success("Job deleted");
+        location.reload();
+      })
+      .catch((err) => {
+        toast.error("Error deleting job");
+      });
+  };
+
+  const JobEditForm = ({ jobData, onSave }: any) => {
+    const [formData, setFormData] = useState({
+      name: jobData.name,
+      description: jobData.description,
+      type: jobData.type,
+      location: jobData.location,
+      requiredSkills: jobData.requiredSkills,
+      pay: jobData.pay,
+    });
+
+    const handleChange = (e: any) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    };
+
+    const handleSubmit = (e: any) => {
+      e.preventDefault();
+      onSave(formData);
+    };
+
+    return (
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}
+      >
+        <div style={{ flex: 1, minWidth: "250px" }}>
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            style={{ width: "100%" }}
+          />
+        </div>
+
+        <div style={{ flex: 1, minWidth: "250px" }}>
+          <label>Description</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            style={{ width: "100%" }}
+          />
+        </div>
+
+        <div style={{ flex: 1, minWidth: "250px" }}>
+          <label>Location</label>
+          <textarea
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            style={{ width: "100%" }}
+          />
+        </div>
+        <div style={{ flex: 1, minWidth: "250px" }}>
+          <label>Location</label>
+          <textarea
+            name="location"
+            value={formData.location}
+            onChange={handleChange}
+            style={{ width: "100%" }}
+          />
+        </div>
+
+        <div style={{ flex: 1, minWidth: "250px" }}>
+          <label>Pay</label>
+          <textarea
+            name="pay"
+            value={formData.pay}
+            onChange={handleChange}
+            style={{ width: "100%" }}
+          />
+        </div>
+
+        <div style={{ flex: 1, minWidth: "250px" }}>
+          <label>Required Skills</label>
+          <textarea
+            name="requiredSkills"
+            value={formData.requiredSkills}
+            onChange={handleChange}
+            style={{ width: "100%" }}
+          />
+        </div>
+        <div style={{ width: "100%" }}>
+          <Button
+            type="submit"
+            variant="contained"
+            style={{ marginTop: "10px" }}
+          >
+            Save Changes
+          </Button>
+        </div>
+      </form>
+    );
+  };
+
+  const handleSaveJobEdit = (updatedData: any) => {
+    const body = {
+      jobid: jobData._id,
+      ...updatedData,
+    };
+
+    axios
+      .put("http://localhost:8000/api/v1/users/editjob", body)
+      .then((res) => {
+        if (res.status !== 200) {
+          toast.error("Failed to update job");
+          return;
+        }
+        toast.success("Job updated");
+        setViewManager("job-screening");
+      })
+      .catch((err) => {
+        toast.error("Error updating job");
+      });
+  };
 
   return (
     <>
@@ -56,7 +199,6 @@ const JobManagerView = (props: any) => {
                 style={{
                   color: "#FF5353",
                   borderColor: "#FF5353",
-                  // borderRadius: "10px",
                   textTransform: "none",
                   fontSize: "16px",
                   minWidth: "200px",
@@ -64,6 +206,36 @@ const JobManagerView = (props: any) => {
                 }}
               >
                 Close job
+              </Button>
+              <Button
+                onClick={handleDeleteJob}
+                type="button"
+                variant="outlined"
+                style={{
+                  color: "#FF5353",
+                  borderColor: "#FF5353",
+                  textTransform: "none",
+                  fontSize: "16px",
+                  minWidth: "200px",
+                  margin: "10px",
+                }}
+              >
+                Delete job
+              </Button>
+              <Button
+                onClick={() => setViewManager("job-edit")}
+                type="button"
+                variant="outlined"
+                style={{
+                  color: "#FF5353",
+                  borderColor: "#FF5353",
+                  textTransform: "none",
+                  fontSize: "16px",
+                  minWidth: "200px",
+                  margin: "10px",
+                }}
+              >
+                Edit Job
               </Button>
             </div>
             <div className="text-2xl my-4">Candidates Review</div>
@@ -151,6 +323,9 @@ const JobManagerView = (props: any) => {
         {viewManager === "job-rating" && <JobRating jobData={jobData} />}
         {viewManager === "job-final-review" && (
           <JobFinalReview jobData={jobData} />
+        )}
+        {viewManager === "job-edit" && (
+          <JobEditForm jobData={jobData} onSave={handleSaveJobEdit} />
         )}
       </div>
     </>

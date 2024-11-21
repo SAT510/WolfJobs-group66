@@ -20,6 +20,7 @@ type FormValues = {
   pay: string;
   requiredSkills: string;
   description: string;
+  deadline: string;
 };
 
 const CreateJob = () => {
@@ -33,6 +34,7 @@ const CreateJob = () => {
       location: "",
       pay: "",
       description: "",
+      deadline: "",
     },
   });
 
@@ -49,6 +51,7 @@ const CreateJob = () => {
       pay: data.pay,
       description: data.description,
       requiredSkills: requiredSkills,
+      jobDeadline: data.deadline,
     };
     navigate("/job_questionnaire", {
       state: body,
@@ -70,7 +73,9 @@ const CreateJob = () => {
             </div>
             <div className="inline-flex items-center flex-row  ">
               <AiFillCheckCircle color="#CBCBCB" size="20px" />
-              <span className="ml-2 text-xl text-[#CBCBCB]">Fill Questionnaire</span>
+              <span className="ml-2 text-xl text-[#CBCBCB]">
+                Fill Questionnaire
+              </span>
             </div>
             <div className="inline-flex items-center flex-row  ">
               <AiFillCheckCircle color="#CBCBCB" size="20px" />
@@ -172,6 +177,23 @@ const CreateJob = () => {
                   {...register("description")}
                   error={!!errors.description}
                   helperText={errors.description?.message}
+                  sx={{
+                    "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                    "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                    "& fieldset": {
+                      paddingLeft: (theme) => theme.spacing(1.5),
+                      borderRadius: "10px",
+                    },
+                  }}
+                  minRows={4}
+                  multiline
+                />
+                <TextField
+                  label="Job Deadline"
+                  type="text"
+                  {...register("deadline")}
+                  error={!!errors.deadline}
+                  helperText={errors.deadline?.message}
                   sx={{
                     "& label": { paddingLeft: (theme) => theme.spacing(1) },
                     "& input": { paddingLeft: (theme) => theme.spacing(2.5) },

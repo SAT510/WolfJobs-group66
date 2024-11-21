@@ -84,7 +84,7 @@ const Profile = () => {
                 <span className="text-gray-500">{skills || " -- "}</span>
               </div>
               <div>
-                <span className='text-lg'>Projects: </span>
+                <span className="text-lg">Projects: </span>
                 <span className="text-gray-500">{projects || " -- "}</span>
               </div>
               <div>

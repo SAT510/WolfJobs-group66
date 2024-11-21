@@ -22,12 +22,18 @@ const JobScreening = (props: any) => {
     );
   }, [searchParams]);
 
-  const handleAccept = (applicationId: string) => {
+  const handleAccept = (
+    applicationId: string,
+    applicantname: string,
+    jobname: string
+  ) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
 
     const body = {
       applicationId: applicationId,
       status: "screening",
+      applicantname: applicantname,
+      jobname: jobname,
     };
 
     axios.post(url, body).then((res) => {
@@ -40,12 +46,18 @@ const JobScreening = (props: any) => {
       toast.error("Failed to accept candidate");
     });
   };
-  const handleReject = (applicationId: string) => {
+  const handleReject = (
+    applicationId: string,
+    applicantname: string,
+    jobname: string
+  ) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
 
     const body = {
       applicationId: applicationId,
       status: "rejected",
+      applicantname: applicantname,
+      jobname: jobname,
     };
 
     axios.post(url, body).then((res) => {
@@ -89,7 +101,11 @@ const JobScreening = (props: any) => {
                 <Button
                   onClick={(e) => {
                     e.preventDefault();
-                    return handleAccept(item._id);
+                    return handleAccept(
+                      item._id,
+                      item.applicantname,
+                      item.jobname
+                    );
                   }}
                   style={{ color: "#FF5353" }}
                 >
@@ -98,7 +114,11 @@ const JobScreening = (props: any) => {
                 <Button
                   onClick={(e) => {
                     e.preventDefault();
-                    return handleReject(item._id);
+                    return handleReject(
+                      item._id,
+                      item.applicantname,
+                      item.jobname
+                    );
                   }}
                   style={{ color: "#FF5353" }}
                 >

@@ -1,6 +1,8 @@
 ![Banner](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Banner.png)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/)
+[![Prettier](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml)
+
 [![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml)
 [![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
@@ -18,7 +20,6 @@
 [![codecov](https://codecov.io/gh/deepr41/WolfJobs/graph/badge.svg?token=RH472ZM4PT)](https://codecov.io/gh/deepr41/WolfJobs)
 [![ESLint](https://img.shields.io/badge/code%20style-ESLint-brightgreen.svg)](https://eslint.org/)
 
-
 <!-- ![Static Badge](https://img.shields.io/badge/any_text-i_like-blue) -->
 
 # Tech Stack:
@@ -32,6 +33,7 @@
 ![RestAPI](https://img.shields.io/badge/RestAPI-005571?style=for-the-badge&logo=restapi)
 
 # What's New:
+
 Role-based Job Filters: Users can filter job listings by type, such as part-time, full-time, co-op, or internship positions, allowing them to easily find opportunities that match their preferred work arrangement.
 
 "Save Job" Screen: Provides a dedicated tab where users can save specific job listings to their accounts for quick access and future reference.
@@ -40,21 +42,17 @@ Enhanced Manager Profiles: Expands manager profiles to include additional inform
 
 Location-based Job Filters: Allows users to filter job searches by location, ensuring that job openings are relevant to their preferred geographic area.
 
-Salary Range Filters: Users can filter job listings based on a specified minimum and maximum salary range, helping them to find opportunities that meet their compensation expectations. 
-
+Salary Range Filters: Users can filter job listings based on a specified minimum and maximum salary range, helping them to find opportunities that meet their compensation expectations.
 
 # Presentation Video
 
-[![Watch the video](
-https://github.com/user-attachments/assets/270d0730-d5f2-48e6-813e-b4c63be2a2e4
-)
+[![Watch the video](https://github.com/user-attachments/assets/270d0730-d5f2-48e6-813e-b4c63be2a2e4)
 
 # About Us
 
 Eager to dive into a side hustle or seize a full-time job opportunity? Look no further than WolfJobs. Our platform is the ultimate connector between recruiters in need of talent for both short-term and full-time roles and candidates seeking the freedom to choose. Dive in, earn your share, and opt out whenever you want – or stay on for a longer journey!
 
 The job market for students seeking short-term roles lacks dedicated platforms, as traditional portals overwhelm users with permanent listings and complicate applications with inconsistent formats and poor job matching. The WolfJobs job portal aims to connect the student fraternity with the recruiters for both temporary and full-time job openings. The different recruiters can post temporary jobs, for which candidates apply without bothering about permanent associations.
-
 
 # Why WolfJobs?
 
@@ -92,7 +90,6 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 
 ![Save Jobs Screen](https://github.com/user-attachments/assets/824b4a50-2c08-4474-8f4c-e33e58b65ef1)
 
-
 ### Student Applies for Job
 
 ![Apply for Job](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Student%20Applies%20to%20a%20Job.gif)
@@ -104,23 +101,28 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 ## Manager Side
 
 ### Manager Sign Up
+
 ![Manager Sign Up](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Sign%20Up.gif)
 
 ### Manager Login
+
 ![Manager Login](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Login.gif)
 
 ### Edit Profile
+
 ![Edit Profile](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Open%20%26%20Edit%20Profile.gif)
 
 ### Add/Close Job
+
 ![Add/Close Job](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Add%20%26%20Close%20Job.gif)
 
 ### Screening
+
 ![Screening](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Screening.gif)
 
 ### Review & Accept Applications
-![Review Applications](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Grade%2C%20Review%20%26%20Accept%20Candidates.gif)
 
+![Review Applications](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Grade%2C%20Review%20%26%20Accept%20Candidates.gif)
 
 # Installation Instructions for Project Setup
 
@@ -183,12 +185,11 @@ Your app is ready to be deployed!
 
 **5. Interview Appointment Scheduling📆** – WolfJobs will also provide the facility for the hiring manager to organize an interview appointment for the job based on applicant’s availability and convenient time uploaded by the hiring manager. Either of the users can upload their availability time in the G-sheet and using google calendar appointments can be organised.
 
-**6. Candidate Matching Percentage** – WolfJobs applicant skill matching feature will include a percentage to how fit a candidate's skills are based on the job's required skills. Applicants will see a match percentage indicating how likely they are to get accepted and recieve an interview. 
+**6. Candidate Matching Percentage** – WolfJobs applicant skill matching feature will include a percentage to how fit a candidate's skills are based on the job's required skills. Applicants will see a match percentage indicating how likely they are to get accepted and recieve an interview.
 
 **7. Matching based on Resume** – WolfJobs applicants will be able to parse their resume and WolfJobs will extract key skills from the resume and compare it with required job skills to give candidates job matching status.
 
 **8. Database Security and Hashing** – WolfJobs currently does not securely store the password and user information in the database. This data needs to be protected and hashed to ensure security.
-
 
 # Contributors
 
@@ -199,12 +200,11 @@ Your app is ready to be deployed!
     <td align="center"><a href="https://github.com/Janhavi-23"><img src="https://avatars.githubusercontent.com/Janhavi-23" width="100px;" alt=""/><br /><b>Janhavi Pendse</b></a><br /></td>
     <td align="center"><a href="https://github.com/deepp2905"><img src="https://avatars.githubusercontent.com/deepp2905" width="100px;" alt=""/><br /><b>Deep Patel</b></a><br /></td>
 
-
-   
   </tr>
 </table>
 
 ## Iteration 2:
+
  <table>
   <tr>
     <td align="center"><a href="https://github.com/sanjitkverma"><img src="https://avatars.githubusercontent.com/sanjitkverma" width="100px;" alt=""/><br /><b>Sanjit Verma</b></a></td>
@@ -212,12 +212,11 @@ Your app is ready to be deployed!
     <td align="center"><a href="https://github.com/Harris-A-Khan"><img src="https://avatars.githubusercontent.com/Harris-A-Khan" width="100px;" alt=""/><br /><b>Harris Khan </b></a><br /></td>
     <td align="center"><a href="https://github.com/Sarvesh-Somasundaram"><img src="https://avatars.githubusercontent.com/Sarvesh-Somasundaram" width="100px;" alt=""/><br /><b>Sarvesh Somasundaram</b></a><br /></td>
 
-
-   
   </tr>
 </table>
 
 ## Iteration 3:
+
  <table>
   <tr>
     <td align="center"><a href="https://github.com/dubeavik002"><img src="https://avatars.githubusercontent.com/dubeavik002" width="100px;" alt=""/><br /><b>Avik Dube</b></a></td>

@@ -50,7 +50,7 @@ const JobListTile = (props: any) => {
     (state) => state.applicationList
   );
   // @ts-ignore
- const [isBookmarked, setIsBookmarked] = useState(data.saved || false);
+  const [isBookmarked, setIsBookmarked] = useState(data.saved || false);
 
   const [application, setApplication] = useState<Application | null>(null);
 
@@ -108,41 +108,33 @@ const JobListTile = (props: any) => {
     console.log("View Application");
   };
 
+  useEffect(() => {
+    // @ts-ignore
+    setIsBookmarked(data.saved);
+    // @ts-ignore
+  }, [data.saved]);
 
- 
+  const toggleBookmark = async () => {
+    // @ts-ignore
+    setIsBookmarked((prev) => !prev);
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/users/saveJob",
+        { userId: userId, jobId: data._id }
+      );
 
- 
+      if (!response.data.success) {
+        // @ts-ignore
+        setIsBookmarked((prev) => !prev);
+        console.error("Failed to save job:", response.data.message);
+      }
+    } catch (error) {
+      // @ts-ignore
+      setIsBookmarked((prev) => !prev);
+      console.error("Error toggling bookmark:", error);
+    }
+  };
 
- useEffect(() => {
-   // @ts-ignore
-   setIsBookmarked(data.saved);
-   // @ts-ignore
- }, [data.saved]);
-
-
-
- const toggleBookmark = async () => {
-   // @ts-ignore
-   setIsBookmarked((prev) => !prev);
-   try {
-     const response = await axios.post(
-       "http://localhost:8000/api/v1/users/saveJob",
-       { userId: userId, jobId: data._id }
-     );
-
-     if (!response.data.success) {
-       // @ts-ignore
-       setIsBookmarked((prev) => !prev);
-       console.error("Failed to save job:", response.data.message);
-     }
-
-   } catch (error) {
-     // @ts-ignore
-     setIsBookmarked((prev) => !prev);
-     console.error("Error toggling bookmark:", error);
-   }
-  }
-  
   return (
     <div className="my-3" onClick={handleClick}>
       <div
@@ -193,7 +185,8 @@ const JobListTile = (props: any) => {
 
                     <span
                       className={`${
-                        data.status === "closed" ? "text-[#FF5353]" : ""
+                       data.status === "closed" ? "text-[#FF5353]" : 
+                       data.status === "open" ? "text-[#00B633]" : ""
                       }`}
                     >
                       &nbsp;<span className="capitalize">{data.status}</span>
@@ -204,20 +197,26 @@ const JobListTile = (props: any) => {
                     <b>Type:</b> <span className="capitalize"> {jobType} </span>
                   </p>
 
+                  {userRole === "Applicant" && (
                   <p className="text-base">
-                    {userRole === "Applicant" &&
-                      ((application !== null &&
-                        application?.status === "accepted") ||
-                      application?.status === "rejected" ? (
-                        <span className="capitalize">
-                          <b>Application Status:</b>&nbsp;{application?.status}
-                        </span>
-                      ) : (
-                        <>
-                          <b>Application Status:</b>&nbsp;"In Review"
-                        </>
-                      ))}
+                    <b>Application Status:</b>&nbsp;
+                    {application ? (
+                      <span className="capitalize">
+                        {application.status === "accepted" && (
+                          <span style={{ color: "#00B633" }}>Accepted</span>
+                        )}
+                        {application.status === "rejected" && (
+                          <span style={{ color: "#FF5353" }}>Rejected</span>
+                        )}
+                        {!["accepted", "rejected"].includes(application.status) && (
+                         <span style={{ color: "#E6B800" }}>In Review</span> 
+                         )}
+                      </span>
+                    ) : (
+                      "Not Applied"
+                    )}
                   </p>
+                )}
                 </div>
 
                 <div className="h-1"></div>

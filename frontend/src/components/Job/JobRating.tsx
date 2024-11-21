@@ -20,12 +20,19 @@ const JobRating = (props: any) => {
     );
   }, [searchParams]);
 
-  const handleAccept = (applicantid: string) => {
-    const url = "http://localhost:8000/api/v1/users/modifyApplication";
+  const handleAccept = (
+    applicantid: string,
+    applicantname: string,
+    jobname: string
+  ) => {
+    const url =
+      "http://localhost:8000/api/v1/users/modifyApplicationFinalStage";
 
     const body = {
       applicationId: applicantid,
       status: "accepted",
+      applicantname: applicantname,
+      jobname: jobname,
     };
 
     axios.post(url, body).then((res) => {
@@ -37,12 +44,19 @@ const JobRating = (props: any) => {
       toast.error("Failed to accept candidate");
     });
   };
-  const handleReject = (applicantid: string) => {
-    const url = "http://localhost:8000/api/v1/users/modifyApplication";
+  const handleReject = (
+    applicantid: string,
+    applicantname: string,
+    jobname: string
+  ) => {
+    const url =
+      "http://localhost:8000/api/v1/users/modifyApplicationFinalStage";
 
     const body = {
       applicationId: applicantid,
       status: "rejected",
+      applicantname: applicantname,
+      jobname: jobname,
     };
 
     axios.post(url, body).then((res) => {
@@ -91,7 +105,11 @@ const JobRating = (props: any) => {
                   <Button
                     onClick={(e) => {
                       e.preventDefault();
-                      return handleAccept(item._id);
+                      return handleAccept(
+                        item._id,
+                        item.applicantname,
+                        item.jobname
+                      );
                     }}
                     style={{ color: "#FF5353" }}
                   >
@@ -100,7 +118,11 @@ const JobRating = (props: any) => {
                   <Button
                     onClick={(e) => {
                       e.preventDefault();
-                      return handleReject(item._id);
+                      return handleReject(
+                        item._id,
+                        item.applicantname,
+                        item.jobname
+                      );
                     }}
                     style={{ color: "#FF5353" }}
                   >

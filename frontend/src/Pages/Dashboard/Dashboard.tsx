@@ -183,4 +183,3 @@ export default Dashboard;
 function updateExpirence(experience: any) {
   throw new Error("Function not implemented.");
 }
-

@@ -19,7 +19,7 @@ const Saved = () => {
             toast.error("Error fetching jobs");
             return;
           }
-          console.log(res.data.data)
+          console.log(res.data.data);
           setFilteredJobList(res.data.data as Job[]);
         });
     };
@@ -27,18 +27,18 @@ const Saved = () => {
     fetchSavedJobs();
   }, [filteredJobList]);
 
- 
   return (
     <>
       <div className="content bg-slate-50">
         {/* <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}> */}
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
-        <JobsListView
+          <JobsListView
             jobsList={filteredJobList}
-            title={"Saved Applications"}          />
-          </div>
-          <JobDetailView />
+            title={"Saved Applications"}
+          />
         </div>
+        <JobDetailView />
+      </div>
     </>
   );
 };

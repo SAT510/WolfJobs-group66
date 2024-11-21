@@ -7,10 +7,101 @@ const Application = require("../../../models/application");
 const AuthOtp = require("../../../models/authOtp");
 const SavedJob = require("../../../models/savedApplication");
 
+require("dotenv").config();
 
 const nodemailer = require("nodemailer");
+module.exports.acceptApplication = async function (req, res) {
+  try {
+    let application = await Application.findById(req.body.applicationid);
 
-require("dotenv").config();
+    console.log(application);
+
+    if (!application.applicantemail) {
+      return res.status(400).json({
+        message: "Applicant email is missing from the application",
+      });
+    }
+
+    application.status = "1";
+
+    await application.save();
+
+    const applicantEmail = application.applicantemail;
+    const subject = "Your Application Has Been Accepted!";
+    const text =
+      "Congratulations! Your application has been accepted by the manager.";
+
+    try {
+      sendMail(applicantEmail, subject, text);
+      console.log("Email sent successfully");
+    } catch (emailError) {
+      console.error("Error sending email:", emailError);
+
+      return res.status(500).json({
+        message: "Application is updated, but email could not be sent.",
+        error: emailError,
+      });
+    }
+
+    res.status(200).json({
+      message: "Application is updated successfully, and email has been sent.",
+      data: {
+        application,
+      },
+      success: true,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};
+
+module.exports.rejectApplication = async function (req, res) {
+  try {
+    let application = await Application.findById(req.body.applicationid);
+
+    if (!application) {
+      return res.status(404).json({
+        message: "Application not found",
+      });
+    }
+
+    application.status = "2";
+    await application.save();
+
+    const mailOptions = {
+      from: "softwareengineering510@gmail.com",
+      to: application.applicantemail,
+      sub: "Your Job Application Status",
+      msg: "We regret to inform you that your application has been rejected. Thank you for applying, and we encourage you to apply for future opportunities.",
+    };
+
+    sendMail(mailOptions, function (err, info) {
+      if (err) {
+        console.error("Error sending rejection email:", err);
+        return res.status(500).json({
+          message: "Failed to send email notification",
+        });
+      }
+      console.log("Rejection email sent:", info.response);
+    });
+
+    res.set("Access-Control-Allow-Origin", "*");
+    return res.json(200, {
+      message:
+        "Application rejected successfully, and applicant has been notified via email.",
+      data: { application, applicantEmail },
+      success: true,
+    });
+  } catch (err) {
+    console.error("Error rejecting application:", err);
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};
 
 module.exports.createSession = async function (req, res) {
   try {
@@ -271,6 +362,7 @@ module.exports.createJob = async function (req, res) {
       question2: req.body.question2,
       question3: req.body.question3,
       question4: req.body.question4,
+      jobDeadline: req.body.jobDeadline,
     });
     res.set("Access-Control-Allow-Origin", "*");
     return res.json(200, {
@@ -366,11 +458,14 @@ module.exports.createApplication = async function (req, res) {
   }
 };
 
+const sendMail = require("../../../models/nodemailer");
+
 module.exports.modifyApplication = async function (req, res) {
   try {
     let application = await Application.findById(req.body.applicationId);
 
     application.status = req.body.status;
+    console.log("Request Body:", req.body);
 
     //change answer only from screening to grading
     if (req.body.status === "grading") {
@@ -383,6 +478,41 @@ module.exports.modifyApplication = async function (req, res) {
     if (req.body.status === "rating") {
       application.rating = req.body.rating;
     }
+
+    const applicantEmail = application.applicantemail;
+
+    let subject = "";
+    let message = "";
+    if (req.body.status === "screening") {
+      subject = `WolfJobs Application Status Update`;
+      message = `<p>Congratulations ${req.body.applicantname}! Your application for the ${req.body.jobname} role
+                has made it to the next stage. Please fill out the related interview questions on the job portal.</p>`;
+      try {
+        await sendMail(applicantEmail, subject, message);
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Failed to send email:", error);
+        return res.status(500).json({
+          message: "Failed to send email",
+          error: error.message || "Unknown error",
+        });
+      }
+    } else if (req.body.status === "rejected") {
+      subject = `WolfJobs Application Status Update`;
+      message = `<p>Greetings ${req.body.applicantname}. Your application status for the ${req.body.jobname} role
+                 has been updated to: <strong>Rejected</strong>.</p>`;
+      try {
+        await sendMail(applicantEmail, subject, message);
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Failed to send email:", error);
+        return res.status(500).json({
+          message: "Failed to send email",
+          error: error.message || "Unknown error",
+        });
+      }
+    }
+
     application.save();
     res.set("Access-Control-Allow-Origin", "*");
     return res.json(200, {
@@ -401,53 +531,52 @@ module.exports.modifyApplication = async function (req, res) {
   }
 };
 
-module.exports.acceptApplication = async function (req, res) {
+module.exports.modifyApplicationFinalStage = async function (req, res) {
   try {
     let application = await Application.findById(req.body.applicationId);
 
-    application.status = "1";
+    application.status = req.body.status;
+
+    const applicantEmail = application.applicantemail;
+
+    let subject = "";
+    let message = "";
+    if (req.body.status === "accepted") {
+      subject = `WolfJobs Application Status Update`;
+      message = `<p>Congratulations ${req.body.applicantname}! Your application status for the 
+                  ${req.body.jobname} role has been updated to: <strong>Accepted</strong>.</p>`;
+
+      try {
+        await sendMail(applicantEmail, subject, message);
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Failed to send email:", error);
+        return res.status(500).json({
+          message: "Failed to send email",
+          error: error.message || "Unknown error",
+        });
+      }
+    } else if (req.body.status === "rejected") {
+      subject = `WolfJobs Application Status Update`;
+      message = `<p>Greetings  ${req.body.applicantname}. Your application status for the 
+                 ${req.body.jobname} role has been updated to: <strong>Rejected</strong>.</p>`;
+      try {
+        await sendMail(applicantEmail, subject, message);
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Failed to send email:", error);
+        return res.status(500).json({
+          message: "Failed to send email",
+          error: error.message || "Unknown error",
+        });
+      }
+    }
 
     application.save();
     res.set("Access-Control-Allow-Origin", "*");
     return res.json(200, {
       message: "Application is updated Successfully",
-
       data: {
-        //user.JSON() part gets encrypted
-
-        // token: jwt.sign(user.toJSON(), env.jwt_secret, {
-        //   expiresIn: "100000",
-        // }),
-        application,
-      },
-      success: true,
-    });
-  } catch (err) {
-    console.log(err);
-
-    return res.json(500, {
-      message: "Internal Server Error",
-    });
-  }
-};
-
-module.exports.rejectApplication = async function (req, res) {
-  try {
-    let application = await Application.findById(req.body.applicationId);
-
-    application.status = "2";
-
-    application.save();
-    res.set("Access-Control-Allow-Origin", "*");
-    return res.json(200, {
-      message: "Application is updated Successfully",
-
-      data: {
-        //user.JSON() part gets encrypted
-
-        // token: jwt.sign(user.toJSON(), env.jwt_secret, {
-        //   expiresIn: "100000",
-        // }),
         application,
       },
       success: true,
@@ -487,6 +616,68 @@ module.exports.closeJob = async function (req, res) {
 
     return res.json(500, {
       message: "Internal Server Error",
+    });
+  }
+};
+
+module.exports.deleteJob = async function (req, res) {
+  try {
+    // Find the job by ID and remove it from the database
+    const job = await Job.findByIdAndDelete(req.body.jobid);
+
+    if (!job) {
+      return res.status(404).json({
+        message: "Job not found",
+        success: false,
+      });
+    }
+
+    // Respond with a success message
+    res.set("Access-Control-Allow-Origin", "*");
+    return res.status(200).json({
+      message: "Job deleted successfully",
+      success: true,
+    });
+  } catch (err) {
+    console.log(err);
+
+    return res.status(500).json({
+      message: "Internal Server Error",
+      success: false,
+    });
+  }
+};
+module.exports.editJob = async function (req, res) {
+  try {
+    const job = await Job.findById(req.body.jobid);
+
+    if (!job) {
+      return res.status(404).json({
+        message: "Job not found",
+        success: false,
+      });
+    }
+
+    job.name = req.body.name || job.name;
+    job.description = req.body.description || job.description;
+    job.type = req.body.type || job.type;
+    job.location = req.body.location || job.location;
+    job.requiredSkills = req.body.requiredSkills || job.requiredSkills;
+    job.pay = req.body.pay || job.pay;
+
+    await job.save();
+
+    res.set("Access-Control-Allow-Origin", "*");
+    return res.status(200).json({
+      message: "Job updated successfully",
+      success: true,
+      job,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      message: "Internal Server Error",
+      success: false,
     });
   }
 };
@@ -617,7 +808,7 @@ module.exports.saveJobList = async function (req, res) {
     const { userId } = req.params.id;
 
     const savedJobs = await SavedJob.find(userId);
-    res.set("Access-Control-Allow-Origin","*")
+    res.set("Access-Control-Allow-Origin", "*");
 
     if (savedJobs.length === 0) {
       return res.status(200).json({
@@ -637,7 +828,7 @@ module.exports.saveJobList = async function (req, res) {
       success: true,
     });
   } catch (error) {
-    console.error("Error counting saved jobs:", error); 
+    console.error("Error counting saved jobs:", error);
     return res.status(500).json({
       message: "Internal Server Error",
       success: false,

@@ -21,12 +21,19 @@ router.get("/", usersApi.index);
 router.get("/fetchapplications", usersApi.fetchApplication);
 router.post("/acceptapplication", usersApi.acceptApplication);
 router.post("/modifyApplication", jsonParser, usersApi.modifyApplication);
+router.post(
+  "/modifyApplicationFinalStage",
+  jsonParser,
+  usersApi.modifyApplicationFinalStage
+);
 router.post("/generateOTP", usersApi.generateOtp);
 router.post("/verifyOTP", usersApi.verifyOtp);
 router.post("/rejectapplication", usersApi.rejectApplication);
 router.post("/closejob", jsonParser, usersApi.closeJob);
+router.delete("/deletejob", jsonParser, usersApi.deleteJob);
+router.put("/editjob", jsonParser, usersApi.editJob);
 router.post("/createapplication", jsonParser, usersApi.createApplication);
-router.post("/saveJob",jsonParser,usersApi.saveJob);
-router.get("/saveJobList/:id",jsonParser,usersApi.saveJobList);
+router.post("/saveJob", jsonParser, usersApi.saveJob);
+router.get("/saveJobList/:id", jsonParser, usersApi.saveJobList);
 
 module.exports = router;

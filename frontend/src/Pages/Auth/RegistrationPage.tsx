@@ -54,7 +54,6 @@ const RegistrationPage = () => {
     );
   };
 
-
   return (
     <>
       <div className="mx-auto bg-slate-50 content flex flex-col justify-center items-center">
