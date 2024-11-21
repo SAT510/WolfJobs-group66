@@ -1,6 +1,6 @@
 ![Banner](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Banner.png)
 
-![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg?link=http://www.apache.org/licenses/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/)
 
 [![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml)
 [![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml)
