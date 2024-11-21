@@ -50,7 +50,7 @@ const JobListTile = (props: any) => {
     (state) => state.applicationList
   );
   // @ts-ignore
- const [isBookmarked, setIsBookmarked] = useState(data.saved || false);
+  const [isBookmarked, setIsBookmarked] = useState(data.saved || false);
 
   const [application, setApplication] = useState<Application | null>(null);
 
@@ -108,41 +108,33 @@ const JobListTile = (props: any) => {
     console.log("View Application");
   };
 
+  useEffect(() => {
+    // @ts-ignore
+    setIsBookmarked(data.saved);
+    // @ts-ignore
+  }, [data.saved]);
 
- 
+  const toggleBookmark = async () => {
+    // @ts-ignore
+    setIsBookmarked((prev) => !prev);
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/users/saveJob",
+        { userId: userId, jobId: data._id }
+      );
 
- 
+      if (!response.data.success) {
+        // @ts-ignore
+        setIsBookmarked((prev) => !prev);
+        console.error("Failed to save job:", response.data.message);
+      }
+    } catch (error) {
+      // @ts-ignore
+      setIsBookmarked((prev) => !prev);
+      console.error("Error toggling bookmark:", error);
+    }
+  };
 
- useEffect(() => {
-   // @ts-ignore
-   setIsBookmarked(data.saved);
-   // @ts-ignore
- }, [data.saved]);
-
-
-
- const toggleBookmark = async () => {
-   // @ts-ignore
-   setIsBookmarked((prev) => !prev);
-   try {
-     const response = await axios.post(
-       "http://localhost:8000/api/v1/users/saveJob",
-       { userId: userId, jobId: data._id }
-     );
-
-     if (!response.data.success) {
-       // @ts-ignore
-       setIsBookmarked((prev) => !prev);
-       console.error("Failed to save job:", response.data.message);
-     }
-
-   } catch (error) {
-     // @ts-ignore
-     setIsBookmarked((prev) => !prev);
-     console.error("Error toggling bookmark:", error);
-   }
-  }
-  
   return (
     <div className="my-3" onClick={handleClick}>
       <div

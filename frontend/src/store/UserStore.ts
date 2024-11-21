@@ -76,10 +76,10 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
     set(() => ({ email: email }));
   },
   updateUnityid: (unityid: string) => {
-    set(() => ({ unityid : unityid}));
+    set(() => ({ unityid: unityid }));
   },
   updateStudentid: (studentid: string) => {
-    set(() => ({ studentid: studentid}))
+    set(() => ({ studentid: studentid }));
   },
   updatePassword: (password: string) => {
     set(() => ({ password: password }));
@@ -97,10 +97,10 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
     set(() => ({ skills: skills }));
   },
   updateProjects: (projects: string) => {
-    set(() => ({ projects: projects}))
+    set(() => ({ projects: projects }));
   },
   updateExperience: (experience: string) => {
-    set(() => ({ experience: experience }))
+    set(() => ({ experience: experience }));
   },
   updatePhonenumber: (phonenumber: string) => {
     set(() => ({ phonenumber: phonenumber }));
@@ -124,9 +124,9 @@ export const useUserStore = create<UserState & UserAction>()((set) => ({
     set(() => ({ affiliation: affiliation }));
   },
   updateResume: (resume: string) => {
-    set(() => ({resume: resume}))
+    set(() => ({ resume: resume }));
   },
   updateResumeId: (resumeId: string) => {
-    set(() => ({resumeId: resumeId}))
-  }
+    set(() => ({ resumeId: resumeId }));
+  },
 }));

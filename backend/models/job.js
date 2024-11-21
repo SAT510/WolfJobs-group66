@@ -15,7 +15,7 @@ const jobSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: 'open',
+    default: "open",
   },
   location: {
     type: String,
@@ -53,15 +53,15 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  saved:{
+  saved: {
     type: Boolean,
-    deafult: false
+    deafult: false,
   },
 
   jobDeadline: {
     type: String,
-    deafult: ""
-  }
+    deafult: "",
+  },
 });
 
 const Job = mongoose.model("Job", jobSchema);

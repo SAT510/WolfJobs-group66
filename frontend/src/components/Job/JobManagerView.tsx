@@ -9,7 +9,7 @@ import JobRating from "./JobRating";
 import JobFinalReview from "./JobFinalReview";
 import { toast } from "react-toastify";
 
-const JobManagerView = (props: any) => { 
+const JobManagerView = (props: any) => {
   const { jobData }: { jobData: Job } = props;
   const role = useUserStore((state) => state.role);
   const userId = useUserStore((state) => state.id);
@@ -71,10 +71,9 @@ const JobManagerView = (props: any) => {
       type: jobData.type,
       location: jobData.location,
       requiredSkills: jobData.requiredSkills,
-      pay: jobData.pay
+      pay: jobData.pay,
     });
 
-    
     const handleChange = (e: any) => {
       const { name, value } = e.target;
       setFormData((prev) => ({
@@ -83,14 +82,16 @@ const JobManagerView = (props: any) => {
       }));
     };
 
-  
     const handleSubmit = (e: any) => {
       e.preventDefault();
-      onSave(formData); 
+      onSave(formData);
     };
-  
+
     return (
-      <form onSubmit={handleSubmit} style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}
+      >
         <div style={{ flex: 1, minWidth: "250px" }}>
           <label>Name</label>
           <input
@@ -101,7 +102,7 @@ const JobManagerView = (props: any) => {
             style={{ width: "100%" }}
           />
         </div>
-        
+
         <div style={{ flex: 1, minWidth: "250px" }}>
           <label>Description</label>
           <textarea
@@ -111,9 +112,9 @@ const JobManagerView = (props: any) => {
             style={{ width: "100%" }}
           />
         </div>
-       
+
         <div style={{ flex: 1, minWidth: "250px" }}>
-        <label>Location</label>
+          <label>Location</label>
           <textarea
             name="type"
             value={formData.type}
@@ -128,7 +129,6 @@ const JobManagerView = (props: any) => {
             value={formData.location}
             onChange={handleChange}
             style={{ width: "100%" }}
-
           />
         </div>
 
@@ -152,18 +152,22 @@ const JobManagerView = (props: any) => {
           />
         </div>
         <div style={{ width: "100%" }}>
-        <Button type="submit" variant="contained" style={{ marginTop: "10px" }}>
-          Save Changes
-        </Button>
+          <Button
+            type="submit"
+            variant="contained"
+            style={{ marginTop: "10px" }}
+          >
+            Save Changes
+          </Button>
         </div>
       </form>
     );
   };
-   
+
   const handleSaveJobEdit = (updatedData: any) => {
     const body = {
       jobid: jobData._id,
-      ...updatedData, 
+      ...updatedData,
     };
 
     axios
@@ -174,15 +178,14 @@ const JobManagerView = (props: any) => {
           return;
         }
         toast.success("Job updated");
-        setViewManager("job-screening"); 
+        setViewManager("job-screening");
       })
       .catch((err) => {
         toast.error("Error updating job");
       });
   };
-  
+
   return (
-    
     <>
       {role === "Manager" &&
         userId === jobData.managerid &&
@@ -202,7 +205,7 @@ const JobManagerView = (props: any) => {
                   margin: "10px",
                 }}
               >
-              Close job
+                Close job
               </Button>
               <Button
                 onClick={handleDeleteJob}
@@ -218,7 +221,6 @@ const JobManagerView = (props: any) => {
                 }}
               >
                 Delete job
-
               </Button>
               <Button
                 onClick={() => setViewManager("job-edit")}
@@ -232,10 +234,9 @@ const JobManagerView = (props: any) => {
                   minWidth: "200px",
                   margin: "10px",
                 }}
-                 >
+              >
                 Edit Job
-            </Button>
-              
+              </Button>
             </div>
             <div className="text-2xl my-4">Candidates Review</div>
             <div className="flex flex-row justify-around">
@@ -320,10 +321,11 @@ const JobManagerView = (props: any) => {
         {viewManager === "job-screening" && <JobScreening jobData={jobData} />}
         {viewManager === "job-grading" && <JobGrading jobData={jobData} />}
         {viewManager === "job-rating" && <JobRating jobData={jobData} />}
-        {viewManager === "job-final-review" && 
-          <JobFinalReview jobData={jobData} />}
+        {viewManager === "job-final-review" && (
+          <JobFinalReview jobData={jobData} />
+        )}
         {viewManager === "job-edit" && (
-            <JobEditForm jobData={jobData} onSave={handleSaveJobEdit} />
+          <JobEditForm jobData={jobData} onSave={handleSaveJobEdit} />
         )}
       </div>
     </>

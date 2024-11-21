@@ -16,8 +16,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 
-const Explore = () => 
-{
+const Explore = () => {
   const navigate = useNavigate();
 
   const updateName = useUserStore((state) => state.updateName);
@@ -248,7 +247,10 @@ const Explore = () =>
                 ? "Sort by Employment Type : On"
                 : "Sort by Employment Type : Off"}
             </button>
-            <button onClick={toggleJobStatus} className="p-2 ml-2 border border-black rounded-lg">
+            <button
+              onClick={toggleJobStatus}
+              className="p-2 ml-2 border border-black rounded-lg"
+            >
               {showOpenJobs ? "Show Closed Jobs" : "Show Open Jobs"}
             </button>
             <div style={{ gridTemplateRows: "auto auto" }}>
@@ -349,33 +351,35 @@ const Explore = () =>
                   </button>
                 </div>
               )}
-            {/* <button
+              {/* <button
               onClick={toggleJobStatus}
               className="p-2 ml-2 border border-black rounded-lg"
             >
               {showOpenJobs ? "Show Closed Jobs" : "Show Open Jobs"}
             </button> */}
+            </div>
+          </div>
+
+          <div
+            className="flex flex-row"
+            style={{ height: "calc(100vh - 72px)" }}
+          >
+            <JobsListView
+              jobsList={filteredJobList}
+              title={
+                jobType === "part-time"
+                  ? "Part time"
+                  : jobType === "full-time"
+                    ? "Full time"
+                    : "All Jobs"
+              }
+            />
+            <JobDetailView />
           </div>
         </div>
-
-        <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
-          <JobsListView
-            jobsList={filteredJobList}
-            title={
-              jobType === "part-time"
-                ? "Part time"
-                : jobType === "full-time"
-                ? "Full time"
-                : "All Jobs"
-            }
-          />
-          <JobDetailView />
-        </div>
-      </div>
       </div>
     </>
   );
 };
 
 export default Explore;
-

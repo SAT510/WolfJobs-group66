@@ -1,68 +1,40 @@
-# Contributing to WolfJobs!!
+# Contributing
 
-The following is a set of guidelines for contributing to WolfJobs. We are open to suggestions to enhance our project.
+Hey there! We are so excited that you are interested in our project and would like to contribute. You input and assistance is crucial for keeping the project great.
 
-## Table of Contents:
+Please be aware that this project adheres to a [CODE-OF-CONDUCT](https://github.com/SAT510/WolfJobs-group66/blob/shazia/feature/CODE_OF_CONDUCT.md). By engaging with this project, you agree to follow its guidelines and principles. Your cooperation in fostering a positive and inclusive environment is greatly appreciated.
 
-## How can I contribute?
+## Issues and PRs. How to Contribute.
 
-<ul>
-  <li><a href="#section1" >Labels Info</a></li>
-  <li><a href="#section2" >Reporting Bugs</a></li>
-  <li><a href="#section3">Suggesting Enhancements</a></li>
-  <li><a href="#section4">Pull Requests</a></li>
+We would love to hear suggestions on any improvements on this project. Please begin by opening an issue to talk about any enhancements, bug fixes, documentation updates, etc.
+We love hearing contributions or addressing any questions, so feel free to ask and contribute!
 
-</ul>
+The next step would be to open a PR after talking about the suggestion or bug fix in the issue. Follow these steps for submitting a PR:
 
-## Labels Info
+1. Fork and clone the repository.
+2. Configure and install the dependencies: [INSTALL.md](https://github.com/SAT510/CampusJobReview/blob/test/INSTALL.md).
+3. Make sure that the test pass on your local machine
+4. Make your changes in a new branch: `git checkout -b my-branch-name`
+5. Check for any regressions and fix these issues
+6. Push to your fork and submit a pull request.
+7. Great Job! Now, all you got to do is wait for your pull request to be reviewed and merged.
 
-<h3 id="section1"> Labels Info</h3>
+Here are a few things you can do that will increase the likelihood of your pull request being accepted:
 
-We have created labels for each issue for proper ordering and this will help you select an issue you would like to work on.
+- Follow the style guides, style checkers, syntax checker, and coding standards that are in the README as badges. These include bandit, autopep, pylint, and black. You can run this indivudally on your local machine to ensure that no errors are shown.
+- Ensure that you have tested your change by adding more tests and ensuring there is no regression.
+- Make sure that you make one change at a time. Submit a pull request for each change to ensure smooth merging and avoiding any merge or oher conflicts.
+- Add and commit your changes with a good commit message.
 
-- The [`documentation` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/projects/1?card_filter_query=label%3Adocumentation) is for problems regarding the entire documentation of this repo.
+## How can you break the system?
 
-- The [`enchancement` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/projects/1?card_filter_query=label%3Aenhancement) is for problems regarding any new / existing feature additions to be made in the project.
+- Pushing code that is not working locally
+- Pushing code without doing rigorous testing
+- Not fixing the static analysis errors before pushing
+- Not following the installation instructions found in [INSTALL.md](https://github.com/SAT510/CampusJobReview/blob/test/INSTALL.md) to ensure all dependencies are met
 
-- The [`bug` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/projects/1?card_filter_query=label%3Abug) is for problems related to any bugs or fixes than need to be taken care of.
+Reach out to us for any questions or concerns at smuckra@ncsu.edu, ahgada@ncsu.edu, tyasir@ncsu.edu
 
-- The [`tests` label](https://github.com/ashakhatri007/CSC510_Group25_Project1/issues?q=is%3Aissue+is%3Aopen+label%3Atests) Adding missing tests or correcting existing tests
+## Credit for CONTRIBUTING file
 
-## How can I contribute?
-
-<h3 id="section2"> Reporting bugs</h3>
-<p>This section guides you through submitting a bug report for SE Group 28. </p>
-
-When you are creating a bug report, please include as many details as possible to understand the issue.
-
-<b>How Do I Submit A Bug Report?</b>
-Bugs are tracked as GitHub issues. After you've determined which repository your bug is related to, create an issue on that repository.
-Explain the problem and include additional details to help maintainers reproduce the problem:
-
-  <ul>
-  <li><b>Use a clear and descriptive title</b> for the issue to identify the problem.</li>
-  <li><b>Provide specific examples to demonstrate the steps.</b> Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. If   you're providing snippets in the issue, use Markdown code blocks.</li>
-  <li><b>If the problem is related to performance or memory.</b></li>
-    <li><b>If the problem wasn't triggered by a specific action</b>, describe what you were doing before the problem happened and share more information using the guidelines below.</li>
-  </ul>
-  
-<h3 id="section3"> Suggesting Enhancements</h3>
-This section guides you through submitting a suggestion for WolfJobs, including completely new features and minor improvements to existing functionality.
-
-Enhancement suggestions are tracked as GitHub issues.
-After you've determined which repository your enhancement suggestion is related to, create an issue on that repository and provide the information like title, step-by-step description, specific examples.\
-Giving more detailed information will help us understand the suggestion better.
-
-#### Provide details like
-
-1. What is the enhancement?
-2. Suggestions to implement the enhancement
-
-<h3 id="section4"> Pull Requests</h3>
-
-The process described here has several goals:
-
-- Maintain WolfJobs quality
-- Fix problems that are important to users
-- Engage the community in working toward the best possible WolfJobs
-- Enable a sustainable system for Atom's maintainers to review contributions
+- [probot](https://github.com/probot/template/blob/master/CONTRIBUTING.md#issues-and-prs)

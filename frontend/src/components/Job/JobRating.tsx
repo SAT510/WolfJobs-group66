@@ -20,8 +20,13 @@ const JobRating = (props: any) => {
     );
   }, [searchParams]);
 
-  const handleAccept = (applicantid: string, applicantname: string, jobname: string) => {
-    const url = "http://localhost:8000/api/v1/users/modifyApplicationFinalStage";
+  const handleAccept = (
+    applicantid: string,
+    applicantname: string,
+    jobname: string
+  ) => {
+    const url =
+      "http://localhost:8000/api/v1/users/modifyApplicationFinalStage";
 
     const body = {
       applicationId: applicantid,
@@ -39,8 +44,13 @@ const JobRating = (props: any) => {
       toast.error("Failed to accept candidate");
     });
   };
-  const handleReject = (applicantid: string, applicantname: string, jobname: string) => {
-    const url = "http://localhost:8000/api/v1/users/modifyApplicationFinalStage";
+  const handleReject = (
+    applicantid: string,
+    applicantname: string,
+    jobname: string
+  ) => {
+    const url =
+      "http://localhost:8000/api/v1/users/modifyApplicationFinalStage";
 
     const body = {
       applicationId: applicantid,
@@ -95,7 +105,11 @@ const JobRating = (props: any) => {
                   <Button
                     onClick={(e) => {
                       e.preventDefault();
-                      return handleAccept(item._id, item.applicantname, item.jobname);
+                      return handleAccept(
+                        item._id,
+                        item.applicantname,
+                        item.jobname
+                      );
                     }}
                     style={{ color: "#FF5353" }}
                   >
@@ -104,7 +118,11 @@ const JobRating = (props: any) => {
                   <Button
                     onClick={(e) => {
                       e.preventDefault();
-                      return handleReject(item._id, item.applicantname, item.jobname);
+                      return handleReject(
+                        item._id,
+                        item.applicantname,
+                        item.jobname
+                      );
                     }}
                     style={{ color: "#FF5353" }}
                   >

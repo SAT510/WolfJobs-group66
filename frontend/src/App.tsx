@@ -48,13 +48,13 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          <Route 
-          path="/saved"
-          element={
-            <ProtectedRoute>
-              <Saved />
-            </ProtectedRoute>
-          }
+          <Route
+            path="/saved"
+            element={
+              <ProtectedRoute>
+                <Saved />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/createjob"
@@ -89,12 +89,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/resumeviewer/:applicantId"
-            element={
-                <ResumeViewer />
-            }
-          />
+          <Route path="/resumeviewer/:applicantId" element={<ResumeViewer />} />
           <Route
             path="/resume"
             element={
