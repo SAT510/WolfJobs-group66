@@ -1,0 +1,43 @@
+name: Lint and Format
+
+on:
+  pull_request:
+    paths:
+      - "**/*.js"
+      - "**/*.ts"
+      - "**/*.tsx"
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - "**/*.js"
+      - "**/*.ts"
+      - "**/*.tsx"
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npm install --save-dev eslint prettier
+
+      - name: Run ESLint
+        run: |
+          npm run lint
+        continue-on-error: true
+
+      - name: Run Prettier
+        run: |
+          npm run format -- --check
+        continue-on-error: true

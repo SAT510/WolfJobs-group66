@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { signup } from "../../deprecateded/auth";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import CryptoJS from 'crypto-js';
+import CryptoJS from "crypto-js";
 
 import {
   Button,
