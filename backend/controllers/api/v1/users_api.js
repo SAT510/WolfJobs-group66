@@ -346,6 +346,7 @@ module.exports.getHistory = async function (req, res) {
 };
 
 module.exports.createJob = async function (req, res) {
+  console.log("Request Body:", req.body);
   let user = await User.findOne({ _id: req.body.id });
   check = req.body.skills;
   try {
