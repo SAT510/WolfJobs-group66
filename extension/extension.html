@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      /* Basic styling for the popup */
+      body {
+        font-family: Arial, sans-serif;
+        width: 300px;
+        padding: 10px;
+        background-color: #fff; /* White background */
+        color: #333; /* Dark text */
+      }
+
+      h3 {
+        font-size: 16px;
+        margin-top: 0;
+        font-weight: bold;
+      }
+
+      /* Styling for the job title and content */
+      #jobTitle, #popupContent {
+        margin: 10px 0;
+        font-size: 14px;
+      }
+
+      /* Styling for the button */
+      #redirectButton {
+        background-color: #f24e1e; /* Orange color like in the image */
+        color: #fff; /* White text */
+        padding: 10px 20px; /* Add padding for a nice button */
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 100%; /* Full width for the button */
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+      }
+
+      /* Button hover effect */
+      #redirectButton:hover {
+        background-color: #e13c1a; /* Slightly darker orange */
+      }
+
+      /* Optional: Styling for the button when disabled */
+      #redirectButton:disabled {
+        background-color: #ccc; /* Light gray */
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Job Title</h3>
+    <div id="jobTitle">Loading...</div>
+    <div id="popupContent">Loading...</div>
+    <button id="redirectButton">Go to Job Page</button>
+    <script src="popup.js"></script>
+  </body>
+</html>

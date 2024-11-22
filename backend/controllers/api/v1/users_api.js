@@ -335,6 +335,46 @@ module.exports.getHistory = async function (req, res) {
   }
 };
 
+module.exports.findJobIdByName = async function (req, res) {
+  try {
+    // Extract the job name from the request body or query parameters
+    const jobName = req.body.name || req.query.name;
+    
+    if (!jobName) {
+      return res.status(400).json({
+        message: "Job name is required",
+        success: false,
+      });
+    }
+
+    // Query the database for a job with the specified name
+    const job = await Job.findOne({ name: jobName });
+
+    if (!job) {
+      return res.status(404).json({
+        message: "Job not found",
+        success: false,
+      });
+    }
+
+    // Respond with the job ID
+    return res.status(200).json({
+      data: {
+        jobId: job._id,
+      },
+      message: "Job ID found successfully",
+      success: true,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      message: "Server error",
+      success: false,
+    });
+  }
+};
+
+
 module.exports.createJob = async function (req, res) {
   console.log("Request Body:", req.body);
   let user = await User.findOne({ _id: req.body.id });

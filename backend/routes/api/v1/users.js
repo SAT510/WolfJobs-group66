@@ -35,5 +35,6 @@ router.put("/editjob", jsonParser, usersApi.editJob);
 router.post("/createapplication", jsonParser, usersApi.createApplication);
 router.post("/saveJob", jsonParser, usersApi.saveJob);
 router.get("/saveJobList/:id", jsonParser, usersApi.saveJobList);
+router.post("/getJobId", jsonParser, usersApi.findJobIdByName);
 
 module.exports = router;
