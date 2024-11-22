@@ -33,7 +33,11 @@ const LoginPage = () => {
   const onSubmit = (data: FormValues) => {
     console.log("form submitted");
     console.log(data);
-    login(data.email, CryptoJS.SHA256(data.password).toString(CryptoJS.enc.Hex), navigate);
+    login(
+      data.email,
+      CryptoJS.SHA256(data.password).toString(CryptoJS.enc.Hex),
+      navigate
+    );
   };
 
   return (
@@ -95,7 +99,7 @@ const LoginPage = () => {
                   textTransform: "none",
                   fontSize: "16px",
                 }}
-              disabled={!formState.isValid}
+                disabled={!formState.isValid}
               >
                 Login
               </Button>

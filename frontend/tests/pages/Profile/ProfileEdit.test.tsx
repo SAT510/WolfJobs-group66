@@ -27,15 +27,20 @@ describe("ProfileEdit", () => {
       </MemoryRouter>
     );
 
-
     expect(screen.getByLabelText(/Name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Unityid/i)).toHaveValue(mockProps.unityid);
-    expect(screen.getByLabelText(/Studentid/i)).toHaveValue(mockProps.studentid);
+    expect(screen.getByLabelText(/Studentid/i)).toHaveValue(
+      mockProps.studentid
+    );
     expect(screen.getByLabelText(/Role/i)).toHaveValue(mockProps.role);
     expect(screen.getByLabelText(/Skills/i)).toHaveValue(mockProps.skills);
     expect(screen.getByLabelText(/Projects/i)).toHaveValue(mockProps.projects);
-    expect(screen.getByLabelText(/Experience/i)).toHaveValue(mockProps.experience);
-    expect(screen.getByLabelText(/Phone number/i)).toHaveValue(mockProps.phonenumber);
+    expect(screen.getByLabelText(/Experience/i)).toHaveValue(
+      mockProps.experience
+    );
+    expect(screen.getByLabelText(/Phone number/i)).toHaveValue(
+      mockProps.phonenumber
+    );
     expect(screen.getByLabelText(/Gender/i)).toHaveValue(mockProps.gender);
   });
 
@@ -46,10 +51,12 @@ describe("ProfileEdit", () => {
       </MemoryRouter>
     );
 
-
-    fireEvent.change(screen.getByLabelText(/Name/i), { target: { value: "Jane Doe" } });
-    fireEvent.change(screen.getByLabelText(/Role/i), { target: { value: "Student" } });
-
+    fireEvent.change(screen.getByLabelText(/Name/i), {
+      target: { value: "Jane Doe" },
+    });
+    fireEvent.change(screen.getByLabelText(/Role/i), {
+      target: { value: "Student" },
+    });
 
     expect(screen.getByLabelText(/Name/i)).toHaveValue("Jane Doe");
     expect(screen.getByLabelText(/Role/i)).toHaveValue("Student");
@@ -61,9 +68,10 @@ describe("ProfileEdit", () => {
         <ProfileEdit props={mockProps} />
       </MemoryRouter>
     );
-  
 
-    expect(screen.getByRole("button", { name: /save profile/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /save profile/i })
+    ).toBeInTheDocument();
   });
   it("should display the correct availability options", () => {
     render(
@@ -71,13 +79,9 @@ describe("ProfileEdit", () => {
         <ProfileEdit props={mockProps} />
       </MemoryRouter>
     );
-  
 
     const availabilityDropdown = screen.getByLabelText(/Availability/i);
-    
 
     expect(availabilityDropdown).toHaveTextContent("8 Hours");
   });
-  
-  
 });

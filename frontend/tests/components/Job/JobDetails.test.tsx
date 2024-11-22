@@ -21,6 +21,7 @@ describe("JobDetails", () => {
             question2: "CGPA?",
             question3: "Age?",
             question4: "Skills?",
+            jobDeadline: "11/11/2024",
           }}
         />
       </MemoryRouter>

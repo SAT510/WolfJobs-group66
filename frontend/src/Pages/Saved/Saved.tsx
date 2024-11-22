@@ -21,9 +21,15 @@ const Saved = () => {
           return;
         }
 
-        res.data.data.sort((a: { jobDeadline: string }, b: { jobDeadline: string }) => new Date(a.jobDeadline).getTime() - new Date(b.jobDeadline).getTime());
-          
-        setFilteredJobList(res.data.data.filter((job: { saved: boolean; }) => job.saved === true));
+        res.data.data.sort(
+          (a: { jobDeadline: string }, b: { jobDeadline: string }) =>
+            new Date(a.jobDeadline).getTime() -
+            new Date(b.jobDeadline).getTime()
+        );
+
+        setFilteredJobList(
+          res.data.data.filter((job: { saved: boolean }) => job.saved === true)
+        );
       } catch (error) {
         toast.error("Error fetching jobs");
       }

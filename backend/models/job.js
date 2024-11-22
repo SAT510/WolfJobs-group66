@@ -61,7 +61,7 @@ const jobSchema = new mongoose.Schema({
   jobDeadline: {
     type: Date,
     required: true,
-  }
+  },
 });
 
 const Job = mongoose.model("Job", jobSchema);

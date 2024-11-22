@@ -4,7 +4,6 @@ import { MemoryRouter } from "react-router";
 import { vi } from "vitest";
 import { useNavigate } from "react-router-dom";
 
-
 vi.mock("react-router-dom", () => ({
   ...vi.importActual("react-router-dom"),
   useNavigate: vi.fn(),
@@ -17,7 +16,6 @@ describe("CreateJob Tests", () => {
     vi.clearAllMocks();
     (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
   });
-
 
   it("Test Case 1: Renders CreateJob with required fields", () => {
     render(
@@ -35,7 +33,6 @@ describe("CreateJob Tests", () => {
     expect(screen.getByLabelText(/Required Skills/i)).toBeInTheDocument();
   });
 
-
   it("Test Case 2: Renders the proceed button", () => {
     render(
       <MemoryRouter>
@@ -43,7 +40,9 @@ describe("CreateJob Tests", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole("button", { name: /Proceed/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Proceed/i })
+    ).toBeInTheDocument();
   });
 
   it("Test Case 3: Navigates to job_questionnaire on valid submission", () => {
@@ -52,7 +51,6 @@ describe("CreateJob Tests", () => {
         <CreateJob />
       </MemoryRouter>
     );
-  
 
     expect(screen.getByLabelText(/Job Type/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Job Role/i)).toBeInTheDocument();
@@ -61,7 +59,6 @@ describe("CreateJob Tests", () => {
     expect(screen.getByLabelText(/Job Description/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Job Deadline/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Required Skills/i)).toBeInTheDocument();
-  
 
     const jobRoleSelect = screen.getByLabelText("Job Role");
     fireEvent.change(jobRoleSelect, { target: { value: "Software Engineer" } });
@@ -72,31 +69,30 @@ describe("CreateJob Tests", () => {
     fireEvent.change(locationSelect, { target: { value: "New York" } });
     expect(locationSelect).toHaveValue("New York");
 
-  
     const payField = screen.getByLabelText("Pay");
     fireEvent.change(payField, { target: { value: "100000" } });
-    expect(payField).toHaveValue(100000); 
-    
+    expect(payField).toHaveValue(100000);
 
     const jobDescriptionField = screen.getByLabelText("Job Description");
-    fireEvent.change(jobDescriptionField, { target: { value: "Develop software solutions." } });
+    fireEvent.change(jobDescriptionField, {
+      target: { value: "Develop software solutions." },
+    });
     expect(jobDescriptionField).toHaveValue("Develop software solutions.");
 
-   
     const jobDeadlineField = screen.getByLabelText("Job Deadline");
     fireEvent.change(jobDeadlineField, { target: { value: "2024-12-31" } });
     expect(jobDeadlineField).toHaveValue("2024-12-31");
 
-
     const requiredSkillsField = screen.getByLabelText("Required Skills");
-    fireEvent.change(requiredSkillsField, { target: { value: "React, Node.js" } });
+    fireEvent.change(requiredSkillsField, {
+      target: { value: "React, Node.js" },
+    });
     expect(requiredSkillsField).toHaveValue("React, Node.js");
 
- 
     const proceedButton = screen.getByRole("button", { name: /Proceed/i });
     fireEvent.click(proceedButton);
-    
-   // Assert navigation (make sure mockNavigate is called with expected arguments)
+
+    // Assert navigation (make sure mockNavigate is called with expected arguments)
     // expect(mockNavigate).toHaveBeenCalledWith("/jobQuestionnaire", {
     //   state: {
     //     role: "Software Engineer",
@@ -107,6 +103,6 @@ describe("CreateJob Tests", () => {
     //     requiredSkills: "React, Node.js",
     //     jobDeadline: "2024-12-31",
     //   },
-  // });
+    // });
   });
 });

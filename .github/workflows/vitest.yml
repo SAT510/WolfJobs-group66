@@ -1,16 +1,16 @@
-name: Run Tests with Vitest
+name: Vitest
 
 on:
   push:
     branches:
       - main
-      - '*/feature' 
+      - "*/feature"
       - shazia/feature
       - master
   pull_request:
     branches:
       - main
-      - '*/feature' 
+      - "*/feature"
       - shazia/feature
       - master
 
@@ -25,7 +25,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # You can adjust to the version you prefer
+          node-version: "16" # You can adjust to the version you prefer
 
       - name: Install dependencies
         run: |

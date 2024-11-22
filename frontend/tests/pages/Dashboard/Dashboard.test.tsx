@@ -1,13 +1,10 @@
-
 import React from "react";
 import Dashboard from "../../../src/Pages/Dashboard/Dashboard";
 import { MemoryRouter } from "react-router";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from "react-router-dom";
 import MockAdapter from "axios-mock-adapter";
 import { render, screen, waitFor } from "@testing-library/react";
-
-
 
 const mock = new MockAdapter(axios);
 
@@ -41,8 +38,5 @@ describe("Dashboard", () => {
       <Dashboard />
       );
     </MemoryRouter>;
-    
   });
-  
-  
 });
