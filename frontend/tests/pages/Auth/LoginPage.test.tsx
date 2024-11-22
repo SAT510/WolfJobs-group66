@@ -5,7 +5,6 @@ import { MemoryRouter } from "react-router";
 import { vi } from "vitest";
 import { useNavigate } from "react-router-dom";
 
-
 vi.mock("react-router-dom", () => ({
   ...vi.importActual("react-router-dom"),
   useNavigate: vi.fn(),
@@ -68,17 +67,15 @@ describe("LoginPage Tests", () => {
     fireEvent.click(screen.getByText(/Create a new account/i));
     expect(mockNavigate).toHaveBeenCalledWith("/register");
   });
- 
-    it("Test Case 8: Button disabled when form is invalid", () => {
-      render(
-        <MemoryRouter>
-          <LoginPage />
-        </MemoryRouter>
-      );
-  
-      const loginButton = screen.getByRole("button", { name: /login/i });
-      expect(loginButton).toBeDisabled();
-    });
 
-    
+  it("Test Case 8: Button disabled when form is invalid", () => {
+    render(
+      <MemoryRouter>
+        <LoginPage />
+      </MemoryRouter>
+    );
+
+    const loginButton = screen.getByRole("button", { name: /login/i });
+    expect(loginButton).toBeDisabled();
+  });
 });

@@ -53,6 +53,4 @@ describe("JobListTile", () => {
 
     expect(screen.getByText(/No Affiliation Information/i)).toBeInTheDocument();
   });
-
- 
 });

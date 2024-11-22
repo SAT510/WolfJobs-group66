@@ -11,10 +11,10 @@ describe("JobListView", () => {
       </MemoryRouter>
     );
   });
-  it('renders the default title when no title is provided', () => {
+  it("renders the default title when no title is provided", () => {
     const jobsList = [
-      { _id: '1', name: 'Software Engineer' },
-      { _id: '2', name: 'Data Analyst' },
+      { _id: "1", name: "Software Engineer" },
+      { _id: "2", name: "Data Analyst" },
     ];
 
     render(
@@ -23,20 +23,17 @@ describe("JobListView", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText('All jobs')).toBeInTheDocument();
+    expect(screen.getByText("All jobs")).toBeInTheDocument();
   });
 
-
-  it('renders nothing if the jobs list is empty', () => {
+  it("renders nothing if the jobs list is empty", () => {
     render(
       <MemoryRouter>
         <JobListView jobsList={[]} title="Available Jobs" />
       </MemoryRouter>
     );
 
-
-    expect(screen.queryByText('Software Engineer')).toBeNull();
-    expect(screen.queryByText('Data Analyst')).toBeNull();
+    expect(screen.queryByText("Software Engineer")).toBeNull();
+    expect(screen.queryByText("Data Analyst")).toBeNull();
   });
-  
 });

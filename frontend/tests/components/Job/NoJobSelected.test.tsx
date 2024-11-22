@@ -22,9 +22,10 @@ describe("NoJobSelected Tests", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText(/Select a job for more details/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Select a job for more details/i)
+    ).toBeInTheDocument();
   });
-
 
   it("Test Case 3: Renders the image correctly", () => {
     render(
@@ -37,5 +38,4 @@ describe("NoJobSelected Tests", () => {
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute("src", "images/eva_slash-outline.svg");
   });
-
 });

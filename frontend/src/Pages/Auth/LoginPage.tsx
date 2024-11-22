@@ -95,7 +95,7 @@ const LoginPage = () => {
                   textTransform: "none",
                   fontSize: "16px",
                 }}
-              disabled={!formState.isValid}
+                disabled={!formState.isValid}
               >
                 Login
               </Button>
