@@ -31,7 +31,7 @@ const JobPreview = () => {
   }: { details: FormValuesDetails; questions: FormValuesQuestions } = state;
 
   const navigate = useNavigate();
-  const userId = useUserStore((state) => state.id);
+  const userId = useUserStore((state: { id: string }) => state.id);
 
   const onSubmit = (e: any) => {
     e.preventDefault();
@@ -49,6 +49,7 @@ const JobPreview = () => {
       question3: questions.question3,
       question4: questions.question4,
       requiredSkills: details.requiredSkills,
+      jobDeadline: details.jobDeadline,
     };
 
     axios.post(url, body).then((res) => {

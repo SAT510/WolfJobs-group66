@@ -169,6 +169,11 @@ const JobDetail = (props: any) => {
                 {jobData.requiredSkills}
               </div>
               <div>
+              
+                <span className="font-semibold text-lg">Deadline:</span>&nbsp;
+                {jobData.jobDeadline.toString().split("T")[0]}
+              </div>
+              <div>
               {userRole === "Applicant" && (
                 <>
                   <b>Application Status:</b>
