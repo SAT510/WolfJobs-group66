@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { AiFillCheckCircle } from "react-icons/ai";
@@ -190,10 +191,15 @@ const CreateJob = () => {
                 />
                 <TextField
                   label="Job Deadline"
-                  type="text"
-                  {...register("deadline")}
+                  type="date"
+                  {...register("deadline", {
+                    required: "Job deadline is required", // Add validation if needed
+                  })}
                   error={!!errors.deadline}
                   helperText={errors.deadline?.message}
+                  InputLabelProps={{
+                    shrink: true, // Ensures the label stays above the input
+                  }}
                   sx={{
                     "& label": { paddingLeft: (theme) => theme.spacing(1) },
                     "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
@@ -202,9 +208,8 @@ const CreateJob = () => {
                       borderRadius: "10px",
                     },
                   }}
-                  minRows={4}
-                  multiline
                 />
+                
                 <TextField
                   label="Required Skills"
                   type="text"

@@ -270,11 +270,6 @@ module.exports.editProfile = async function (req, res) {
       message: "User is updated Successfully",
 
       data: {
-        //user.JSON() part gets encrypted
-
-        // token: jwt.sign(user.toJSON(), env.jwt_secret, {
-        //   expiresIn: "100000",
-        // }),
         user,
       },
       success: true,
@@ -286,11 +281,6 @@ module.exports.editProfile = async function (req, res) {
       message: "Internal Server Error",
     });
   }
-  // } else {
-  //   return res.json(400, {
-  //     message: "Bad Request",
-  //   });
-  // }
 };
 module.exports.searchUser = async function (req, res) {
   try {
@@ -346,6 +336,7 @@ module.exports.getHistory = async function (req, res) {
 };
 
 module.exports.createJob = async function (req, res) {
+  console.log("Request Body:", req.body);
   let user = await User.findOne({ _id: req.body.id });
   check = req.body.skills;
   try {

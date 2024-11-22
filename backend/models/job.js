@@ -59,9 +59,9 @@ const jobSchema = new mongoose.Schema({
   },
 
   jobDeadline: {
-    type: String,
-    deafult: "",
-  },
+    type: Date,
+    required: true,
+  }
 });
 
 const Job = mongoose.model("Job", jobSchema);

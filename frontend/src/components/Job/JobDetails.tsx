@@ -169,32 +169,35 @@ const JobDetail = (props: any) => {
                 {jobData.requiredSkills}
               </div>
               <div>
-                {userRole === "Applicant" && (
-                  <>
-                    <b>Application Status:</b>
-                    <span
-                      className="capitalize"
-                      style={{
-                        color:
-                          application?.status === "accepted"
-                            ? "#00B633" // Green for accepted
-                            : application?.status === "rejected"
-                              ? "#FF5353" // Red for rejected
-                              : application
-                                ? "#E6B800"
-                                : "inherit", // Default color for other statuses
-                      }}
-                    >
-                      &nbsp;
-                      {application
-                        ? application.status === "accepted" ||
-                          application.status === "rejected"
-                          ? application.status
-                          : "In Review"
-                        : "Not Applied"}
-                    </span>
-                  </>
-                )}
+              
+                <span className="font-semibold text-lg">Deadline:</span>&nbsp;
+                {jobData.jobDeadline.toString().split("T")[0]}
+              </div>
+              <div>
+              {userRole === "Applicant" && (
+                <>
+                  <b>Application Status:</b>
+                  <span
+                    className="capitalize"
+                    style={{
+                      color:
+                        application?.status === "accepted"
+                          ? "#00B633" // Green for accepted
+                          : application?.status === "rejected"
+                          ? "#FF5353" // Red for rejected
+                          : application
+                          ? "#E6B800" 
+                          : "inherit", // Default color for other statuses
+                    }}
+                  >
+                    &nbsp;{application
+                      ? application.status === "accepted" || application.status === "rejected"
+                        ? application.status
+                        : "In Review"
+                      : "Not Applied"}
+                  </span>
+                </>
+              )}
               </div>
             </div>
             <div className="text-3xl p-4">{jobData.pay}$/hr</div>

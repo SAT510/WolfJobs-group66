@@ -118,6 +118,7 @@ const Explore = () => {
           toast.error("Error fetching applications");
           return;
         }
+        res.data.application.sort((a: { jobDeadline: string }, b: { jobDeadline: string }) => new Date(a.jobDeadline).getTime() - new Date(b.jobDeadline).getTime());
         updateApplicationList(res.data.application as Application[]);
       });
 
@@ -130,6 +131,7 @@ const Explore = () => {
           toast.error("Error fetching jobs");
           return;
         }
+        res.data.jobs.sort((a: { jobDeadline: string }, b: { jobDeadline: string }) => new Date(a.jobDeadline).getTime() - new Date(b.jobDeadline).getTime());
         updateJobList(res.data.jobs as Job[]);
       });
   }, []);

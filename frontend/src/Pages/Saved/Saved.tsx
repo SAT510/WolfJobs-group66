@@ -12,32 +12,37 @@ const Saved = () => {
   useEffect(() => {
     // Fetch saved jobs
     const fetchSavedJobs = async () => {
-      await axios
-        .get(`http://localhost:8000/api/v1/users/saveJobList/${userId}`)
-        .then((res) => {
-          if (res.status !== 200) {
-            toast.error("Error fetching jobs");
-            return;
-          }
-          console.log(res.data.data);
-          setFilteredJobList(res.data.data as Job[]);
-        });
+      try {
+        const res = await axios.get(
+          `http://localhost:8000/api/v1/users/saveJobList/${userId}`
+        );
+        if (res.status !== 200) {
+          toast.error("Error fetching jobs");
+          return;
+        }
+
+        res.data.data.sort((a: { jobDeadline: string }, b: { jobDeadline: string }) => new Date(a.jobDeadline).getTime() - new Date(b.jobDeadline).getTime());
+          
+        setFilteredJobList(res.data.data.filter((job: { saved: boolean; }) => job.saved === true));
+      } catch (error) {
+        toast.error("Error fetching jobs");
+      }
     };
 
     fetchSavedJobs();
-  }, [filteredJobList]);
+  }, [userId]); // Only re-run if userId changes
 
   return (
     <>
       <div className="content bg-slate-50">
-        {/* <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}> */}
         <div className="flex flex-row" style={{ height: "calc(100vh - 72px)" }}>
+          {/* Pass the saved jobs to the JobsListView */}
           <JobsListView
             jobsList={filteredJobList}
             title={"Saved Applications"}
           />
+          <JobDetailView />
         </div>
-        <JobDetailView />
       </div>
     </>
   );
