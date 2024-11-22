@@ -40,6 +40,17 @@ const JobListTile = (props: any) => {
     return matchStatus;
   };
 
+  const getExclamation = (job: Job) => {
+    let date = job.jobDeadline.split("T")[0];
+    
+    let today = new Date();
+    let deadline = new Date(date);
+    let diff = deadline.getTime() - today.getTime();
+    let diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+    return diffDays.toString() + " days to go";
+
+  }
+
   const [active, setActive] = useState<boolean>(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const userId = useUserStore((state) => state.id);
@@ -162,6 +173,15 @@ const JobListTile = (props: any) => {
                   <p className="inline text-xs">{getMatchStatus(data).text}</p>
                 </div>
               )}
+
+              {userRole === "Applicant" && (
+                <div
+                  className={`ml-2 rounded-full bg-orange-500 flex-0 px-3 py-0`}
+                >
+                    <p className="inline text-xs text-white font-bold">{getExclamation(data)}</p>
+                </div>
+              )}
+
               <a
                 className="mr-3 flex-1 w-[2.0625rem] overflow-hidden md:w-auto items-end justify-end content-end"
                 onClick={toggleBookmark}
