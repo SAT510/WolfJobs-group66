@@ -1,0 +1,38 @@
+name: Run Tests with Vitest
+
+on:
+  push:
+    branches:
+      - main
+      - '*/feature' 
+      - shazia/feature
+      - master
+  pull_request:
+    branches:
+      - main
+      - '*/feature' 
+      - shazia/feature
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # You can adjust to the version you prefer
+
+      - name: Install dependencies
+        run: |
+          cd frontend 
+          npm install
+
+      - name: Run Vitest tests
+        run: |
+          cd frontend
+          npx vitest

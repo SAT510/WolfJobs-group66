@@ -79,7 +79,7 @@ const JobListTile = (props: any) => {
   };
 
   const getAffiliationTag = (tag: string) => {
-    return tag.split("-").join(" ");
+    return tag ? tag.split("-").join(" ") : "No Affiliation Information";
   };
 
   const getAffiliationColour = (tag: string) => {
