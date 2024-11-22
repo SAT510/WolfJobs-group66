@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Stack, TextField, Button } from "@mui/material";
-// import { DevTool } from "@hookform/devtools";
+import CryptoJS from "crypto-js";
 
 type FormValues = {
   email: string;
@@ -33,7 +33,7 @@ const LoginPage = () => {
   const onSubmit = (data: FormValues) => {
     console.log("form submitted");
     console.log(data);
-    login(data.email, data.password, navigate);
+    login(data.email, CryptoJS.SHA256(data.password).toString(CryptoJS.enc.Hex), navigate);
   };
 
   return (

@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { signup } from "../../deprecateded/auth";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import CryptoJS from 'crypto-js';
+
 import {
   Button,
   Stack,
@@ -40,12 +42,10 @@ const RegistrationPage = () => {
   const { errors } = formState;
 
   const onSubmit = (data: FormValues) => {
-    console.log("form submitted");
-    console.log(data);
     signup(
       data.email,
-      data.password,
-      data.confirmPassword,
+      CryptoJS.SHA256(data.password).toString(CryptoJS.enc.Hex),
+      CryptoJS.SHA256(data.confirmPassword).toString(CryptoJS.enc.Hex),
       data.name,
       role,
       role === "Manager" ? affiliation : "",
