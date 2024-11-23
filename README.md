@@ -47,6 +47,9 @@ Location-based Job Filters: Allows users to filter job searches by location, ens
 
 Salary Range Filters: Users can filter job listings based on a specified minimum and maximum salary range, helping them to find opportunities that meet their compensation expectations.
 
+# Animated Video About Project 
+[Click Here to Watch the Video!](https://drive.google.com/file/d/1jmqm_GN57bxXIxNtgrHaiSMENukPQFnC/view?usp=sharing)
+
 # Presentation Video
 
 [![Watch the video](https://github.com/user-attachments/assets/270d0730-d5f2-48e6-813e-b4c63be2a2e4)
