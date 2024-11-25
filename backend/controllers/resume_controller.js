@@ -4,7 +4,7 @@ const User = require("../models/user");
 const multer = require("multer");
 // Multer configuration for file upload handling
 /**
- * @description Configure multer for file uploads with a 15MB file size limit 
+ * @description Configure multer for file uploads with a 15MB file size limit
  * and a filter to allow only PDF files.
  */
 const upload = multer({
@@ -20,7 +20,7 @@ const upload = multer({
 });
 
 /**
- * @description Uploads a resume for a user by first checking if a resume 
+ * @description Uploads a resume for a user by first checking if a resume
  * exists for the given user and replacing it if necessary.
  * @async
  * @param {Object} req - The request object containing user data and the uploaded file.
@@ -94,9 +94,9 @@ exports.getResume = async (req, res) => {
 };
 /**
  * @description Simple health check endpoint that responds with "Pong".
-* @param {Object} req - The request object.
-* @param {Object} res - The response object used to send back the result.
-*/
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object used to send back the result.
+ */
 exports.upload = upload;
 
 exports.ping = (req, res) => {

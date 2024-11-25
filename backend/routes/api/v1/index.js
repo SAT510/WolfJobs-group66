@@ -1,8 +1,8 @@
 /**
  * Express router to handle different routes.
- * 
- * This module sets up routing for the application, specifically handling 
- * requests that are routed through the "/users" path. The "/users" route 
+ *
+ * This module sets up routing for the application, specifically handling
+ * requests that are routed through the "/users" path. The "/users" route
  * is delegated to a separate "users" router module.
  */
 

@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 /**
  * @description Defines the schema for a job application.
- * This schema includes all the necessary fields to store information about a job applicant, 
+ * This schema includes all the necessary fields to store information about a job applicant,
  * their personal details, job application details, and answers to job-specific questions.
  */
 const applicationSchema = new mongoose.Schema({
@@ -86,7 +86,7 @@ const applicationSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-   /**
+  /**
    * @description Date of birth of the applicant.
    */
   dob: {

@@ -5,7 +5,7 @@
  */
 const express = require("express"); // Import the express library for creating the server and routes
 
-const router = express.Router();  // Create a new router instance from express to define the API routes
+const router = express.Router(); // Create a new router instance from express to define the API routes
 
 const usersApi = require("../../../controllers/api/v1/users_api"); // Import the usersApi controller for handling route actions
 
@@ -139,4 +139,4 @@ router.post("/saveJob", jsonParser, usersApi.saveJob);
  */
 router.get("/saveJobList/:id", jsonParser, usersApi.saveJobList);
 
-module.exports = router;  // Exports the router instance for use in other parts of the application
+module.exports = router; // Exports the router instance for use in other parts of the application

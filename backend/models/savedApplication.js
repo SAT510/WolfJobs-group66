@@ -14,7 +14,7 @@
 /**
  * Model for the SavedJob collection.
  * Represents the saved job information in the database.
- * 
+ *
  * @type {mongoose.Model<SavedJobSchema>}
  */
 // Import the Mongoose library to interact with MongoDB
@@ -28,7 +28,7 @@ const savedJobSchema = new mongoose.Schema({
     required: true, // This field is mandatory
   },
   // Define the userId field, which is a reference to a User document
-  userId: { 
+  userId: {
     type: mongoose.Schema.Types.ObjectId, // Field is an ObjectId type
     ref: "User", // References the "User" collection in the database
   },

@@ -1,7 +1,7 @@
-/**  
+/**
  * Module for user authentication using Passport.js.
  *
- * This module configures Passport.js with local authentication strategy, 
+ * This module configures Passport.js with local authentication strategy,
  * handles serialization and deserialization of user information, and provides
  * middleware to check and set authenticated users.
  */
@@ -10,7 +10,6 @@ const passport = require("passport"); // Import Passport.js for authentication
 const LocalStrategy = require("passport-local").Strategy; // Import LocalStrategy for local authentication
 
 const User = require("../models/user"); // Import the User model for database interaction
-
 
 //Authentication using passport
 
@@ -37,7 +36,7 @@ passport.use(
         // Check if the user exists and if the password matches
         if (!user || user.password != password) {
           console.log("Invalid Username/Password"); // Log invalid credentials
-          return done(null, false); // Indicate authentication failure  
+          return done(null, false); // Indicate authentication failure
         }
         // If user is found and password matches, return the user
         return done(null, user);
@@ -73,7 +72,7 @@ passport.deserializeUser(function (id, done) {
     }
 
     return done(null, user); // If user is found, return the user object
-  }); 
+  });
 });
 
 // Middleware to check if a user is authenticated

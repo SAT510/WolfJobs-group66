@@ -1,8 +1,8 @@
 /**
  * Job Schema for Mongoose, defining the structure of the job documents
- * stored in MongoDB, including various job-related fields like name, 
+ * stored in MongoDB, including various job-related fields like name,
  * manager ID, description, skills required, and deadlines.
- */const mongoose = require("mongoose");
+ */ const mongoose = require("mongoose");
 /**
  * Defines the schema for a job listing.
  * This schema will be used to create and validate job documents in the database.
@@ -14,7 +14,7 @@ const jobSchema = new mongoose.Schema({
     required: true, // The 'name' field is required for the document to be valid.
   },
   // The ID of the manager associated with the job.
-  managerid: { 
+  managerid: {
     type: String, // The type of 'managerid' is a string.
     required: true, // This field is required.
   },
@@ -28,7 +28,7 @@ const jobSchema = new mongoose.Schema({
     type: String, // 'status' is a string field.
     default: "open", // Default value is "open" if not specified.
   },
-   // The location of the job.
+  // The location of the job.
   location: {
     type: String, // The 'location' field is a string.
     required: true, // This field is required.
@@ -46,9 +46,9 @@ const jobSchema = new mongoose.Schema({
   // Skills required for the job.
   requiredSkills: {
     type: String, // 'requiredSkills' is a string.
-    required: true,  // Required field.
+    required: true, // Required field.
   },
-   // The type of the job (e.g., full-time, part-time).
+  // The type of the job (e.g., full-time, part-time).
   type: {
     type: String, // 'type' is a string.
     required: true, // Required field.
@@ -63,12 +63,12 @@ const jobSchema = new mongoose.Schema({
     type: String, // 'question2' is a string.
     required: true, // Required field.
   },
-   // The third question for job applicants.
+  // The third question for job applicants.
   question3: {
-    type: String,  // 'question3' is a string.
+    type: String, // 'question3' is a string.
     required: true, // Required field.
   },
-   // The fourth question for job applicants.
+  // The fourth question for job applicants.
   question4: {
     type: String, // 'question4' is a string.
     required: true, // Required field.

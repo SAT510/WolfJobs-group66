@@ -26,9 +26,9 @@ const historySchema = new mongoose.Schema({
   },
   // Reference to the User model (ObjectId is used for MongoDB's document reference)
   user: {
-    type: mongoose.Schema.Types.ObjectId,  // Use ObjectId to reference another document
+    type: mongoose.Schema.Types.ObjectId, // Use ObjectId to reference another document
     ref: "User", // Reference to the "User" model (must match the model name)
-  }, 
+  },
 });
 // Create a model named "History" based on the schema defined above
 const History = mongoose.model("History", historySchema);

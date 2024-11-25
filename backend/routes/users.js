@@ -7,7 +7,7 @@ const passport = require("passport"); // Import passport for user authentication
 const usersController = require("../controllers/users_controller"); // Import users controller to handle user-related actions
 
 // Import the resume controller for handling resume-related functionality
-const resumeController = require("../controllers/resume_controller"); 
+const resumeController = require("../controllers/resume_controller");
 // Define the routes and link them to the respective controllers and middleware
 
 /**
@@ -23,14 +23,12 @@ router.get("/profile", passport.checkAuthentication, usersController.profile);
  */
 router.get("/sign-up", usersController.signUp); // usersController.signUp handles rendering the sign-up page
 
-
 /**
  * Route for displaying the sign-in page.
  */
 router.get("/sign-in", usersController.signIn); // usersController.signIn handles rendering the sign-in page
 
 router.post("/create", usersController.create); // usersController.create handles the creation of a new user
-
 
 /**
  * Route for handling the creation of a new user.

@@ -9,5 +9,5 @@ module.exports.home = function (req, res) {
   // Render the "home" view and send it to the client, with the title property set to "Home"
   return res.render("home", {
     title: "Home", // Sets the title of the page to "Home"
-  }); 
+  });
 };

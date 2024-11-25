@@ -1,7 +1,7 @@
 /**
  * Mongoose schema for storing resume information.
  * This schema is used to define the structure of the resume document in the database.
- * 
+ *
  * @class Resume
  * @property {ObjectId} applicantId - The ID of the applicant, referencing the "User" model.
  * @property {String} fileName - The name of the resume file.
@@ -26,7 +26,7 @@ const resumeSchema = new mongoose.Schema({
     required: true, // This field is required
   },
   contentType: {
-    type: String,// Field type is String
+    type: String, // Field type is String
     required: true, // This field is required
     default: "application/pdf", // Default MIME type is "application/pdf"
   },
@@ -37,6 +37,5 @@ const resumeSchema = new mongoose.Schema({
 }); // Define the schema for the Resume model
 
 const Resume = mongoose.model("Resume", resumeSchema); // Create the "Resume" model using the schema defined above
-
 
 module.exports = Resume; // Export the "Resume" model for use in other parts of the application

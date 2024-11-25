@@ -1,5 +1,5 @@
 /**
- * This file defines multiple functions for handling job applications, user profiles, history, and job management 
+ * This file defines multiple functions for handling job applications, user profiles, history, and job management
  * in the WolfJobs application. It uses MongoDB models and integrates email notifications for various user and job statuses.
  */
 const User = require("../../../models/user"); // User model
@@ -25,7 +25,8 @@ module.exports.acceptApplication = async function (req, res) {
 
     console.log(application);
 
-    if (!application.applicantemail) { // Ensure the applicant's email is present
+    if (!application.applicantemail) {
+      // Ensure the applicant's email is present
       return res.status(400).json({
         message: "Applicant email is missing from the application",
       });
@@ -43,23 +44,27 @@ module.exports.acceptApplication = async function (req, res) {
     try {
       sendMail(applicantEmail, subject, text); // Send email notification
       console.log("Email sent successfully");
-    } catch (emailError) { // Handle email sending errors
+    } catch (emailError) {
+      // Handle email sending errors
       console.error("Error sending email:", emailError);
 
-      return res.status(500).json({ // Respond with partial success message
+      return res.status(500).json({
+        // Respond with partial success message
         message: "Application is updated, but email could not be sent.",
         error: emailError, // Catch and handle unexpected errors
       });
     }
 
-    res.status(200).json({ // Respond with success message
+    res.status(200).json({
+      // Respond with success message
       message: "Application is updated successfully, and email has been sent.",
       data: {
         application,
       },
       success: true,
     });
-  } catch (err) { // Catch and handle unexpected errors
+  } catch (err) {
+    // Catch and handle unexpected errors
     console.log(err);
     return res.status(500).json({
       message: "Internal Server Error",
@@ -75,7 +80,8 @@ module.exports.rejectApplication = async function (req, res) {
   try {
     let application = await Application.findById(req.body.applicationid); // Fetch the application by ID
 
-    if (!application) { // Ensure the application exists
+    if (!application) {
+      // Ensure the application exists
       return res.status(404).json({
         message: "Application not found",
       });
@@ -91,7 +97,8 @@ module.exports.rejectApplication = async function (req, res) {
       msg: "We regret to inform you that your application has been rejected. Thank you for applying, and we encourage you to apply for future opportunities.",
     };
 
-    sendMail(mailOptions, function (err, info) { // Send email notification
+    sendMail(mailOptions, function (err, info) {
+      // Send email notification
       if (err) {
         console.error("Error sending rejection email:", err);
         return res.status(500).json({
@@ -108,7 +115,8 @@ module.exports.rejectApplication = async function (req, res) {
       data: { application, applicantEmail },
       success: true,
     });
-  } catch (err) { // Catch and handle unexpected errors
+  } catch (err) {
+    // Catch and handle unexpected errors
     console.error("Error rejecting application:", err);
     return res.status(500).json({
       message: "Internal Server Error",
@@ -124,13 +132,15 @@ module.exports.createSession = async function (req, res) {
   try {
     let user = await User.findOne({ email: req.body.email }); // Find the user by email
     res.set("Access-Control-Allow-Origin", "*");
-    if (!user || user.password != req.body.password) { // Validate user credentials
+    if (!user || user.password != req.body.password) {
+      // Validate user credentials
       return res.json(422, {
         message: "Invalid username or password",
       });
     }
     res.set("Access-Control-Allow-Origin", "*");
-    return res.json(200, { // Return a JWT token and user details
+    return res.json(200, {
+      // Return a JWT token and user details
       message: "Sign In Successful, here is your token, please keep it safe",
       data: {
         token: jwt.sign(user.toJSON(), "wolfjobs", { expiresIn: "100000" }),
@@ -138,7 +148,8 @@ module.exports.createSession = async function (req, res) {
       },
       success: true,
     });
-  } catch (err) { // Catch and handle unexpected errors
+  } catch (err) {
+    // Catch and handle unexpected errors
     console.log("*******", err);
     return res.json(500, {
       message: "Internal Server Error",
@@ -160,7 +171,8 @@ module.exports.createHistory = async function (req, res) {
     }); // Create a new history entry
 
     res.set("Access-Control-Allow-Origin", "*");
-    return res.json(200, { // Respond with success message
+    return res.json(200, {
+      // Respond with success message
       message: "History Created Successfully",
 
       data: {
@@ -168,7 +180,8 @@ module.exports.createHistory = async function (req, res) {
       },
       success: true,
     });
-  } catch (err) { // Catch and handle unexpected errors
+  } catch (err) {
+    // Catch and handle unexpected errors
     console.log(err);
 
     return res.json(500, {
@@ -178,7 +191,7 @@ module.exports.createHistory = async function (req, res) {
 };
 /**
  * Module: Job Portal API Controllers
- * Description: This module contains the backend logic for handling various API endpoints 
+ * Description: This module contains the backend logic for handling various API endpoints
  * related to user management, job creation, applications, and other functionalities in a job portal.
  */
 module.exports.signUp = async function (req, res) {
@@ -186,7 +199,7 @@ module.exports.signUp = async function (req, res) {
    * Signs up a user.
    * @param {Object} req - HTTP request object containing user signup details.
    * @param {Object} res - HTTP response object to send the response.
-   * 
+   *
    * - Checks if the password and confirm password match.
    * - Searches for an existing user by email.
    * - Creates a new user if not already registered.
@@ -260,7 +273,7 @@ module.exports.signUp = async function (req, res) {
  * Fetches user profile details by ID.
  * @param {Object} req - HTTP request object containing user ID.
  * @param {Object} res - HTTP response object to send the response.
- * 
+ *
  * - Retrieves user data using the ID from the database.
  * - Sends back the user information.
  */
@@ -291,15 +304,16 @@ module.exports.getProfile = async function (req, res) {
  * Updates the user profile details.
  * @param {Object} req - HTTP request object containing updated user details.
  * @param {Object} res - HTTP response object to send the response.
- * 
+ *
  * - Finds the user by ID.
  * - Updates the user profile attributes.
  * - Saves the updated user data and responds with success.
  */
 module.exports.editProfile = async function (req, res) {
-  // if (req.body.password == req.body.confirm_password) { 
+  // if (req.body.password == req.body.confirm_password) {
   // Check if the password matches the confirmation password. The line is commented out and not used.
-  try { // Attempt to find the user by their unique ID from the request body
+  try {
+    // Attempt to find the user by their unique ID from the request body
     let user = await User.findById(req.body.id); // Dynamically assigns all updates from the request body.
     // Update user's profile with the provided data from the request body
     user.name = req.body.name; // Update the user's name
@@ -311,7 +325,7 @@ module.exports.editProfile = async function (req, res) {
     user.hours = req.body.hours; // Update the user's working hours
     user.availability = req.body.availability; // Update the user's availability
     user.gender = req.body.gender; // Update the user's gender
-    // user.dob = req.body.dob; 
+    // user.dob = req.body.dob;
     check = req.body.skills; // Capture the skills from the request body.
     user.skills = check; // Assign the skills to the user.
     user.projects = req.body.projects; // Update the user's projects
@@ -342,7 +356,7 @@ module.exports.editProfile = async function (req, res) {
  *
  * @param {Object} req - The request object containing the user's search parameters.
  * @param {Object} res - The response object used to send the result back to the client.
- * 
+ *
  * @returns {Object} - JSON response containing the list of users matching the search criteria or an error message.
  */
 module.exports.searchUser = async function (req, res) {
@@ -375,13 +389,13 @@ module.exports.searchUser = async function (req, res) {
 
 /**
  * Retrieves the history of a user based on the provided user ID and date.
- * 
+ *
  * @function getHistory
  * @async
  * @param {Object} req - The request object containing the query parameters.
  * @param {Object} res - The response object used to send the JSON response.
  * @returns {Object} JSON response containing user history data or an error message.
- * 
+ *
  * @throws {Error} In case of an internal server error, a 500 response with an error message is returned.
  */
 module.exports.getHistory = async function (req, res) {
@@ -415,15 +429,15 @@ module.exports.getHistory = async function (req, res) {
 };
 /**
  * createJob - Creates a new job posting in the database.
- * 
- * This function is responsible for handling the request to create a new job. It expects the 
- * job details to be included in the request body, retrieves the user associated with the 
+ *
+ * This function is responsible for handling the request to create a new job. It expects the
+ * job details to be included in the request body, retrieves the user associated with the
  * job creation, and then attempts to create a new job document in the database.
- * 
+ *
  * @param {Object} req - The request object containing the job details in the body.
  * @param {Object} res - The response object to send the status of the job creation.
- * 
- * @returns {Object} - Returns a JSON response with a success message and job data, 
+ *
+ * @returns {Object} - Returns a JSON response with a success message and job data,
  *                     or an error message if the job creation fails.
  */
 module.exports.createJob = async function (req, res) {
@@ -440,9 +454,9 @@ module.exports.createJob = async function (req, res) {
       managerid: user._id, // ID of the user managing the job
       managerAffilication: user.affiliation, // Affiliation of the job manager
       type: req.body.type, // Type of job (e.g., full-time, part-time)
-      location: req.body.location, // Location of the job 
+      location: req.body.location, // Location of the job
       description: req.body.description, // Job description
-      pay: req.body.pay,  // Pay for the job
+      pay: req.body.pay, // Pay for the job
       requiredSkills: req.body.requiredSkills, // Skills required for the job
       question1: req.body.question1, // First question for applicants
       question2: req.body.question2, // Second question for applicants
@@ -497,7 +511,7 @@ module.exports.fetchApplication = async function (req, res) {
 
   // Set CORS headers for JSON response
   res.set("Access-Control-Allow-Origin", "*");
-   // Respond with status code 200 and a JSON object containing the list of applications
+  // Respond with status code 200 and a JSON object containing the list of applications
   return res.json(200, {
     message: "List of Applications",
 
@@ -509,7 +523,7 @@ module.exports.fetchApplication = async function (req, res) {
  * Sends a response with the created application or an error message if the application already exists.
  */
 module.exports.createApplication = async function (req, res) {
-   try {
+  try {
     // Check if the applicant has already applied for the job
     const existingApplication = await Application.findOne({
       applicantid: req.body.applicantId,
@@ -563,7 +577,7 @@ const sendMail = require("../../../models/nodemailer");
  * Modify the application status and update details based on the provided request.
  * This method handles various statuses like 'grading', 'rating', 'screening', and 'rejected'.
  * It also sends emails for 'screening' and 'rejected' statuses and updates the application in the database.
- * 
+ *
  * @param {Object} req - The request object containing application details and status.
  * @param {Object} res - The response object used to send a response back to the client.
  */
@@ -597,7 +611,7 @@ module.exports.modifyApplication = async function (req, res) {
       message = `<p>Congratulations ${req.body.applicantname}! Your application for the ${req.body.jobname} role
                 has made it to the next stage. Please fill out the related interview questions on the job portal.</p>`;
       try {
-         // Send the email to the applicant
+        // Send the email to the applicant
         await sendMail(applicantEmail, subject, message);
         console.log("Email sent successfully");
       } catch (error) {
@@ -649,7 +663,7 @@ module.exports.modifyApplication = async function (req, res) {
 /**
  * Final stage of modifying an application status and sending relevant emails.
  * Handles the 'accepted' and 'rejected' statuses and sends appropriate emails to the applicant.
- * 
+ *
  * @param {Object} req - The request object containing the application details and status.
  * @param {Object} res - The response object used to send a response back to the client.
  */
@@ -722,7 +736,7 @@ module.exports.modifyApplicationFinalStage = async function (req, res) {
 };
 /**
  * Closes a job by updating its status to "closed" and returns a success response.
- * 
+ *
  * @param {Object} req - The request object containing the job ID in the body.
  * @param {Object} res - The response object used to send the response back.
  * @returns {Object} JSON response indicating the status of the update.
@@ -757,7 +771,7 @@ module.exports.closeJob = async function (req, res) {
 };
 /**
  * Deletes a job from the database by its ID.
- * 
+ *
  * @param {Object} req - The request object containing the job ID to delete.
  * @param {Object} res - The response object to send the status.
  * @returns {Object} JSON response indicating success or failure.
@@ -782,8 +796,8 @@ module.exports.deleteJob = async function (req, res) {
     });
   } catch (err) {
     // Log any error that occurs during the process
-    console.log(err); 
-    // Return a failure response in case of an error  
+    console.log(err);
+    // Return a failure response in case of an error
     return res.status(500).json({
       message: "Internal Server Error",
       success: false,
@@ -792,7 +806,7 @@ module.exports.deleteJob = async function (req, res) {
 };
 /**
  * Edits a job's details in the database by job ID.
- * 
+ *
  * @param {Object} req - The request object containing the job ID and updated details.
  * @param {Object} res - The response object to send the status.
  * @returns {Object} JSON response indicating success or failure, and the updated job.
@@ -828,7 +842,7 @@ module.exports.editJob = async function (req, res) {
   } catch (err) {
     // Log any error that occurs during the process
     console.log(err);
-    // Return a failure response in case of an error  
+    // Return a failure response in case of an error
     return res.status(500).json({
       message: "Internal Server Error",
       success: false,
@@ -837,7 +851,7 @@ module.exports.editJob = async function (req, res) {
 };
 /**
  * Creates a mail transporter using Gmail service.
- * 
+ *
  * @returns {Object} The nodemailer transport object.
  */
 
@@ -853,7 +867,7 @@ function getTransport() {
 
 /**
  * Generates an OTP, stores it, and sends an email to the user.
- * 
+ *
  * @param {Object} req - The request object containing the user ID.
  * @param {Object} res - The response object to send the status.
  * @returns {Object} JSON response indicating success or failure.
@@ -879,15 +893,15 @@ module.exports.generateOtp = async function (req, res) {
     await getTransport().sendMail(mailOptions);
 
     res.set("Access-Control-Allow-Origin", "*");
-    // Generate success messgae 
+    // Generate success messgae
     return res.json(200, {
       success: true,
       message: "OTP is generated Successfully",
     });
   } catch (err) {
-    //log any errors during the process 
+    //log any errors during the process
     console.log(err);
-    // show error message 
+    // show error message
     return res.json(500, {
       message: "Internal Server Error",
     });
@@ -895,7 +909,7 @@ module.exports.generateOtp = async function (req, res) {
 };
 /**
  * Verifies the OTP entered by the user.
- * 
+ *
  * @param {Object} req - The request object containing user ID and OTP.
  * @param {Object} res - The response object to send the status.
  * @returns {Object} JSON response indicating success or failure.
@@ -923,17 +937,17 @@ module.exports.verifyOtp = async function (req, res) {
     );
 
     res.set("Access-Control-Allow-Origin", "*");
-    // Show success message 
+    // Show success message
     return res.json(200, {
       success: true,
       message: "OTP is verified Successfully",
     });
   } catch (err) {
-    // Log any errors durring the process 
+    // Log any errors durring the process
     console.log(err);
 
     return res.json(500, {
-      //Show the errors 
+      //Show the errors
       message: "Internal Server Error",
     });
   }
@@ -983,7 +997,7 @@ module.exports.saveJob = async function (req, res) {
       await Job.updateOne({ _id: jobId }, { saved: true });
       // Set the CORS header and respond with the new saved job
       res.set("Access-Control-Allow-Origin", "*");
-      // Show success message 
+      // Show success message
       return res.json(200, {
         message: "Job saved",
         data: { savedJob: newSaveJob },
@@ -1003,7 +1017,7 @@ module.exports.saveJob = async function (req, res) {
  * Function to handle the saving and retrieving of job lists for a user.
  * It retrieves saved jobs for a given user, and returns the full job details.
  * If no saved jobs are found, it returns a message indicating so.
- * 
+ *
  * @param {Object} req - The request object containing parameters and body.
  * @param {Object} res - The response object to send the result back.
  * @returns {Object} - The response with either the list of saved jobs or an error message.

@@ -2,16 +2,16 @@
  * Express Router for the application, handling different routes.
  * This module defines routes for the root path, users, and api endpoints.
  * It uses controllers and other routers for specific functionality.
- * 
+ *
  * @module Router
  */
 
 // Import the express library to handle routing
 const express = require("express");
 /**
- * Router instance created using express.Router(), which is used to define 
+ * Router instance created using express.Router(), which is used to define
  * the various routes for the application.
- * 
+ *
  * @type {Router}
  */
 const router = express.Router();

@@ -2,27 +2,29 @@
 const mongoose = require("mongoose");
 /**
  * Schema definition for the "autoOtp" collection.
- * This schema defines the structure of the OTP table, including fields for 
+ * This schema defines the structure of the OTP table, including fields for
  * userId, otp, and createdAt.
- * 
+ *
  * @type {mongoose.Schema}
  */
 const autoOtpSchema = new mongoose.Schema(
-  {/**
+  {
+    /**
      * The userId of the user requesting the OTP.
      * This field is required.
-     * 
+     *
      * @type {String}
      */
     userId: {
       type: String,
       required: true,
-    }, /**
-    * The one-time password (OTP) associated with the user.
-    * This field is required.
-    * 
-    * @type {String}
-    */
+    },
+    /**
+     * The one-time password (OTP) associated with the user.
+     * This field is required.
+     *
+     * @type {String}
+     */
     otp: {
       type: String,
       required: true,
@@ -30,7 +32,7 @@ const autoOtpSchema = new mongoose.Schema(
     /**
      * Timestamp of when the OTP was created.
      * Defaults to the current date and time.
-     * 
+     *
      * @type {Date}
      */
     createdAt: {
@@ -41,7 +43,7 @@ const autoOtpSchema = new mongoose.Schema(
   {
     /**
      * Enable automatic timestamping for createdAt and updatedAt fields.
-     * 
+     *
      * @type {boolean}
      */
     timestamps: true,
@@ -49,7 +51,7 @@ const autoOtpSchema = new mongoose.Schema(
 );
 /**
  * Model definition for interacting with the "autoOtp" collection.
- * 
+ *
  * @type {mongoose.Model}
  */
 const autoOtp = mongoose.model("autoOtp", autoOtpSchema);

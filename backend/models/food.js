@@ -7,11 +7,13 @@
 const mongoose = require("mongoose"); // 1. Import mongoose library to interact with MongoDB.
 
 const foodSchema = new mongoose.Schema({
-  Food: { // 2. Define the "Food" field in the schema.
+  Food: {
+    // 2. Define the "Food" field in the schema.
     type: String, // 3. The type of the "Food" field is a string.
     required: true, // 4. The "Food" field is required when creating a document.
   },
-  Calories: { // 5. Define the "Calories" field in the schema.
+  Calories: {
+    // 5. Define the "Calories" field in the schema.
     type: String, // 6. The type of the "Calories" field is a string.
   },
 }); // 7. End of foodSchema definition.

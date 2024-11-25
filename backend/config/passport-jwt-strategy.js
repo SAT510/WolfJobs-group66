@@ -1,6 +1,6 @@
 /**
- * @fileoverview This file configures the Passport.js middleware to use JWT (JSON Web Token) 
- * authentication. It defines the strategy for extracting and validating JWTs, enabling 
+ * @fileoverview This file configures the Passport.js middleware to use JWT (JSON Web Token)
+ * authentication. It defines the strategy for extracting and validating JWTs, enabling
  * secure authentication for the application.
  */
 
@@ -30,13 +30,13 @@ let opts = {
 
 /**
  * Configures Passport.js to use a JWT strategy for authentication.
- * 
+ *
  * @callback jwtVerifyCallback
  * @param {Object} jwtPayload - The payload extracted from the JWT, typically containing user information.
  * @param {Function} done - Callback function to be called after verification.
- * 
+ *
  * @description The strategy finds a user in the database by the `_id` in the JWT payload.
- * If found, the user object is passed to the `done` callback. Otherwise, an error or 
+ * If found, the user object is passed to the `done` callback. Otherwise, an error or
  * a `false` value is passed.
  */
 passport.use(

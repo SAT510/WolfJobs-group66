@@ -23,7 +23,7 @@ const session = require("express-session"); // Middleware for handling session
 const passport = require("passport"); // Authentication middleware for Passport
 
 const passportLocal = require("./config/passport-local-strategy"); // Local authentication strategy
- 
+
 const passportJWT = require("./config/passport-jwt-strategy"); // JWT authentication strategy
 // Middleware to enable CORS
 app.use(cors());
@@ -45,9 +45,9 @@ app.set("views", "./views");
 // Set up session middleware
 app.use(
   session({
-    name: "wolfjobs",  // Name of the session cookie
+    name: "wolfjobs", // Name of the session cookie
     //TODO change the secret before deployment in production mode
-    secret: "blahsomething",  // Secret key used to sign the session cookie
+    secret: "blahsomething", // Secret key used to sign the session cookie
     saveUninitialized: false, // Do not save uninitialized sessions
     resave: false, // Do not resave session if it wasn't modified
     cookie: {

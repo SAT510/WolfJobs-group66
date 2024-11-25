@@ -15,7 +15,7 @@ chai.use(chaiHttp);
  * Test suite for the API endpoints related to tasks.
  */
 describe("Tasks API", () => {
-    /**
+  /**
    * Test for fetching all applications.
    * It sends a GET request to the "/api/v1/users/fetchapplications" route.
    */
@@ -25,7 +25,8 @@ describe("Tasks API", () => {
         .request("http://localhost:8000") // Send request to the local server at the specified URL
         .get("/api/v1/users/fetchapplications") // Specify the GET route to fetch applications
 
-        .end((err, response) => { // Handle the response
+        .end((err, response) => {
+          // Handle the response
           response.body.should.be.a("object"); // Assert that the response body is an object
 
           console.log("*********", response.body); // Log the response body for debugging
@@ -34,7 +35,7 @@ describe("Tasks API", () => {
         });
     });
   });
-/**
+  /**
    * Test for fetching all jobs.
    * It sends a GET request to the "/api/v1/users/" route.
    */
@@ -44,7 +45,8 @@ describe("Tasks API", () => {
         .request("http://localhost:8000") // Send request to the local server at the specified URL
         .get("/api/v1/users/") // Specify the GET route to fetch jobs
 
-        .end((err, response) => { // Handle the response
+        .end((err, response) => {
+          // Handle the response
           response.body.should.be.a("object"); // Assert that the response body is an object
 
           console.log("*********", response.body); // Log the response body for debugging
@@ -72,13 +74,14 @@ describe("Tasks API", () => {
         });
     });
   });
-/**
+  /**
    * Test for creating a job.
    * It sends a POST request to the "/api/v1/users/createjob" route with a job body.
    */
   describe("POST /api/v1/users/createjob", () => {
     it("IT SHOULD RETURN THE JOB", (done) => {
-      const body = {  // Define the body of the job being created
+      const body = {
+        // Define the body of the job being created
         name: "Shaan",
         managerid: "1234556",
         skills: "C,java",
@@ -91,7 +94,8 @@ describe("Tasks API", () => {
       chai
         .request("http://localhost:8000") // Send request to the local server at the specified URL
         .post("/api/v1/users/createjob") // Specify the POST route to create a job
-        .send({ // Send the job creation data in the body of the request
+        .send({
+          // Send the job creation data in the body of the request
           name: "Shaan",
           managerid: "1234556",
           skills: "C,java",
@@ -100,7 +104,8 @@ describe("Tasks API", () => {
           pay: "10",
           schedule: "10/10/10",
         })
-        .end((err, response) => { // Handle the response
+        .end((err, response) => {
+          // Handle the response
           response.body.should.be.a("object"); // Assert that the response body is an object
 
           console.log("*********", response.body); // Log the response body for debugging
@@ -109,7 +114,7 @@ describe("Tasks API", () => {
         });
     });
   });
- /**
+  /**
    * Test for searching a job by a keyword.
    * It sends a GET request to the "/api/v1/users/search" route.
    */
@@ -125,20 +130,21 @@ describe("Tasks API", () => {
         schedule: "10/10/10",
       };
 
-      chai 
+      chai
         .request("http://localhost:8000") // Send request to the local server at the specified URL
-        .get("/api/v1/users/search/TA")  // Specify the GET route to search for jobs by keyword
+        .get("/api/v1/users/search/TA") // Specify the GET route to search for jobs by keyword
         // .send(body)
-        .end((err, response) => { // Handle the response
+        .end((err, response) => {
+          // Handle the response
           response.body.should.be.a("object"); // Assert that the response body is an object
 
           console.log("*********", response.body.users); // Log the search result for debugging
 
-          done();  // Call done to indicate the test is complete
+          done(); // Call done to indicate the test is complete
         });
     });
   });
-/**
+  /**
    * Test for creating a user session.
    * It sends a POST request to the "/api/v1/users/create-session" route with user credentials.
    */
@@ -150,7 +156,8 @@ describe("Tasks API", () => {
         .post("/api/v1/users/create-session") // Specify the POST route to create a user session
         .send(body) // Send the user credentials in the body of the request
 
-        .end((err, response) => { // Handle the response
+        .end((err, response) => {
+          // Handle the response
           response.body.should.be.a("object"); // Assert that the response body is an object
 
           console.log("*********", response.body); // Log the response body for debugging
@@ -160,24 +167,26 @@ describe("Tasks API", () => {
     });
   });
 
-/**
+  /**
    * Test for saving a job to a user's saved list.
    * It sends a POST request to the "/api/v1/users/saveJob" route.
    */
   describe("POST /api/v1/users/saveJob", function () {
     it("should save a job when valid userID and jobId are provided", function (done) {
-      const body = {  // Define the userID and jobID for saving the job
+      const body = {
+        // Define the userID and jobID for saving the job
         userId: "60e6f0f5b9f1c25b4845a7ef",
         jobId: "607c191e810c19729de860ea",
       };
 
       chai
         .request("http://localhost:8000") // Send request to the local server at the specified URL
-        .post("/api/v1/users/saveJob")  // Specify the POST route to save a job
+        .post("/api/v1/users/saveJob") // Specify the POST route to save a job
         .send(body) // Send the user and job IDs in the request body
-        .end(async (err, response) => {  // Handle the response
+        .end(async (err, response) => {
+          // Handle the response
           if (err) {
-            console.error("Request error:", err);  // Log error if there is one
+            console.error("Request error:", err); // Log error if there is one
             return done(err); // Pass error to done if there is a request error
           }
 
@@ -189,13 +198,14 @@ describe("Tasks API", () => {
     });
   });
 
-/**
+  /**
    * Test for unsaving a job from a user's saved list.
    * It sends a POST request to the "/api/v1/users/saveJob" route with an action to unsave.
    */
   describe("POST /api/v1/users/saveJob", function () {
     it("should save a job when valid userID and jobId are provided", function (done) {
-      const body = {  // Define the userID and jobID for unsaving the job
+      const body = {
+        // Define the userID and jobID for unsaving the job
         userId: "60e6f0f5b9f1c25b4845a7ef",
         jobId: "607c191e810c19729de860ea",
       };
@@ -204,10 +214,11 @@ describe("Tasks API", () => {
         .request("http://localhost:8000")
         .post("/api/v1/users/saveJob")
         .send(body)
-        .end(async (err, response) => {  // Handle the response
+        .end(async (err, response) => {
+          // Handle the response
           if (err) {
             console.error("Request error:", err); // Log error if there is one
-            return done(err);  // Pass error to done if there is a request error
+            return done(err); // Pass error to done if there is a request error
           }
 
           response.body.should.be.a("object"); // Assert that the response body is an object
@@ -225,13 +236,14 @@ describe("Tasks API", () => {
 
       chai
         .request("http://localhost:8000") // Send request to the local server at the specified URL
-        .post("/api/v1/users/saveJob")  // Specify the POST route to save a job
-        .send({ ...body, action: "unsave" })  // Send the unsave action along with the user and job IDs
-        .end(async (err, response) => { // Handle the response  
+        .post("/api/v1/users/saveJob") // Specify the POST route to save a job
+        .send({ ...body, action: "unsave" }) // Send the unsave action along with the user and job IDs
+        .end(async (err, response) => {
+          // Handle the response
           if (err) {
-            console.error("Request error:", err);  // Log error if there is one
+            console.error("Request error:", err); // Log error if there is one
             return done(err); // Pass error to done if there is a request error
-          } 
+          }
 
           response.body.should.be.a("object"); // Assert that the response body is an object
           console.log("*********", response.body); // Log the response body for debugging
@@ -240,24 +252,26 @@ describe("Tasks API", () => {
     });
   });
 
- /**
+  /**
    * Test for retrieving the saved jobs list for a user.
    * It sends a GET request to the "/api/v1/users/savedJobList" route.
    */
   describe("GET /api/v1/users/savedJobs", function () {
     it("should retrieve the saved job list for a valid userID", function (done) {
-      const body = {  // Define the userID and jobID for saving the job
+      const body = {
+        // Define the userID and jobID for saving the job
         userId: "60e6f0f5b9f1c25b4845a7ef",
         jobId: "607c191e810c19729de860ea",
       };
 
       chai
         .request("http://localhost:8000") // Send request to the local server at the specified URL
-        .post("/api/v1/users/saveJob")  // Specify the POST route to save a job
+        .post("/api/v1/users/saveJob") // Specify the POST route to save a job
         .send(body) // Send the user and job IDs in the request body
-        .end(async (err, response) => {  // Handle the response
+        .end(async (err, response) => {
+          // Handle the response
           if (err) {
-            console.error("Request error:", err);  // Log error if there is one
+            console.error("Request error:", err); // Log error if there is one
             return done(err); // Pass error to done if there is a request error
           }
 
@@ -266,16 +280,17 @@ describe("Tasks API", () => {
 
           done(); // Call done to indicate the test is complete
         });
-        // Request to retrieve saved job list
+      // Request to retrieve saved job list
       chai
         .request("http://localhost:8000")
         .get(`/api/v1/users/savedJobList/${body.userId}`) // Specify the GET route to retrieve the saved job list by userId
-        .end(async (err, response) => {  // Handle the response
+        .end(async (err, response) => {
+          // Handle the response
           if (err) {
-            console.error("Request error:", err);  // Log error if there is one
-            return done(err);  // Pass error to done if there is a request error
+            console.error("Request error:", err); // Log error if there is one
+            return done(err); // Pass error to done if there is a request error
           }
-          response.body.should.be.a("object");  // Assert that the response body is an object
+          response.body.should.be.a("object"); // Assert that the response body is an object
           console.log("*********", response.body); // Log the response body for debugging
           response.should.have.status(200); // Check for successful response
 
@@ -284,7 +299,7 @@ describe("Tasks API", () => {
     });
   });
 
-   /**
+  /**
    * Test for retrieving the saved job list when there are no saved jobs.
    * It sends a GET request to the "/api/v1/users/savedJobList" route with a user ID.
    */
@@ -293,9 +308,10 @@ describe("Tasks API", () => {
       const userId = "67182b905ffb75809dac3afb"; // Define a user ID with no saved jobs
       chai
         .request("http://localhost:8000")
-        .get(`/api/v1/users/saveJobList/:id`)  // Send request to retrieve saved job list for the user
-        .end((err, response) => { // Handle the response
-          if (err) {  
+        .get(`/api/v1/users/saveJobList/:id`) // Send request to retrieve saved job list for the user
+        .end((err, response) => {
+          // Handle the response
+          if (err) {
             console.error(
               "Request error while retrieving saved job list:",
               err // Log error if there is one

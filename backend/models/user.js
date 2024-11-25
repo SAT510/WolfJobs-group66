@@ -51,7 +51,7 @@ const userSchema = new mongoose.Schema(
     },
     // Hours field, defaults to an empty string if not provided
     hours: {
-      type: String, // Data type is String 
+      type: String, // Data type is String
       default: "", // Default value is an empty string
     },
     // Date of birth field, data type is Date
@@ -83,7 +83,7 @@ const userSchema = new mongoose.Schema(
       type: String, // Data type is String
       default: "", // Default value is an empty string
     },
-     // Experience field, defaults to an empty string if not provided
+    // Experience field, defaults to an empty string if not provided
     experience: {
       type: String, // Data type is String
       default: "", // Default value is an empty string

@@ -19,7 +19,7 @@ const transporter = createTransport({
 });
 /**
  * Sends an email using the configured transporter.
- * 
+ *
  * @param {string} to - Recipient email address.
  * @param {string} sub - Subject of the email.
  * @param {string} msg - HTML content of the email body.
