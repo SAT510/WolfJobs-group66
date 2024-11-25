@@ -6,7 +6,7 @@
 - Download and install the latest version of MongoDB from [MongoDB Official Website.](https://www.mongodb.com/try/download/community)
 - Make sure you have React version 18.0
 
-**Step 1: Clone the Repository from this [link](https://github.com/karthikeya7746/WolfJobs)**
+**Step 1: Clone the Repository from this [link](https://github.com/SAT510/WolfJobs-group66.git)**
 
 **Step 2: Backend Setup**
 
@@ -39,10 +39,8 @@ In the project directory, you can run:
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-#### `npm run build`
+- Frontend Tests:
+  Navigate to the frontend directory to run tests using Vitest, a modern JavaScript test framework.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Backend Tests:
+  Navigate to the backend directory to run tests using Mocha, a widely-used JavaScript test framework.
