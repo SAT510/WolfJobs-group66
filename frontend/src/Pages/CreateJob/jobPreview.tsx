@@ -5,7 +5,7 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import { useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+// Define types for form values
 type FormValuesQuestions = {
   question1: string;
   question2: string;
@@ -14,6 +14,7 @@ type FormValuesQuestions = {
 };
 
 type FormValuesDetails = {
+  jobDeadline: any;
   role: string;
   jobtype: string;
   location: string;
@@ -23,20 +24,28 @@ type FormValuesDetails = {
 };
 
 const JobPreview = () => {
+  // Hook to get the current location state (passed from the previous page)
   const location = useLocation();
   const { state } = location;
   const {
     details,
     questions,
   }: { details: FormValuesDetails; questions: FormValuesQuestions } = state;
-
+  // Hook to navigate between pages
   const navigate = useNavigate();
+  // Hook to get the user ID from the global state store
   const userId = useUserStore((state: { id: string }) => state.id);
-
+  /**
+   * Handle the form submission to create a job listing.
+   * Sends the job data to the server and handles the response.
+   * Displays a success or error toast message.
+   * @param e - The event triggered by the form submission.
+   */
   const onSubmit = (e: any) => {
     e.preventDefault();
-
+    // API endpoint to post job details
     const url = `http://localhost:8000/api/v1/users/createjob`;
+    // Prepare the job data to send in the request body
     const body = {
       id: userId,
       name: details.role,
@@ -51,7 +60,7 @@ const JobPreview = () => {
       requiredSkills: details.requiredSkills,
       jobDeadline: details.jobDeadline,
     };
-
+    // Send the data to the server and handle the response
     axios.post(url, body).then((res) => {
       if (res.status !== 200) {
         toast.error("Job posting failed");
@@ -59,11 +68,12 @@ const JobPreview = () => {
       }
       toast.success("Job created");
       console.log(details);
+      // Navigate to the job preview and dashboard after success
       navigate("/job-preview", { state: { details, questions } });
       navigate("/dashboard");
     });
   };
-
+  // Effect hook to log the current state (debugging purpose)
   useEffect(() => {
     console.log(state);
   }, []);
@@ -135,6 +145,7 @@ const JobPreview = () => {
               </div>
             </div>
             <div className="text-lg border-b border-gray-300 mb-2 font-bold">
+              {/* Job description display section */}
               Description
             </div>
             <div className="text-[#686868] mx-2">{details["description"]}</div>

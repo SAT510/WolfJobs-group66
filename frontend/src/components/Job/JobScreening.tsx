@@ -4,15 +4,23 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSearchParams } from "react-router-dom";
-
+/**
+ * JobScreening component handles the display of job applications for screening.
+ * It filters applications based on job ID and their status, and allows the user to
+ * accept or reject candidates for the screening stage.
+ *
+ * @param {Object} props - The props passed to the component.
+ * @param {Job} props.jobData - The job data for the current job posting.
+ * @returns {JSX.Element} The rendered component displaying the job applications.
+ */
 const JobScreening = (props: any) => {
-  const { jobData }: { jobData: Job } = props;
-  const [searchParams] = useSearchParams();
+  const { jobData }: { jobData: Job } = props; // Destructure jobData prop
+  const [searchParams] = useSearchParams(); // Get search params from URL
 
-  const [displayList, setDisplayList] = useState<Application[]>([]);
+  const [displayList, setDisplayList] = useState<Application[]>([]); // State for filtered application list
 
-  const applicationList = useApplicationStore((state) => state.applicationList);
-
+  const applicationList = useApplicationStore((state) => state.applicationList); // Get application list from store
+  // Effect hook to filter applications based on jobData._id and application status
   useEffect(() => {
     // let displayList: Application[] = [];s
     setDisplayList(
@@ -20,8 +28,15 @@ const JobScreening = (props: any) => {
         (item) => item.jobid === jobData._id && item.status === "applied"
       )
     );
-  }, [searchParams]);
-
+  }, [searchParams]); // Re-run the effect when searchParams change
+  /**
+   * Handles accepting a candidate for the screening stage.
+   * Sends a POST request to update the application status to 'screening'.
+   *
+   * @param {string} applicationId - The ID of the application to be modified.
+   * @param {string} applicantname - The name of the applicant.
+   * @param {string} jobname - The name of the job associated with the application.
+   */
   const handleAccept = (
     applicationId: string,
     applicantname: string,
@@ -38,14 +53,22 @@ const JobScreening = (props: any) => {
 
     axios.post(url, body).then((res) => {
       if (res.status == 200) {
-        toast.success("Accepted candidate");
-        location.reload();
+        toast.success("Accepted candidate"); // Show success message
+        location.reload(); // Reload page to reflect changes
 
         return;
       }
-      toast.error("Failed to accept candidate");
+      toast.error("Failed to accept candidate"); // Show error message if the request fails
     });
   };
+  /**
+   * Handles rejecting a candidate.
+   * Sends a POST request to update the application status to 'rejected'.
+   *
+   * @param {string} applicationId - The ID of the application to be modified.
+   * @param {string} applicantname - The name of the applicant.
+   * @param {string} jobname - The name of the job associated with the application.
+   */
   const handleReject = (
     applicationId: string,
     applicantname: string,
@@ -62,12 +85,12 @@ const JobScreening = (props: any) => {
 
     axios.post(url, body).then((res) => {
       if (res.status == 200) {
-        toast.success("Rejected candidate");
-        location.reload();
+        toast.success("Rejected candidate"); // Show success message
+        location.reload(); // Reload page to reflect changes
 
         return;
       }
-      toast.error("Failed to reject candidate");
+      toast.error("Failed to reject candidate"); // Show error message if the request fails
     });
   };
 
