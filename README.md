@@ -1,3 +1,5 @@
+![Banner](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Banner.png)
+
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/) [![DOI](https://zenodo.org/badge/888755936.svg)](https://doi.org/10.5281/zenodo.14207641)
 
 [![GitHub open issues](https://img.shields.io/github/issues-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aopen+is%3Aissue)  [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aissue+is%3Aclosed)
