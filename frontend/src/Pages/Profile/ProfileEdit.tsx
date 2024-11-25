@@ -32,8 +32,26 @@ type FormValues = {
   gender: string;
   hours: string;
 };
-
+/**
+ * ProfileEdit Component
+ * This component provides a form to edit the user's profile details including name, email, role, skills, etc.
+ * It allows users to update their information, and on successful submission, it saves the changes and navigates the user.
+ * 
+ * Props:
+ * - `props`: The current user's profile information passed down as props.
+ * 
+ * Functionality:
+ * - Uses React Hook Form to manage form state and validation.
+ * - Submits the form data to the backend API to save the user's updated profile.
+ * - Displays validation errors for required fields.
+ * 
+ * @param {Object} props - The profile data passed to the component
+ */
 const ProfileEdit = ({ props }: { props: any }) => {
+  /**
+   * Destructuring the profile information from the props.
+   * This data is used as default values for the form.
+   */
   const {
     name,
     email,
@@ -49,7 +67,10 @@ const ProfileEdit = ({ props }: { props: any }) => {
     gender,
     hours,
   } = props;
-
+  /**
+   * Initializing the form with React Hook Form.
+   * The defaultValues are populated with the data passed from props.
+   */
   const form = useForm<FormValues>({
     defaultValues: {
       name: name,
@@ -67,17 +88,36 @@ const ProfileEdit = ({ props }: { props: any }) => {
       hours: hours,
     },
   });
-
+  /**
+   * State hook to manage the availability drop-down value.
+   * This is independent from the form's availability field.
+   */
   const [availabilityDrop, setAvailabilityDtop] = useState(availability);
-
+  /**
+   * Getting user data from the user store.
+   * `userId` is used to identify the user in the backend.
+   */
   const userId = useUserStore((state) => state.id);
   const password = useUserStore((state) => state.password);
-
+  /**
+   * `useNavigate` hook from React Router to navigate to other pages on successful profile save.
+   */
   const navigate = useNavigate();
-
+  /**
+   * Extracting form-related methods from the `useForm` hook.
+   * `register` is used to bind inputs to the form state.
+   * `handleSubmit` is used to handle form submission.
+   * `formState` holds form validation states.
+   */
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
-
+  /**
+   * Handles the form submission.
+   * This function sends a POST request to save the updated profile.
+   * On success, it navigates to the login page.
+   * 
+   * @param {FormValues} data - The form data containing updated profile information.
+   */
   const handleSaveProfile = (data: FormValues) => {
     const url = "http://localhost:8000/api/v1/users/edit";
     const body = {
@@ -97,14 +137,14 @@ const ProfileEdit = ({ props }: { props: any }) => {
       experience: data.experience,
       phonenumber: data.phonenumber,
     };
-
+    // Send the data to the API
     axios.post(url, body).then((res) => {
       if (res.status !== 200) {
         toast.error("Failed to save profile");
         return;
       }
       toast.success("Saved profile");
-      login(email, password, navigate);
+      login(email, password, navigate);  // After saving, log the user in with updated credentials
     });
   };
 
