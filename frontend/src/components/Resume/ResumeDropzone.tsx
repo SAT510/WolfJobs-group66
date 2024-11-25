@@ -5,7 +5,7 @@ import { useDropzone, DropzoneOptions, FileRejection } from "react-dropzone";
  *
  * A drag-and-drop file upload area for handling PDF file uploads. It accepts only
  * PDF files with a maximum size limit of 15 MB. Once files are dropped, they are
- * passed to the parent component via the `onFileUpload` callback. The component 
+ * passed to the parent component via the `onFileUpload` callback. The component
  * also handles file rejections by logging errors.
  *
  * @component
@@ -16,7 +16,7 @@ import { useDropzone, DropzoneOptions, FileRejection } from "react-dropzone";
  * @param {Object} props - The props for the component
  * @param {Function} props.onFileUpload - Callback function to handle the uploaded files.
  *        It is called with the array of accepted files.
- * 
+ *
  * @returns {JSX.Element} The rendered component
  */
 interface ResumeDropzoneProps {
@@ -35,7 +35,7 @@ interface ResumeDropzoneProps {
  * @returns {JSX.Element} The rendered dropzone area
  */
 const ResumeDropzone: React.FC<ResumeDropzoneProps> = ({ onFileUpload }) => {
-   // Callback to handle file drop and rejection
+  // Callback to handle file drop and rejection
   const onDrop = useCallback(
     (acceptedFiles: File[], fileRejections: FileRejection[]) => {
       // Pass the accepted files to the parent component via the onFileUpload callback
@@ -64,7 +64,8 @@ const ResumeDropzone: React.FC<ResumeDropzoneProps> = ({ onFileUpload }) => {
       {...getRootProps()}
       className="flex items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer"
     >
-      <input {...getInputProps()} /> /* Spread the input props to the hidden file input */}
+      {/* Spread the input props to the hidden file input */}
+      <input {...getInputProps()} />
       {isDragActive ? (
         <p className="text-gray-700">Drop the files here ...</p>
       ) : (

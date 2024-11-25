@@ -5,10 +5,12 @@ on:
     branches:
       - shazia/feature
       - master
+      - tahreem/docs
   pull_request:
     branches:
       - shazia/feature
       - master
+      - tahreem/docs
 
 jobs:
   prettier:
