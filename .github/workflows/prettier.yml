@@ -6,6 +6,7 @@ on:
       - shazia/feature
       - master
       - tahreem/docs
+      - amay/feature
   pull_request:
     branches:
       - shazia/feature
