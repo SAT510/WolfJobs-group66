@@ -1,3 +1,20 @@
+/**
+ * JobDetail component renders detailed information about a specific job posting
+ * and provides the functionality for applicants to apply and fill out questionnaires,
+ * or for managers to manage the job.
+ * 
+ * It includes the following key features:
+ *  - Displaying job details (name, type, location, status, etc.)
+ *  - Allowing applicants to apply for the job
+ *  - Providing applicants with a questionnaire to answer when their application is in the screening phase
+ *  - Allowing managers to view and manage job details
+ *
+ * @param {Object} props - The properties passed to this component.
+ * 
+ * @param {Job} props.jobData - The job data that contains information about the job posting.
+ * 
+ * @returns {JSX.Element} The rendered component.
+ */
 import axios from "axios";
 import { useUserStore } from "../../store/UserStore";
 import { useForm } from "react-hook-form";
@@ -16,27 +33,28 @@ type FormValues = {
 };
 
 const JobDetail = (props: any) => {
+    // Extract jobData from props
   const { jobData }: { jobData: Job } = props;
-
+  // Determine job type (part-time or full-time)
   const jobType = jobData.type === "part-time" ? "Part time" : "Full time";
-
+  // Fetch application list from the store
   const applicationList: Application[] = useApplicationStore(
     (state) => state.applicationList
   );
-
+  // Extract user data from the store
   const applicantemail = useUserStore((state) => state.email);
   const userId = useUserStore((state) => state.id);
   const applicantname = useUserStore((state) => state.name);
   const applicantSkills = useUserStore((state) => state.skills);
   const applicantNumber = useUserStore((state) => state.phonenumber);
   const role = useUserStore((state) => state.role);
-
+  // State variables
   const [application, setApplication] = useState<Application | null>(null);
   const [showApply, setShowApply] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
 
   const userRole = useUserStore((state) => state.role);
-
+  // Fetch application data for this user and job
   useEffect(() => {
     const temp: Application | undefined = applicationList.find(
       (item: Application) => {
@@ -45,7 +63,7 @@ const JobDetail = (props: any) => {
     );
     setApplication(temp || null);
   }, [jobData]);
-
+  // Manage visibility of the questionnaire based on the user's role and application status
   useEffect(() => {
     if (role === "Manager") {
       setShowQuestionnaire(false);
@@ -59,7 +77,7 @@ const JobDetail = (props: any) => {
       setShowQuestionnaire(!!temp || false);
     }
   }, [jobData, applicationList, userId]);
-
+  // Manage visibility of the "Apply Now" button based on the application status
   useEffect(() => {
     if (role === "Manager") {
       setShowApply(false);
@@ -70,7 +88,7 @@ const JobDetail = (props: any) => {
       setShowApply(!temp || false);
     }
   }, [jobData]);
-
+  // Initialize form with react-hook-form
   const form = useForm<FormValues>({
     defaultValues: {
       answer1: "",
@@ -80,6 +98,12 @@ const JobDetail = (props: any) => {
     },
   });
   const { register, handleSubmit } = form;
+  /**
+   * Handles applying for a job.
+   * Sends an application request to the server with the user's data.
+   * 
+   * @param {any} e - The event triggered by the submit action.
+   */
 
   const handleApplyJob = (e: any) => {
     e.preventDefault();
@@ -105,7 +129,12 @@ const JobDetail = (props: any) => {
         toast.success("Applied successfully");
       });
   };
-
+  /**
+   * Handles answering the questionnaire when the application is in "screening" status.
+   * Sends the answers to the server for evaluation.
+   * 
+   * @param {FormValues} data - The form data containing the answers.
+   */
   const handleAnswerQuestionnaire = (data: FormValues) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
 
@@ -127,7 +156,7 @@ const JobDetail = (props: any) => {
       toast.error("Failed to accept candidate");
     });
   };
-
+  // JSX rendering logic for displaying job details, application status, and the questionnaire form
   return (
     <>
       <div className="w-7/12">
@@ -172,6 +201,7 @@ const JobDetail = (props: any) => {
                 <span className="font-semibold text-lg">Deadline:</span>&nbsp;
                 {jobData.jobDeadline.toString().split("T")[0]}
               </div>
+              {/* Conditional rendering based on user's role and job status */}
               <div>
                 {userRole === "Applicant" && (
                   <>
@@ -371,7 +401,7 @@ const JobDetail = (props: any) => {
           )}
         </div>
       )}
-
+      {/* Job Manager view */}
       {role === "Manager" &&
         userId === jobData.managerid &&
         jobData.status === "open" && (
