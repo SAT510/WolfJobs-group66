@@ -1,14 +1,13 @@
-![Banner](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Banner.png)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/) [![DOI](https://zenodo.org/badge/888755936.svg)](https://doi.org/10.5281/zenodo.14207641)
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/) 
+[![GitHub open issues](https://img.shields.io/github/issues-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aopen+is%3Aissue)  [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aissue+is%3Aclosed)
 
-[![Run Vitest and Mocha Tests](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml)
+[![TypeScript](https://img.shields.io/badge/TypeScript-68.7%25-blue)](https://github.com/SAT510/WolfJobs-group66?tab=readme-ov-file)
+[![JavaScript](https://img.shields.io/badge/TypeScript-30.2%25-yellow)](https://github.com/SAT510/WolfJobs-group66?tab=readme-ov-file)
 
+[![Mocha Tests (Backend)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml) [![Vitest (Frontend)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/vitest.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/vitest.yml)
 [![ESLint](https://github.com/SAT510/WolfJobs-group66/actions/workflows/ESLint.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/ESLint.yml)
 
-[![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml)
-[![Issues](https://img.shields.io/github/issues/SAT510/wolfJobs-group66)](https://GitHub.com/SAT510/wolfJobs-group66/)
-[![Issues Closed](https://img.shields.io/github/issues-closed/SAT510/wolfJobs-group66)](https://GitHub.com/SAT510/wolfJobs-group66/)
 ![last commit](https://img.shields.io/github/last-commit/SAT510/WolfJobs-group66)
 ![Lines of code](https://tokei.rs/b1/github/SAT510/wolfJobs-group66)
 [![Repo-size](https://img.shields.io/github/repo-size/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
@@ -16,16 +15,8 @@
 [![language_count](https://img.shields.io/github/languages/count/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
 [![Downloads](https://img.shields.io/github/downloads/SAT510/wolfJobs-group66/total)](https://GitHub.com/deepr41/Wolfjobs/)
 [![Top Language](https://img.shields.io/github/languages/top/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
-[![Release](https://img.shields.io/github/v/release/deepr41/wolfjobs)](https://gitHub.com/deepr41/Wolfjobs)
-
-[![codecov](https://codecov.io/gh/deepr41/WolfJobs/graph/badge.svg?token=RH472ZM4PT)](https://codecov.io/gh/deepr41/WolfJobs)
-[![ESLint](https://img.shields.io/badge/code%20style-ESLint-brightgreen.svg)](https://eslint.org/)
-
-<!-- ![Static Badge](https://img.shields.io/badge/any_text-i_like-blue) -->
 
 # Tech Stack:
-
-<!-- - ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) -->
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
@@ -35,15 +26,17 @@
 
 # What's New:
 
-Role-based Job Filters: Users can filter job listings by type, such as part-time, full-time, co-op, or internship positions, allowing them to easily find opportunities that match their preferred work arrangement.
+Email Services: Implemented an automated notification system that sends acceptance and rejection emails to applicants, ensuring clear and timely communication at every stage of the application review process.
 
-"Save Job" Screen: Provides a dedicated tab where users can save specific job listings to their accounts for quick access and future reference.
+Deadline-Based Filter and Tags: Introduced a filter to sort applications by approaching deadlines and added tags displaying the number of days remaining until the deadline, helping users effectively prioritize their application process.
 
-Enhanced Manager Profiles: Expands manager profiles to include additional information fields, offering candidates more insights into potential employers and fostering informed decision-making.
+Job Management for Managers: Added features that allow managers to edit and delete job details after posting, providing greater flexibility and control over job listings.
 
-Location-based Job Filters: Allows users to filter job searches by location, ensuring that job openings are relevant to their preferred geographic area.
+Database Security and Hashing: Enhanced database security by implementing JWT for secure login and signup processes, along with password hashing to protect user credentials and ensure data security.
 
-Salary Range Filters: Users can filter job listings based on a specified minimum and maximum salary range, helping them to find opportunities that meet their compensation expectations.
+Browser Extension: Developed a browser extension that integrates with the cloud MongoDB database to display job pop-ups linked to job titles on our platform, enhancing user experience and accessibility.
+
+Application Status Tracking: Enhanced features to display real-time application statuses—Not Applied, Accepted, Rejected, or In-Review—on the applicant's end, ensuring transparency at every stage of the process.
 
 # Animated Video About Project
 
@@ -165,36 +158,34 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 
 In the project directory, you can run:
 
-#### `npm test`
+#### `npm test` for backend
+#### `npx vitest` for backend
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-#### `npm run build`
+- Frontend Tests:
+  Navigate to the frontend directory to run tests using Vitest, a modern JavaScript test framework.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Backend Tests:
+  Navigate to the backend directory to run tests using Mocha, a widely-used JavaScript test framework.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
 # Future Improvements✨
 
-**1. Email Service📧** - On getting selected/rejected to a job, the applicant should be getting an email about it.
+**1. Interview Video Submission** - Managers can request applicants to submit a video screening file and applicants can upload a video on their side of the portal.
 
-**2. Interview Video Submission** - Managers can request applicants to submit a video screening file and applicants can upload a video on their side of the portal.
+**2. Job Analysis🔍** – WolfJobs will provide the functionality of analysing various aspects of a job. Job Analysis based on various parameters using graphical representation will help in making prediction on which jobs are more preferred and for which jobs applicants have more inclination. Hiring managers can then decide what rewards and salary to be given to the applicants of that job. Even applicants will get to know, which job is being preferred among other applicants.
 
-**3. Job Analysis🔍** – WolfJobs will provide the functionality of analysing various aspects of a job. Job Analysis based on various parameters using graphical representation will help in making prediction on which jobs are more preferred and for which jobs applicants have more inclination. Hiring managers can then decide what rewards and salary to be given to the applicants of that job. Even applicants will get to know, which job is being preferred among other applicants.
+**3. Chatbot Integration🤖** – Our platform WolfJobs will also provide the functionality of Chatbot integrated with our website so that user can easily interact with the bot and get to know about various features of our web application and have a nice interactive experience.
 
-**4. Chatbot Integration🤖** – Our platform WolfJobs will also provide the functionality of Chatbot integrated with our website so that user can easily interact with the bot and get to know about various features of our web application and have a nice interactive experience.
+**4. Interview Appointment Scheduling📆** – WolfJobs will also provide the facility for the hiring manager to organize an interview appointment for the job based on applicant’s availability and convenient time uploaded by the hiring manager. Either of the users can upload their availability time in the G-sheet and using google calendar appointments can be organised.
 
-**5. Interview Appointment Scheduling📆** – WolfJobs will also provide the facility for the hiring manager to organize an interview appointment for the job based on applicant’s availability and convenient time uploaded by the hiring manager. Either of the users can upload their availability time in the G-sheet and using google calendar appointments can be organised.
+**5. Browser Extension Enhancement**: Extend the browser extension to be integrated with the backend and show the complete job pop-up. Additionally, add an auto-fill feature based on the job information that would simplify data entry, enhancing user-friendliness and efficiency.
 
-**6. Candidate Matching Percentage** – WolfJobs applicant skill matching feature will include a percentage to how fit a candidate's skills are based on the job's required skills. Applicants will see a match percentage indicating how likely they are to get accepted and recieve an interview.
+**6. Matching based on Resume** – WolfJobs applicants will be able to parse their resume and WolfJobs will extract key skills from the resume and compare it with required job skills to give candidates job matching status.
 
-**7. Matching based on Resume** – WolfJobs applicants will be able to parse their resume and WolfJobs will extract key skills from the resume and compare it with required job skills to give candidates job matching status.
-
-**8. Database Security and Hashing** – WolfJobs currently does not securely store the password and user information in the database. This data needs to be protected and hashed to ensure security.
+**7. Community Features**: Introduce a forum or discussion board where users can share experiences, ask questions, and provide advice on job applications and interviews. This could foster a community around job hunting and reviews.
 
 # Contributors
 
@@ -227,6 +218,17 @@ Your app is ready to be deployed!
     <td align="center"><a href="https://github.com/dubeavik002"><img src="https://avatars.githubusercontent.com/dubeavik002" width="100px;" alt=""/><br /><b>Avik Dube</b></a></td>
     <td align="center"><a href="https://github.com/bittubharadwaj"><img src="https://avatars.githubusercontent.com/bittubharadwaj" width="100px;" alt=""/><br /><b>Bharadwaj Katna</b></a><br /></td>
     <td align="center"><a href="https://github.com/karthikeya7746"><img src="https://avatars.githubusercontent.com/karthikeya7746" width="100px;" alt=""/><br /><b>Srinivasa Karthikeya Reddy</b></a><br /></td>
+   
+  </tr>
+</table>
+
+## Iteration 4:
+
+ <table>
+  <tr>
+    <td align="center"><a href="https://github.com/shaziamuckram"><img src="https://avatars.githubusercontent.com/shaziamuckram" width="100px;" alt=""/><br /><b>Shazia Muckram</b></a></td>
+    <td align="center"><a href="https://github.com/amayntipl"><img src="https://avatars.githubusercontent.com/amayntipl" width="100px;" alt=""/><br /><b>Amay Gada</b></a><br /></td>
+    <td align="center"><a href="https://github.com/tahreemm"><img src="https://avatars.githubusercontent.com/tahreemm" width="100px;" alt=""/><br /><b>Tahreem Yasir</b></a><br /></td>
    
   </tr>
 </table>
