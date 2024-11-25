@@ -42,14 +42,16 @@ const JobListTile = (props: any) => {
 
   const getExclamation = (job: Job) => {
     let date = job.jobDeadline.split("T")[0];
-    
+
     let today = new Date();
     let deadline = new Date(date);
     let diff = deadline.getTime() - today.getTime();
     let diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+    if(diffDays < 0) {
+      return "Deadline passed";
+    }
     return diffDays.toString() + " days to go";
-
-  }
+  };
 
   const [active, setActive] = useState<boolean>(true);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -90,7 +92,7 @@ const JobListTile = (props: any) => {
   };
 
   const getAffiliationTag = (tag: string) => {
-    return tag.split("-").join(" ");
+    return tag ? tag.split("-").join(" ") : "No Affiliation Information";
   };
 
   const getAffiliationColour = (tag: string) => {
@@ -178,7 +180,9 @@ const JobListTile = (props: any) => {
                 <div
                   className={`ml-2 rounded-full bg-orange-500 flex-0 px-3 py-0`}
                 >
-                    <p className="inline text-xs text-white font-bold">{getExclamation(data)}</p>
+                  <p className="inline text-xs text-white font-bold">
+                    {getExclamation(data)}
+                  </p>
                 </div>
               )}
 
@@ -205,8 +209,11 @@ const JobListTile = (props: any) => {
 
                     <span
                       className={`${
-                       data.status === "closed" ? "text-[#FF5353]" : 
-                       data.status === "open" ? "text-[#00B633]" : ""
+                        data.status === "closed"
+                          ? "text-[#FF5353]"
+                          : data.status === "open"
+                            ? "text-[#00B633]"
+                            : ""
                       }`}
                     >
                       &nbsp;<span className="capitalize">{data.status}</span>
@@ -218,25 +225,27 @@ const JobListTile = (props: any) => {
                   </p>
 
                   {userRole === "Applicant" && (
-                  <p className="text-base">
-                    <b>Application Status:</b>&nbsp;
-                    {application ? (
-                      <span className="capitalize">
-                        {application.status === "accepted" && (
-                          <span style={{ color: "#00B633" }}>Accepted</span>
-                        )}
-                        {application.status === "rejected" && (
-                          <span style={{ color: "#FF5353" }}>Rejected</span>
-                        )}
-                        {!["accepted", "rejected"].includes(application.status) && (
-                         <span style={{ color: "#E6B800" }}>In Review</span> 
-                         )}
-                      </span>
-                    ) : (
-                      "Not Applied"
-                    )}
-                  </p>
-                )}
+                    <p className="text-base">
+                      <b>Application Status:</b>&nbsp;
+                      {application ? (
+                        <span className="capitalize">
+                          {application.status === "accepted" && (
+                            <span style={{ color: "#00B633" }}>Accepted</span>
+                          )}
+                          {application.status === "rejected" && (
+                            <span style={{ color: "#FF5353" }}>Rejected</span>
+                          )}
+                          {!["accepted", "rejected"].includes(
+                            application.status
+                          ) && (
+                            <span style={{ color: "#E6B800" }}>In Review</span>
+                          )}
+                        </span>
+                      ) : (
+                        "Not Applied"
+                      )}
+                    </p>
+                  )}
                 </div>
 
                 <div className="h-1"></div>

@@ -13,4 +13,5 @@ type Job = {
   question2: string;
   question3: string;
   question4: string;
+  jobDeadline: string;
 };

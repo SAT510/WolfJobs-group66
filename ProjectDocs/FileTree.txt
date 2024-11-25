@@ -1,0 +1,159 @@
+WolfJobs-group66/
+├─ .DS_Store
+├─ .github/
+├─ .gitignore
+├─ .prettierrc.json
+├─ CITATION.md
+├─ CODE_OF_CONDUCT.md
+├─ CONTRIBUTING.md
+├─ GIFs/
+├─ INSTALL.MD
+├─ LICENSE.md
+├─ README.md
+├─ backend/
+│  ├─ config/
+│  │  ├─ mongoose.js
+│  │  ├─ passport-jwt-strategy.js
+│  │  └─ passport-local-strategy.js
+│  ├─ controllers/
+│  │  ├─ api/
+│  │  │  └─ v1/
+│  │  │     └─ users_api.js
+│  │  ├─ home_controller.js
+│  │  ├─ resume_controller.js
+│  │  └─ users_controller.js
+│  ├─ index.js
+│  ├─ models/
+│  │  ├─ application.js
+│  │  ├─ authOtp.js
+│  │  ├─ food.js
+│  │  ├─ history.js
+│  │  ├─ job.js
+│  │  ├─ nodemailer.js
+│  │  ├─ resume.js
+│  │  ├─ savedApplication.js
+│  │  └─ user.js
+│  ├─ node_modules/
+│  ├─ package-lock.json
+│  ├─ package.json
+│  ├─ postcss.config.js
+│  ├─ public/
+│  │  ├─ images/
+│  │  ├─ svg/
+│  │  │  └─ Bookmark.tsx
+│  │  └─ vite.svg
+│  ├─ src/
+│  │  ├─ App.css
+│  │  ├─ App.tsx
+│  │  ├─ Pages/
+│  │  │  ├─ Auth/
+│  │  │  │  ├─ LoginPage.tsx
+│  │  │  │  ├─ LogoutPage.tsx
+│  │  │  │  ├─ RegistrationPage.tsx
+│  │  │  │  └─ landingPage.tsx
+│  │  │  ├─ CreateJob/
+│  │  │  │  ├─ CreateJob.tsx
+│  │  │  │  ├─ jobPreview.tsx
+│  │  │  │  └─ jobQuestionnaire.tsx
+│  │  │  ├─ Dashboard/
+│  │  │  │  └─ Dashboard.tsx
+│  │  │  ├─ Explore/
+│  │  │  │  └─ Explore.tsx
+│  │  │  ├─ Notifications/
+│  │  │  │  └─ Notifications.tsx
+│  │  │  ├─ Profile/
+│  │  │  │  ├─ Profile.tsx
+│  │  │  │  └─ ProfileEdit.tsx
+│  │  │  ├─ Resume/
+│  │  │  │  ├─ Resume.tsx
+│  │  │  │  └─ ResumeDropzone.tsx
+│  │  │  └─ Saved/
+│  │  │     └─ Saved.tsx
+│  │  ├─ Sample.tsx
+│  │  ├─ api/
+│  │  │  ├─ alljobs.ts
+│  │  │  ├─ client.ts
+│  │  │  └─ constants.ts
+│  │  ├─ assets/
+│  │  │  └─ react.svg
+│  │  ├─ components/
+│  │  │  ├─ Header/
+│  │  │  │  ├─ Header.tsx
+│  │  │  │  ├─ NavBar.tsx
+│  │  │  │  └─ NavBarItem.tsx
+│  │  │  ├─ Job/
+│  │  │  │  ├─ JobDetailView.tsx
+│  │  │  │  ├─ JobDetails.tsx
+│  │  │  │  ├─ JobFinalReview.tsx
+│  │  │  │  ├─ JobGrading.tsx
+│  │  │  │  ├─ JobListTile.tsx
+│  │  │  │  ├─ JobListView.tsx
+│  │  │  │  ├─ JobManagerView.tsx
+│  │  │  │  ├─ JobRating.tsx
+│  │  │  │  ├─ JobScreening.tsx
+│  │  │  │  └─ NoJobSelected.tsx
+│  │  │  ├─ ProtectedRoute/
+│  │  │  │  └─ ProtectedRoute.tsx
+│  │  │  └─ Resume/
+│  │  │     ├─ .ResumeDropzone.tsx.swo
+│  │  │     ├─ ResumeDropzone.tsx
+│  │  │     └─ ResumeViewer.tsx
+│  │  ├─ deprecateded/
+│  │  │  ├─ apiUtils.ts
+│  │  │  ├─ auth.ts
+│  │  │  └─ createJobAPI.ts
+│  │  ├─ hooks/
+│  │  │  └─ useApi.ts
+│  │  ├─ index.css
+│  │  ├─ main.tsx
+│  │  ├─ store/
+│  │  │  ├─ ApplicationStore.ts
+│  │  │  ├─ JobStore.ts
+│  │  │  └─ UserStore.ts
+│  │  ├─ types/
+│  │  │  ├─ application.ts
+│  │  │  └─ job.ts
+│  │  └─ vite-env.d.ts
+│  ├─ tailwind.config.js
+│  ├─ tests/
+│  │  ├─ App.test.tsx
+│  │  ├─ components/
+│  │  │  ├─ Header/
+│  │  │  │  ├─ Header.test.tsx
+│  │  │  │  ├─ NavBar.test.tsx
+│  │  │  │  └─ NavBarItem.test.tsx
+│  │  │  └─ Job/
+│  │  │     ├─ JobDetailView.test.tsx
+│  │  │     ├─ JobDetails.test.tsx
+│  │  │     ├─ JobFinalReview.test.tsx
+│  │  │     ├─ JobGrading.test.tsx
+│  │  │     ├─ JobListTile.test.tsx
+│  │  │     ├─ JobListView.test.tsx
+│  │  │     ├─ JobManagerView.test.tsx
+│  │  │     ├─ JobRating.test.tsx
+│  │  │     ├─ JobScreening.test.tsx
+│  │  │     └─ NoJobSelected.test.tsx
+│  │  ├─ pages/
+│  │  │  ├─ Auth/
+│  │  │  │  ├─ LoginPage.test.tsx
+│  │  │  │  ├─ LogoutPage.test.tsx
+│  │  │  │  ├─ RegistrationPage.test.tsx
+│  │  │  │  └─ landingPage.test.tsx
+│  │  │  ├─ CreateJob/
+│  │  │  │  ├─ CreateJob.test.tsx
+│  │  │  │  └─ jobQuestionnaire.test.tsx
+│  │  │  ├─ Dashboard/
+│  │  │  │  └─ Dashboard.test.tsx
+│  │  │  ├─ Explore/
+│  │  │  │  └─ Explore.test.tsx
+│  │  │  └─ Profile/
+│  │  │     ├─ Profile.test.tsx
+│  │  │     ├─ ProfileEdit.test.tsx
+│  │  │     └─ Resume.test.tsx
+│  │  └─ setup.ts
+│  ├─ tsconfig.json
+│  ├─ tsconfig.node.json
+│  ├─ vite.config.ts
+│  └─ vitest.config.ts
+├─ package-lock.json
+├─ package.json

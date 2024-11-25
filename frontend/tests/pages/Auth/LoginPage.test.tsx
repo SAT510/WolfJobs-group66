@@ -5,7 +5,6 @@ import { MemoryRouter } from "react-router";
 import { vi } from "vitest";
 import { useNavigate } from "react-router-dom";
 
-// Mock useNavigate for testing navigation functionality
 vi.mock("react-router-dom", () => ({
   ...vi.importActual("react-router-dom"),
   useNavigate: vi.fn(),
@@ -19,7 +18,6 @@ describe("LoginPage Tests", () => {
     (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
   });
 
-  // Test Case 1: Renders LoginPage with required fields
   it("Test Case 1: Renders LoginPage with required fields", () => {
     render(
       <MemoryRouter>
@@ -27,11 +25,10 @@ describe("LoginPage Tests", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
   });
 
-  // Test Case 2: Renders the login button
   it("Test Case 2: Renders the login button", () => {
     render(
       <MemoryRouter>
@@ -42,7 +39,6 @@ describe("LoginPage Tests", () => {
     expect(screen.getByText("Login")).toBeInTheDocument();
   });
 
-  // Test case 3:
   it("Test Case 3: renders login button with correct styling", () => {
     render(
       <MemoryRouter>
@@ -50,7 +46,6 @@ describe("LoginPage Tests", () => {
       </MemoryRouter>
     );
   });
-  // Test Case 4
   it("Test Case 4: Check for presence of the submit button", () => {
     render(
       <MemoryRouter>
@@ -58,8 +53,29 @@ describe("LoginPage Tests", () => {
       </MemoryRouter>
     );
 
-    // Check if the login button is present in the document
     const loginButton = screen.getByRole("button", { name: /login/i });
     expect(loginButton).toBeInTheDocument();
+  });
+
+  it("Test Case 5: Navigation to registration page", () => {
+    render(
+      <MemoryRouter>
+        <LoginPage />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(screen.getByText(/Create a new account/i));
+    expect(mockNavigate).toHaveBeenCalledWith("/register");
+  });
+
+  it("Test Case 8: Button disabled when form is invalid", () => {
+    render(
+      <MemoryRouter>
+        <LoginPage />
+      </MemoryRouter>
+    );
+
+    const loginButton = screen.getByRole("button", { name: /login/i });
+    expect(loginButton).toBeDisabled();
   });
 });

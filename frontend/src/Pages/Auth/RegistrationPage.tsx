@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { signup } from "../../deprecateded/auth";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import CryptoJS from 'crypto-js';
+import CryptoJS from "crypto-js";
 
 import {
   Button,
@@ -14,20 +14,26 @@ import {
   InputLabel,
   FormControl,
 } from "@mui/material";
-
+// Define the structure for form data
 type FormValues = {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  skills: string;
+  name: string; // User's name
+  email: string; // User's email
+  password: string; // User's password
+  confirmPassword: string; // Confirmed password for validation
+  skills: string; // User's skills
 };
-
+/**
+ * RegistrationPage component handles user registration, including form submission, validation, and role management.
+ * It allows users to sign up for an account and provides different fields for capturing user details.
+ * The form uses `react-hook-form` for form handling and validation, and `CryptoJS` to securely hash the password.
+ */
 const RegistrationPage = () => {
+  // Initialize navigation hook
   const navigate = useNavigate();
+  // State management for role and affiliation selection
   const [role, setRole] = useState("Applicant");
   const [affiliation, setAffiliation] = useState("nc-state-dining");
-
+  // Initialize form with default values and validation rules
   const form = useForm<FormValues>({
     defaultValues: {
       name: "",
@@ -37,11 +43,16 @@ const RegistrationPage = () => {
       skills: "",
     },
   });
-
+  // Destructure form methods for handling form input, errors, and form state
   const { register, handleSubmit, formState, watch } = form;
   const { errors } = formState;
-
+  /**
+   * Handles form submission, performs password hashing and calls the signup function.
+   *
+   * @param {FormValues} data - The data object containing the form values.
+   */
   const onSubmit = (data: FormValues) => {
+    // Hash passwords using CryptoJS for security
     signup(
       data.email,
       CryptoJS.SHA256(data.password).toString(CryptoJS.enc.Hex),
@@ -50,7 +61,7 @@ const RegistrationPage = () => {
       role,
       role === "Manager" ? affiliation : "",
       data.skills,
-      navigate
+      navigate // Redirect to another page after successful signup
     );
   };
 

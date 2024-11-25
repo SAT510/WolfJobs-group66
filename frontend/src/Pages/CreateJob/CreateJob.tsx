@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { AiFillCheckCircle } from "react-icons/ai";
@@ -13,7 +12,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
-
+// Type definition for the form values
 type FormValues = {
   role: string;
   jobtype: string;
@@ -23,11 +22,19 @@ type FormValues = {
   description: string;
   deadline: string;
 };
-
+/**
+ * Component for creating a new job listing.
+ * It allows the user to fill in the details of the job (role, type, location, pay, etc.)
+ * and navigate to the next page to fill in the job questionnaire.
+ *
+ * @returns {JSX.Element} Rendered CreateJob component
+ */
 const CreateJob = () => {
+  // Navigation hook to programmatically navigate between routes
   const navigate = useNavigate();
+  // Local state for tracking required skills entered by the user
   const [requiredSkills, setRequiredSkills] = useState("");
-
+  // React Hook Form hook for form handling and validation
   const form = useForm<FormValues>({
     defaultValues: {
       role: "",
@@ -38,13 +45,19 @@ const CreateJob = () => {
       deadline: "",
     },
   });
-
+  // Destructuring to get form handling methods and errors
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
-
+  // Local state for managing the selected job type (default is 'full-time')
   const [jobType, setJobType] = useState("full-time");
-
+  /**
+   * Handles form submission. This function processes the form data
+   * and navigates to the next page with the job listing details.
+   *
+   * @param {FormValues} data - Form data containing job listing information
+   */
   const onSubmit = (data: FormValues) => {
+    // Constructing the job listing data to pass to the next page
     const body = {
       role: data.role,
       jobtype: jobType,
@@ -54,6 +67,7 @@ const CreateJob = () => {
       requiredSkills: requiredSkills,
       jobDeadline: data.deadline,
     };
+    // Navigating to the next page with the job listing details
     navigate("/job_questionnaire", {
       state: body,
     });
@@ -66,6 +80,7 @@ const CreateJob = () => {
           className="w-3/12  pt-10 border-r"
           style={{ height: "calc(100vh - 72px)" }}
         >
+          {/* Progress steps for creating a job listing */}
           <div className="text-2xl  translate-x-10">Create New Job Listing</div>
           <div className="flex flex-col items-start  ml-10  mt-10 ">
             <div className="inline-flex items-center flex-row  ">
@@ -92,6 +107,7 @@ const CreateJob = () => {
           className="w-9/12 pt-10 pl-10"
           style={{ height: "calc(100vh - 72px)" }}
         >
+          {/* Form for adding job details */}
           <div className="text-2xl translate-x-10">Add Details</div>
           <div className="flex flex-col">
             <form
@@ -117,6 +133,7 @@ const CreateJob = () => {
                     },
                   }}
                 />
+                {/* Job Type Selection */}
                 <FormControl>
                   <InputLabel id="role-id">Job Type</InputLabel>
                   <Select
@@ -155,6 +172,7 @@ const CreateJob = () => {
                     },
                   }}
                 />
+                {/* Pay Input */}
                 <TextField
                   label="Pay"
                   type="number"
@@ -172,6 +190,7 @@ const CreateJob = () => {
                     },
                   }}
                 />
+                {/* Job Description Input */}
                 <TextField
                   label="Job Description"
                   type="text"
@@ -189,6 +208,7 @@ const CreateJob = () => {
                   minRows={4}
                   multiline
                 />
+                {/* Job Deadline Input */}
                 <TextField
                   label="Job Deadline"
                   type="date"
@@ -209,7 +229,7 @@ const CreateJob = () => {
                     },
                   }}
                 />
-                
+                {/* Required Skills Input */}
                 <TextField
                   label="Required Skills"
                   type="text"

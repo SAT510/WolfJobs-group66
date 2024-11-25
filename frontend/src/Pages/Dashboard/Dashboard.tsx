@@ -8,10 +8,17 @@ import { useJobStore } from "../../store/JobStore";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import JobListTile from "../../components/Job/JobListTile";
 import { Button } from "@mui/material";
-
+/**
+ * Dashboard component that displays different information based on the user role.
+ * - For "Manager" role: Displays job listings with options to view applications.
+ * - For "Applicant" role: Displays jobs they have applied for with application statuses.
+ *
+ * The component interacts with various stores (UserStore, JobStore, ApplicationStore) to
+ * manage and display user data, job listings, and applications.
+ */
 const Dashboard = () => {
   const naviagte = useNavigate();
-
+  // User store actions to update user data
   const updateName = useUserStore((state) => state.updateName);
   const updateEmail = useUserStore((state) => state.updateEmail);
   const updatePassword = useUserStore((state) => state.updatePassword);
@@ -31,10 +38,10 @@ const Dashboard = () => {
   const updateIsLoggedIn = useUserStore((state) => state.updateIsLoggedIn);
   const updateResume = useUserStore((state) => state.updateResume);
   const updateResumeId = useUserStore((state) => state.updateResumeId);
-
+  // User and job store state
   const role = useUserStore((state) => state.role);
   const managerId = useUserStore((state) => state.id);
-
+  // Job and application store actions
   const updateJobList = useJobStore((state) => state.updateJobList);
   const jobList: Job[] = useJobStore((state) => state.jobList);
 
@@ -45,18 +52,18 @@ const Dashboard = () => {
   const applicationList: Application[] = useApplicationStore(
     (state) => state.applicationList
   );
-
+  // State to display jobs based on user role
   const [displayList, setDisplayList] = useState<Job[]>([]);
-
+  // Check if the user is logged in and update user data on mount
   useEffect(() => {
     const token: string = localStorage.getItem("token")!;
     if (!!!token) {
-      naviagte("/login");
+      naviagte("/login"); // Redirect to login if token is not found
     }
     if (!!token) {
       const tokenInfo = token.split(".");
       const userInfo = JSON.parse(atob(tokenInfo[1]));
-
+      // Update user data using the values from the token
       updateName(userInfo.name);
       updateEmail(userInfo.email);
       updatePassword(userInfo.password);
@@ -77,9 +84,10 @@ const Dashboard = () => {
       updateResume(userInfo.resume);
       updateResumeId(userInfo.resumeId);
     }
-  }, []);
-
+  }, []); // Empty dependency array ensures this effect runs only once after component mount
+  // Fetch applications and job listings on mount
   useEffect(() => {
+    // Fetch applications
     axios
       .get("http://localhost:8000/api/v1/users/fetchapplications")
       .then((res) => {
@@ -99,15 +107,19 @@ const Dashboard = () => {
           toast.error("Error fetching jobs");
           return;
         }
-        res.data.jobs.sort((a: { jobDeadline: string }, b: { jobDeadline: string }) => new Date(a.jobDeadline).getTime() - new Date(b.jobDeadline).getTime());
+        res.data.jobs.sort(
+          (a: { jobDeadline: string }, b: { jobDeadline: string }) =>
+            new Date(a.jobDeadline).getTime() -
+            new Date(b.jobDeadline).getTime()
+        );
         updateJobList(res.data.jobs as Job[]);
       });
-  }, []);
-
+  }, []); // Empty dependency array ensures this effect runs only once after component mount
+  // Filter and display jobs based on the user's role (Manager or Applicant)
   useEffect(() => {
     if (role === "Manager") {
       const temp = jobList.filter((item) => {
-        return item.managerid === managerId;
+        return item.managerid === managerId; // Filter jobs managed by the current user
       });
       setDisplayList(temp);
     } else if (role === "Applicant") {
@@ -119,10 +131,10 @@ const Dashboard = () => {
         const id = applicantsJobs[i]?.jobid || "";
         ids.push(id);
       }
-      const temp = jobList.filter((item) => ids.includes(item._id));
+      const temp = jobList.filter((item) => ids.includes(item._id)); // Filter jobs the user has applied to
       setDisplayList(temp);
     }
-  }, [role, jobList, applicationList]);
+  }, [role, jobList, applicationList]); // Re-run effect when role, jobList, or applicationList changes
 
   return (
     <>

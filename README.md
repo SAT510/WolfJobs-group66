@@ -1,7 +1,6 @@
 ![Banner](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Banner.png)
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/)
-[![Prettier](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/) [![Prettier](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml) [![Run Vitest and Mocha Tests](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml)
 
 [![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml)
 [![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml)
@@ -15,7 +14,6 @@
 [![language_count](https://img.shields.io/github/languages/count/deepr41/Wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
 [![Downloads](https://img.shields.io/github/downloads/deepr41/WolfJobs/total)](https://GitHub.com/deepr41/Wolfjobs/)
 [![Top Language](https://img.shields.io/github/languages/top/deepr41/wolfjobs)](https://GitHub.com/deepr41/Wolfjobs/)
-[![DOI](https://zenodo.org/badge/429097663.svg)](https://zenodo.org/badge/latestdoi/429097663)
 [![Release](https://img.shields.io/github/v/release/deepr41/wolfjobs)](https://gitHub.com/deepr41/Wolfjobs)
 [![codecov](https://codecov.io/gh/deepr41/WolfJobs/graph/badge.svg?token=RH472ZM4PT)](https://codecov.io/gh/deepr41/WolfJobs)
 [![ESLint](https://img.shields.io/badge/code%20style-ESLint-brightgreen.svg)](https://eslint.org/)
@@ -43,6 +41,10 @@ Enhanced Manager Profiles: Expands manager profiles to include additional inform
 Location-based Job Filters: Allows users to filter job searches by location, ensuring that job openings are relevant to their preferred geographic area.
 
 Salary Range Filters: Users can filter job listings based on a specified minimum and maximum salary range, helping them to find opportunities that meet their compensation expectations.
+
+# Animated Video About Project
+
+[Click Here to Watch the Video!](https://drive.google.com/file/d/1jmqm_GN57bxXIxNtgrHaiSMENukPQFnC/view?usp=sharing)
 
 # Presentation Video
 

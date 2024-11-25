@@ -4,7 +4,15 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useUserStore } from "../../store/UserStore";
 import { useState } from "react";
 import ProfileEdit from "./ProfileEdit";
-
+/**
+ * Profile component that displays user profile information.
+ *
+ * The component retrieves user profile data from a global store using the `useUserStore` hook.
+ * It displays the user's information in a non-editable format by default and allows the user to
+ * switch to an edit mode where they can update their profile via the `ProfileEdit` component.
+ *
+ * @returns {JSX.Element} The Profile component with user data and edit functionality.
+ */
 const Profile = () => {
   const name = useUserStore((state) => state.name);
   const email = useUserStore((state) => state.email);
@@ -21,9 +29,9 @@ const Profile = () => {
   const gender = useUserStore((state) => state.gender);
   const hours = useUserStore((state) => state.hours);
   const resume = useUserStore((state) => state.resume);
-
+  // Define the width for the profile card.
   const widthCard = "700px";
-
+  // State to toggle between edit and view mode.
   const [editMode, setEditMode] = useState(false);
 
   return (
