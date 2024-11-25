@@ -2,7 +2,6 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/) [![Prettier](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml) [![Vitest](https://github.com/SAT510/WolfJobs-group66/actions/workflows/vitest.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/vitest.yml) [![DOI](https://zenodo.org/badge/888755936.svg)](https://doi.org/10.5281/zenodo.14207641)
 
-
 [![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-checker.yml)
 [![npm-build](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml/badge.svg)](https://github.com/deepr41/WolfJobs/actions/workflows/build-test-upload.yml)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)

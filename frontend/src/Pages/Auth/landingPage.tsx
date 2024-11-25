@@ -1,10 +1,22 @@
+/**
+ * LandingPage Component
+ *
+ * This component represents the landing page of the application. It contains
+ * styled elements that introduce the platform and offer users the option to
+ * either sign up or log in. The page includes text, images, and buttons that
+ * navigate users to either the registration or login pages.
+ *
+ * @returns {JSX.Element} The rendered landing page UI component.
+ */
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  // Hook to navigate between pages using React Router
   const navigate = useNavigate();
 
   return (
     <div style={{ overflow: "hidden" }}>
+      {/* Main heading section */}
       <div
         style={{
           position: "absolute",
@@ -23,7 +35,7 @@ const LandingPage = () => {
         We understand that being a student can be{" "}
         <span style={{ color: "#FF5353" }}>challenging.</span>
       </div>
-
+      {/* Description text */}
       <div
         style={{
           position: "absolute",
@@ -43,7 +55,7 @@ const LandingPage = () => {
         the community that powers your daily essentials. Apply now and shape
         your campus experience!
       </div>
-
+      {/* Sign Up button that navigates to the register page */}
       <button
         onClick={(e) => {
           e.preventDefault();
@@ -96,7 +108,7 @@ const LandingPage = () => {
       >
         OR
       </p>
-
+      {/* Login button that navigates to the login page */}
       <button
         onClick={(e) => {
           e.preventDefault();
@@ -129,7 +141,7 @@ const LandingPage = () => {
           Login
         </p>
       </button>
-
+      {/* Image on the right side of the landing page */}
       <div
         style={{
           position: "absolute",
@@ -142,7 +154,7 @@ const LandingPage = () => {
       >
         <img src="/images/landingpage_image1.png" alt="Landing Page Image" />
       </div>
-
+      {/* Additional image for visual appeal */}
       <div
         style={{
           position: "absolute",
