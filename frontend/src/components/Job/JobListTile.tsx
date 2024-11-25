@@ -185,8 +185,11 @@ const JobListTile = (props: any) => {
 
                     <span
                       className={`${
-                       data.status === "closed" ? "text-[#FF5353]" : 
-                       data.status === "open" ? "text-[#00B633]" : ""
+                        data.status === "closed"
+                          ? "text-[#FF5353]"
+                          : data.status === "open"
+                            ? "text-[#00B633]"
+                            : ""
                       }`}
                     >
                       &nbsp;<span className="capitalize">{data.status}</span>
@@ -198,25 +201,27 @@ const JobListTile = (props: any) => {
                   </p>
 
                   {userRole === "Applicant" && (
-                  <p className="text-base">
-                    <b>Application Status:</b>&nbsp;
-                    {application ? (
-                      <span className="capitalize">
-                        {application.status === "accepted" && (
-                          <span style={{ color: "#00B633" }}>Accepted</span>
-                        )}
-                        {application.status === "rejected" && (
-                          <span style={{ color: "#FF5353" }}>Rejected</span>
-                        )}
-                        {!["accepted", "rejected"].includes(application.status) && (
-                         <span style={{ color: "#E6B800" }}>In Review</span> 
-                         )}
-                      </span>
-                    ) : (
-                      "Not Applied"
-                    )}
-                  </p>
-                )}
+                    <p className="text-base">
+                      <b>Application Status:</b>&nbsp;
+                      {application ? (
+                        <span className="capitalize">
+                          {application.status === "accepted" && (
+                            <span style={{ color: "#00B633" }}>Accepted</span>
+                          )}
+                          {application.status === "rejected" && (
+                            <span style={{ color: "#FF5353" }}>Rejected</span>
+                          )}
+                          {!["accepted", "rejected"].includes(
+                            application.status
+                          ) && (
+                            <span style={{ color: "#E6B800" }}>In Review</span>
+                          )}
+                        </span>
+                      ) : (
+                        "Not Applied"
+                      )}
+                    </p>
+                  )}
                 </div>
 
                 <div className="h-1"></div>

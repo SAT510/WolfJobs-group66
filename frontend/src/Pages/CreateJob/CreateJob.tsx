@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { AiFillCheckCircle } from "react-icons/ai";
@@ -209,7 +208,7 @@ const CreateJob = () => {
                     },
                   }}
                 />
-                
+
                 <TextField
                   label="Required Skills"
                   type="text"

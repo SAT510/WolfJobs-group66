@@ -99,7 +99,11 @@ const Dashboard = () => {
           toast.error("Error fetching jobs");
           return;
         }
-        res.data.jobs.sort((a: { jobDeadline: string }, b: { jobDeadline: string }) => new Date(a.jobDeadline).getTime() - new Date(b.jobDeadline).getTime());
+        res.data.jobs.sort(
+          (a: { jobDeadline: string }, b: { jobDeadline: string }) =>
+            new Date(a.jobDeadline).getTime() -
+            new Date(b.jobDeadline).getTime()
+        );
         updateJobList(res.data.jobs as Job[]);
       });
   }, []);
