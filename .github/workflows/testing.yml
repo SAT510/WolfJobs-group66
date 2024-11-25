@@ -1,4 +1,4 @@
-name: Run Vitest and Mocha Tests
+name: Mocha Tests - Backend Testing 
 
 on:
   push:

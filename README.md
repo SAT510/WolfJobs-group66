@@ -1,12 +1,13 @@
 ![Banner](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Banner.png)
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/) [![Prettier](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml)[![DOI](https://zenodo.org/badge/888755936.svg)](https://doi.org/10.5281/zenodo.14207641)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/) [![Prettier](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml) [![DOI](https://zenodo.org/badge/888755936.svg)](https://doi.org/10.5281/zenodo.14207641)
 
 [![GitHub open issues](https://img.shields.io/github/issues-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aopen+is%3Aissue)  [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aissue+is%3Aclosed)
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-68.7%25-blue)](https://github.com/SAT510/WolfJobs-group66?tab=readme-ov-file)
 [![JavaScript](https://img.shields.io/badge/TypeScript-30.2%25-yellow)](https://github.com/SAT510/WolfJobs-group66?tab=readme-ov-file)
 
+[![Mocha Tests (Backend)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml) [![Vitest (Frontend)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/vitest.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/vitest.yml)
 
 
 # Tech Stack:
