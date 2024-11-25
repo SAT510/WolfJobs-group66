@@ -6,13 +6,13 @@ import { toast } from "react-toastify";
 import { useSearchParams } from "react-router-dom";
 /**
  * JobGrading Component
- * 
+ *
  * This component displays the list of job applicants who are in the "grading" status for a particular job
  * and allows the user to grade their answers to job-related questions.
- * 
+ *
  * @param {Object} props - The properties passed to the component.
  * @param {Job} props.jobData - The job data including the job-related questions and information.
- * 
+ *
  * @returns {JSX.Element} The JSX markup to display the grading interface for job applicants.
  */
 const JobGrading = (props: any) => {
@@ -24,7 +24,7 @@ const JobGrading = (props: any) => {
   const [searchParams] = useSearchParams();
   // Access the list of all applications from the global store
   const applicationList = useApplicationStore((state) => state.applicationList);
-/**
+  /**
    * Effect hook to filter and set the display list whenever the search parameters change.
    * The filtered list contains only the applications for the specific job that are in the "grading" status.
    */
@@ -36,12 +36,12 @@ const JobGrading = (props: any) => {
       )
     );
   }, [searchParams]);
-/**
+  /**
    * Handles the scoring of an application.
-   * 
+   *
    * This function sends a POST request to modify the status and grade of an application.
    * After the request is completed, it shows a success or error toast based on the response.
-   * 
+   *
    * @param {string} applicationId - The ID of the application to be graded.
    * @param {string} grade - The grade to assign to the application (a number between 0-10).
    */
@@ -49,12 +49,11 @@ const JobGrading = (props: any) => {
     const url = "http://localhost:8000/api/v1/users/modifyApplication";
 
     const body = {
-      
       applicationId: applicationId,
       status: "rating", // Update the application status to 'rating'
-      rating: grade,  // Set the grade for the application
+      rating: grade, // Set the grade for the application
     };
-// Send POST request to the API
+    // Send POST request to the API
     axios.post(url, body).then((res) => {
       // If successful, show success toast and reload the page
       if (res.status == 200) {
@@ -62,7 +61,7 @@ const JobGrading = (props: any) => {
         location.reload();
 
         return;
-      }// If failed, show error toast
+      } // If failed, show error toast
       toast.error("Failed to reject candidate");
     });
   };

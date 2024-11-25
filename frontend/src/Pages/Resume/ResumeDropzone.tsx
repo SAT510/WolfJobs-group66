@@ -5,7 +5,7 @@ import { useDropzone, DropzoneOptions, FileRejection } from "react-dropzone";
  * @interface
  */
 interface ResumeDropzoneProps {
-    /**
+  /**
    * Callback function to handle file uploads.
    * @param {File[]} files - Array of files to upload.
    */
@@ -19,11 +19,11 @@ interface ResumeDropzoneProps {
  * @returns {JSX.Element} The rendered JSX for the dropzone component.
  */
 const ResumeDropzone: React.FC<ResumeDropzoneProps> = ({ onFileUpload }) => {
-    /**
+  /**
    * Handles the drop event for the files.
    * This function is called when files are dropped or selected by the user.
    * It passes accepted files to the parent component and logs any file rejections.
-   * 
+   *
    * @param {File[]} acceptedFiles - Array of files that were accepted.
    * @param {FileRejection[]} fileRejections - Array of files that were rejected due to invalid type/size.
    */

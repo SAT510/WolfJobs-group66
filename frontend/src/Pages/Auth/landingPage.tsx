@@ -1,11 +1,11 @@
 /**
  * LandingPage Component
- * 
- * This component represents the landing page of the application. It contains 
- * styled elements that introduce the platform and offer users the option to 
- * either sign up or log in. The page includes text, images, and buttons that 
+ *
+ * This component represents the landing page of the application. It contains
+ * styled elements that introduce the platform and offer users the option to
+ * either sign up or log in. The page includes text, images, and buttons that
  * navigate users to either the registration or login pages.
- * 
+ *
  * @returns {JSX.Element} The rendered landing page UI component.
  */
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,6 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    
     <div style={{ overflow: "hidden" }}>
       {/* Main heading section */}
       <div

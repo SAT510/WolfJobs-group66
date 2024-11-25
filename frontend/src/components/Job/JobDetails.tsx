@@ -2,7 +2,7 @@
  * JobDetail component renders detailed information about a specific job posting
  * and provides the functionality for applicants to apply and fill out questionnaires,
  * or for managers to manage the job.
- * 
+ *
  * It includes the following key features:
  *  - Displaying job details (name, type, location, status, etc.)
  *  - Allowing applicants to apply for the job
@@ -10,9 +10,9 @@
  *  - Allowing managers to view and manage job details
  *
  * @param {Object} props - The properties passed to this component.
- * 
+ *
  * @param {Job} props.jobData - The job data that contains information about the job posting.
- * 
+ *
  * @returns {JSX.Element} The rendered component.
  */
 import axios from "axios";
@@ -33,7 +33,7 @@ type FormValues = {
 };
 
 const JobDetail = (props: any) => {
-    // Extract jobData from props
+  // Extract jobData from props
   const { jobData }: { jobData: Job } = props;
   // Determine job type (part-time or full-time)
   const jobType = jobData.type === "part-time" ? "Part time" : "Full time";
@@ -101,7 +101,7 @@ const JobDetail = (props: any) => {
   /**
    * Handles applying for a job.
    * Sends an application request to the server with the user's data.
-   * 
+   *
    * @param {any} e - The event triggered by the submit action.
    */
 
@@ -132,7 +132,7 @@ const JobDetail = (props: any) => {
   /**
    * Handles answering the questionnaire when the application is in "screening" status.
    * Sends the answers to the server for evaluation.
-   * 
+   *
    * @param {FormValues} data - The form data containing the answers.
    */
   const handleAnswerQuestionnaire = (data: FormValues) => {

@@ -18,7 +18,7 @@ import {
 type FormValues = {
   name: string; // User's name
   email: string; // User's email
-  password: string; // User's password 
+  password: string; // User's password
   confirmPassword: string; // Confirmed password for validation
   skills: string; // User's skills
 };
@@ -28,7 +28,7 @@ type FormValues = {
  * The form uses `react-hook-form` for form handling and validation, and `CryptoJS` to securely hash the password.
  */
 const RegistrationPage = () => {
-   // Initialize navigation hook
+  // Initialize navigation hook
   const navigate = useNavigate();
   // State management for role and affiliation selection
   const [role, setRole] = useState("Applicant");
@@ -48,7 +48,7 @@ const RegistrationPage = () => {
   const { errors } = formState;
   /**
    * Handles form submission, performs password hashing and calls the signup function.
-   * 
+   *
    * @param {FormValues} data - The data object containing the form values.
    */
   const onSubmit = (data: FormValues) => {

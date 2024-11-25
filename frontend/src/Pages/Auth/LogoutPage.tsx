@@ -1,13 +1,13 @@
 /**
  * LogoutPage Component
- * 
- * This component is responsible for handling the user logout process. 
- * It clears user data from both local storage and the application state 
- * via the `useUserStore` hook. After clearing the data, it redirects 
+ *
+ * This component is responsible for handling the user logout process.
+ * It clears user data from both local storage and the application state
+ * via the `useUserStore` hook. After clearing the data, it redirects
  * the user to the login page.
- * 
- * The `useEffect` hook ensures that this process occurs immediately 
- * after the component mounts, meaning when the user navigates to the 
+ *
+ * The `useEffect` hook ensures that this process occurs immediately
+ * after the component mounts, meaning when the user navigates to the
  * `LogoutPage`.
  *
  * @component
@@ -48,7 +48,7 @@ const LogoutPage = () => {
     updateHours("");
     updateIsLoggedIn(false);
     // Redirecting the user to the login page after logout
-    navigate("/login"); 
+    navigate("/login");
     // Logging out activity in the console for debugging purposes
     console.log("Logged out");
   }, []);

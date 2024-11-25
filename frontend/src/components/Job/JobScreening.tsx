@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useSearchParams } from "react-router-dom";
 /**
  * JobScreening component handles the display of job applications for screening.
- * It filters applications based on job ID and their status, and allows the user to 
+ * It filters applications based on job ID and their status, and allows the user to
  * accept or reject candidates for the screening stage.
  *
  * @param {Object} props - The props passed to the component.
@@ -17,7 +17,7 @@ const JobScreening = (props: any) => {
   const { jobData }: { jobData: Job } = props; // Destructure jobData prop
   const [searchParams] = useSearchParams(); // Get search params from URL
 
-  const [displayList, setDisplayList] = useState<Application[]>([]);// State for filtered application list
+  const [displayList, setDisplayList] = useState<Application[]>([]); // State for filtered application list
 
   const applicationList = useApplicationStore((state) => state.applicationList); // Get application list from store
   // Effect hook to filter applications based on jobData._id and application status

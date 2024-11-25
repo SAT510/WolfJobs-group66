@@ -8,7 +8,7 @@ import JobListTile from "./JobListTile";
  * @param {Object} props - The component's props.
  * @param {Array<Job>} props.jobsList - The list of jobs to display.
  * @param {string} [props.title="All jobs"] - The title to display above the list of jobs. Defaults to "All jobs".
- * 
+ *
  * @returns {JSX.Element} The rendered JSX component displaying the list of jobs.
  */
 const JobsListView = (props: any) => {

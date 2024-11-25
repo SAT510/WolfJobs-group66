@@ -1,7 +1,7 @@
 /**
  * Converts an object of parameters into a URL-encoded query string for use in HTTP requests.
  *
- * This function takes an object where each key-value pair represents a form field name and value, 
+ * This function takes an object where each key-value pair represents a form field name and value,
  * and returns a string that can be used as the body of an HTTP request, typically in a POST request with content type `application/x-www-form-urlencoded`.
  * Each key and value are URL-encoded to ensure proper handling of special characters.
  *

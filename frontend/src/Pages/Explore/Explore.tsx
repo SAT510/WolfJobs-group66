@@ -1,18 +1,18 @@
 /**
- * The Explore component allows users to explore job listings, search, filter, 
+ * The Explore component allows users to explore job listings, search, filter,
  * and sort them based on various criteria such as salary, city, and employment type.
- * 
- * It fetches job data from the backend API, manages user-related state using 
- * the UserStore and ApplicationStore, and updates the global job list and 
+ *
+ * It fetches job data from the backend API, manages user-related state using
+ * the UserStore and ApplicationStore, and updates the global job list and
  * application list accordingly.
- * 
+ *
  * Key Features:
  * - Search for jobs by name
  * - Sort jobs by salary, city, or employment type
  * - Filter jobs by location, salary range, and employment type
  * - Toggle between showing open and closed jobs
  * - Displays job list and job details side-by-side
- * 
+ *
  * @component
  * @example
  * return <Explore />;
@@ -84,7 +84,7 @@ const Explore = () => {
   };
   /**
    * Handles search input change, updating the search term state.
-   * 
+   *
    * @param {any} event - The input change event.
    */
   const handleSortChange = () => {
@@ -174,7 +174,7 @@ const Explore = () => {
   }, []);
   /**
    * Filters and sorts the job list based on search, sorting, and filtering criteria.
-   * 
+   *
    * @returns {void}
    */
   useEffect(() => {
@@ -209,7 +209,7 @@ const Explore = () => {
         job.type.toLowerCase().includes(jobType.toLowerCase())
       );
     }
-     // Filters jobs by location, salary range, and employment type
+    // Filters jobs by location, salary range, and employment type
     if (filterLocation !== "") {
       updatedList = updatedList.filter((job) =>
         job.location.toLowerCase().includes(filterLocation.toLowerCase())

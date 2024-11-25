@@ -2,12 +2,12 @@
  * ResumeViewer Component
  * This component is responsible for displaying a PDF resume for an applicant. It fetches the resume file from a backend API using the applicant's ID from the URL parameters.
  * The resume is rendered page by page, and the user can navigate between pages using "Previous" and "Next" buttons.
- * 
+ *
  * Dependencies:
  * - react-pdf: for rendering PDF files.
  * - axios: for making API requests to fetch the resume.
  * - react-router-dom: for accessing URL parameters.
- * 
+ *
  * @component
  * @example
  * return <ResumeViewer />
@@ -112,7 +112,7 @@ function ResumeViewer() {
           disabled={pageNumber <= 1}
         >
           Previous
-        {/* Button to go to the next page */}
+          {/* Button to go to the next page */}
         </button>
         <p className="mx-2">
           Page {pageNumber} of {numPages}

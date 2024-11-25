@@ -44,11 +44,11 @@ const NavBar = () => {
             const applications = res.data.application;
             // Calculate the count of accepted applications.
             const acceptedCount = applications.filter(
-              (app: { status: string; }) => app.status === "accepted"
+              (app: { status: string }) => app.status === "accepted"
             ).length;
             // Calculate the count of rejected applications.
             const rejectedCount = applications.filter(
-              (app: { status: string; }) => app.status === "rejected"
+              (app: { status: string }) => app.status === "rejected"
             ).length;
             // Update the notification count state.
             setNotificationCount(acceptedCount + rejectedCount);
@@ -59,7 +59,7 @@ const NavBar = () => {
         });
     }
   }, [isLoggedIn, role]);
-   /**
+  /**
    * Render the navigation bar UI.
    * - Displays links based on the user's login status and role.
    * - Shows notification count for `Applicant` users.

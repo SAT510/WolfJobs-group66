@@ -3,12 +3,12 @@ import { useApplicationStore } from "../../store/ApplicationStore";
 import { useSearchParams } from "react-router-dom";
 /**
  * JobFinalReview component displays the list of accepted and rejected candidates
- * for a particular job. It filters the applications based on their status 
+ * for a particular job. It filters the applications based on their status
  * and renders detailed information about the candidates.
  *
  * @param {object} props - The properties passed to the component.
  * @param {Job} props.jobData - Data for the job being reviewed.
- * 
+ *
  * @returns {JSX.Element} The rendered JobFinalReview component.
  */
 const JobFinalReview = (props: any) => {

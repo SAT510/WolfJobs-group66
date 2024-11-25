@@ -1,9 +1,9 @@
 /**
  * Saved Component
  *
- * This component displays a list of jobs that the user has saved. It fetches the saved jobs from 
+ * This component displays a list of jobs that the user has saved. It fetches the saved jobs from
  * an API endpoint and sorts them by the job deadline, then filters out the jobs that are marked as saved.
- * 
+ *
  * It includes:
  * - Fetching saved jobs from the API.
  * - Displaying a list of saved jobs with the `JobsListView` component.
@@ -23,9 +23,9 @@ import { useUserStore } from "../../store/UserStore"; // Custom store hook to ac
 import JobsListView from "../../components/Job/JobListView"; // Component to display the list of jobs
 /**
  * Saved Component Function
- * 
- * This function component fetches the list of jobs saved by the user, sorts them by deadline, 
- * and passes the filtered job list to the `JobsListView` component. It also renders the `JobDetailView` 
+ *
+ * This function component fetches the list of jobs saved by the user, sorts them by deadline,
+ * and passes the filtered job list to the `JobsListView` component. It also renders the `JobDetailView`
  * component to show detailed information of a selected job.
  */
 const Saved = () => {

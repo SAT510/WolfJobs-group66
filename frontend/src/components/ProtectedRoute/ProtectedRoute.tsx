@@ -13,7 +13,7 @@ const ProtectedRoute = ({ children }: any) => {
   const token: any = localStorage.getItem("token");
   // Get the current location to redirect after successful login
   let location = useLocation();
-  // If no token is found, redirect to the login page 
+  // If no token is found, redirect to the login page
   if (!!!token) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

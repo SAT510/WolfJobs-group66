@@ -6,9 +6,9 @@ import { useState } from "react";
 import ProfileEdit from "./ProfileEdit";
 /**
  * Profile component that displays user profile information.
- * 
+ *
  * The component retrieves user profile data from a global store using the `useUserStore` hook.
- * It displays the user's information in a non-editable format by default and allows the user to 
+ * It displays the user's information in a non-editable format by default and allows the user to
  * switch to an edit mode where they can update their profile via the `ProfileEdit` component.
  *
  * @returns {JSX.Element} The Profile component with user data and edit functionality.

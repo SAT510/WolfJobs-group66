@@ -25,7 +25,7 @@ type JobAction = {
 /**
  * Zustand store for managing job-related state.
  * This store holds the list of jobs and provides an action to update that list.
- * 
+ *
  * @returns {JobState & JobAction} The store with both the current state and actions.
  */
 export const useJobStore = create<JobState & JobAction>()((set) => ({

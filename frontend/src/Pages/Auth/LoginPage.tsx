@@ -3,7 +3,7 @@
  * and handling the form submission for user authentication.
  * It uses `react-hook-form` for form handling and `yup` for validation.
  * On form submission, it sends the email and password (hashed using CryptoJS) to the backend login endpoint.
- * 
+ *
  * @component
  * @example
  * // Usage
@@ -12,8 +12,8 @@
 import { useNavigate } from "react-router-dom"; // Importing navigation hook for routing
 import { login } from "../../deprecateded/auth"; // Importing login function (deprecated)
 import { useForm } from "react-hook-form"; // Importing hook for managing form state
-import * as yup from "yup";  // Importing Yup for form validation schema
-import { yupResolver } from "@hookform/resolvers/yup";  // Resolver to integrate yup with react-hook-form
+import * as yup from "yup"; // Importing Yup for form validation schema
+import { yupResolver } from "@hookform/resolvers/yup"; // Resolver to integrate yup with react-hook-form
 import { Stack, TextField, Button } from "@mui/material"; // Material UI components for form fields and button
 import CryptoJS from "crypto-js"; // For hashing the password using SHA256
 

@@ -20,7 +20,7 @@ const Bookmark = (props: any) => (
   <svg
     xmlns="http://www.w3.org/2000/svg" // Specify the XML namespace for SVG
     width="1.5em" // Set the width of the SVG
-    height="1.5em"  // Set the height of the SVG
+    height="1.5em" // Set the height of the SVG
     viewBox="0 0 200 200" // Define the coordinate system for the SVG
     {...props} // Spread additional props passed to the component
   >

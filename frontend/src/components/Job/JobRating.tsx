@@ -1,15 +1,15 @@
 /**
  * JobRating Component
- * 
+ *
  * This component displays a list of job applications for a particular job that are in the "rating" stage.
- * Users can accept or reject candidates for the job. Accepting or rejecting a candidate triggers an 
+ * Users can accept or reject candidates for the job. Accepting or rejecting a candidate triggers an
  * API call to update the application's status and reloads the page to reflect the changes.
- * 
+ *
  * @component
  * @example
  * const jobData = { _id: "123", name: "Software Developer" };
  * return <JobRating jobData={jobData} />;
- * 
+ *
  * @param {Object} props - Component props.
  * @param {Job} props.jobData - Data for the job associated with the applications being rated.
  */
@@ -43,7 +43,7 @@ const JobRating = (props: any) => {
   /**
    * Handle accepting a candidate.
    * Makes an API call to change the status of the application to "accepted".
-   * 
+   *
    * @param {string} applicantid - The unique ID of the applicant.
    * @param {string} applicantname - The name of the applicant.
    * @param {string} jobname - The name of the job for which the application is made.
@@ -75,7 +75,7 @@ const JobRating = (props: any) => {
   /**
    * Handle rejecting a candidate.
    * Makes an API call to change the status of the application to "rejected".
-   * 
+   *
    * @param {string} applicantid - The unique ID of the applicant.
    * @param {string} applicantname - The name of the applicant.
    * @param {string} jobname - The name of the job for which the application is made.
@@ -139,7 +139,7 @@ const JobRating = (props: any) => {
                     {item.rating || "0"}
                   </div>
                 </div>
-                 {/* Action buttons to accept or reject the applicant */}
+                {/* Action buttons to accept or reject the applicant */}
                 <div className="flex flex-row">
                   <Button
                     onClick={(e) => {

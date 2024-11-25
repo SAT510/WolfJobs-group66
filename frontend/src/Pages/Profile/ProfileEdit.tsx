@@ -36,15 +36,15 @@ type FormValues = {
  * ProfileEdit Component
  * This component provides a form to edit the user's profile details including name, email, role, skills, etc.
  * It allows users to update their information, and on successful submission, it saves the changes and navigates the user.
- * 
+ *
  * Props:
  * - `props`: The current user's profile information passed down as props.
- * 
+ *
  * Functionality:
  * - Uses React Hook Form to manage form state and validation.
  * - Submits the form data to the backend API to save the user's updated profile.
  * - Displays validation errors for required fields.
- * 
+ *
  * @param {Object} props - The profile data passed to the component
  */
 const ProfileEdit = ({ props }: { props: any }) => {
@@ -115,7 +115,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
    * Handles the form submission.
    * This function sends a POST request to save the updated profile.
    * On success, it navigates to the login page.
-   * 
+   *
    * @param {FormValues} data - The form data containing updated profile information.
    */
   const handleSaveProfile = (data: FormValues) => {
@@ -144,7 +144,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
         return;
       }
       toast.success("Saved profile");
-      login(email, password, navigate);  // After saving, log the user in with updated credentials
+      login(email, password, navigate); // After saving, log the user in with updated credentials
     });
   };
 

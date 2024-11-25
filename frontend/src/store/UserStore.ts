@@ -2,7 +2,7 @@
  * This file defines a Zustand store that manages the user state and actions for the user registration process.
  * It is used to store and update the user's information such as name, email, skills, and other personal data.
  * The store allows for the updating of user details through defined actions.
- * 
+ *
  * Zustand is used here to create a simple state management solution for the user-related data.
  */
 
@@ -14,7 +14,7 @@ type UserState = {
   email: string; // User's email address
   password: string; // User's password
   address: string; // User's physical address
-  unityid: string; // User's Unity ID (could be for university or internal ID) 
+  unityid: string; // User's Unity ID (could be for university or internal ID)
   studentid: string; // User's student ID
   role: string; // User's role (e.g., student, admin)
   dob: string; // User's date of birth
@@ -27,15 +27,15 @@ type UserState = {
   gender: string; // User's gender
   hours: string; // User's available working hours
   isLoggedIn: boolean; // Whether the user is logged in
-  affiliation: string; // User's affiliation (e.g., university, company) 
+  affiliation: string; // User's affiliation (e.g., university, company)
   resume: string; // User's resume (URL or path)
   resumeId: string; // Unique identifier for the resume
 };
 // Type definition for actions that update various user details in the state
 type UserAction = {
-  updateName: (name: UserState["name"]) => void;  // Action to update the user's name
+  updateName: (name: UserState["name"]) => void; // Action to update the user's name
   updateEmail: (name: UserState["email"]) => void; // Action to update the user's email
-  updatePassword: (name: UserState["email"]) => void;  // Action to update the user's password
+  updatePassword: (name: UserState["email"]) => void; // Action to update the user's password
   updateUnityid: (unityid: UserState["unityid"]) => void; // Action to update the user's Unity ID
   updateStudentid: (studentid: UserState["studentid"]) => void; // Action to update the user's student ID
   updateAddress: (name: UserState["address"]) => void; // Action to update the user's address
@@ -49,20 +49,20 @@ type UserAction = {
   updateAvailability: (name: UserState["availability"]) => void; // Action to update the user's availability
   updateGender: (name: UserState["gender"]) => void; // Action to update the user's gender
   updateHours: (name: UserState["hours"]) => void; // Action to update the user's hours
-  updateIsLoggedIn: (name: UserState["isLoggedIn"]) => void;  // Action to update the user's login status
+  updateIsLoggedIn: (name: UserState["isLoggedIn"]) => void; // Action to update the user's login status
   updateAffiliation: (name: UserState["affiliation"]) => void; // Action to update the user's affiliation
-  updateResume: (name: UserState["resume"]) => void;  // Action to update the user's resume
-  updateResumeId: (name: UserState["resumeId"]) => void;  // Action to update the user's resume ID
+  updateResume: (name: UserState["resume"]) => void; // Action to update the user's resume
+  updateResumeId: (name: UserState["resumeId"]) => void; // Action to update the user's resume ID
 };
 // Creating the user store with Zustand
 /**
  * The useUserStore function creates and manages the state of the user using Zustand.
  * It includes the state variables and their corresponding update actions.
- * 
+ *
  * Example Usage:
  * - To get the user name: `const name = useUserStore(state => state.name);`
  * - To update the user name: `useUserStore(state => state.updateName("New Name"));`
- * 
+ *
  * The store holds the state of the user, including personal details, and provides methods to update them.
  */
 export const useUserStore = create<UserState & UserAction>()((set) => ({

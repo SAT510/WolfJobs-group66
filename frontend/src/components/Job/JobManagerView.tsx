@@ -41,7 +41,7 @@ const JobManagerView = (props: any) => {
     const body = {
       jobid: jobData._id, // Send job ID to close the job
     };
-     // Make API request to close the job
+    // Make API request to close the job
     axios
       .post("http://localhost:8000/api/v1/users/closejob", body)
       .then((res) => {
@@ -82,7 +82,7 @@ const JobManagerView = (props: any) => {
   };
   /**
    * JobEditForm component allows the editing of job details such as name, description, location, etc.
-   * 
+   *
    * @param {Object} jobData - The current job data to be edited.
    * @param {Function} onSave - Callback function to handle the save action after editing.
    * @returns {JSX.Element} The rendered form for job editing.
@@ -361,7 +361,7 @@ const JobManagerView = (props: any) => {
             </div>
           </div>
         )}
-        {/* Conditional rendering of job-related components based on the current view */}
+      {/* Conditional rendering of job-related components based on the current view */}
       <div className="m-4">
         {viewManager === "job-screening" && <JobScreening jobData={jobData} />}
         {viewManager === "job-grading" && <JobGrading jobData={jobData} />}

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -12,8 +11,8 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 /**
  * ResumeViewer Component
- * 
- * This component fetches and displays a PDF resume for a specific applicant. 
+ *
+ * This component fetches and displays a PDF resume for a specific applicant.
  * It allows users to navigate through the pages of the resume and view its content.
  * The component fetches the resume from the server based on the applicant's ID
  * passed in the URL parameters.
@@ -59,7 +58,7 @@ function ResumeViewer() {
   /**
    * Fetches the resume PDF from the server and sets the URL for the document.
    * Uses the applicantId from the URL to get the corresponding resume.
-   * 
+   *
    * The resume is fetched as a blob and converted into a URL object.
    */
   useEffect(() => {

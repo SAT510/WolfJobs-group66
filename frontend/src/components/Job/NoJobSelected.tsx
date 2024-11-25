@@ -1,8 +1,8 @@
 /**
  * NoJobSelected component
- * 
- * This component is displayed when no job is selected. It shows a centered message 
- * indicating that there is nothing to show and prompts the user to select a job 
+ *
+ * This component is displayed when no job is selected. It shows a centered message
+ * indicating that there is nothing to show and prompts the user to select a job
  * for more details. The component also includes an icon to visually reinforce the message.
  *
  * @returns {JSX.Element} The rendered JSX for the "No Job Selected" screen.

@@ -13,7 +13,7 @@ import { Button } from "@mui/material";
  * - For "Manager" role: Displays job listings with options to view applications.
  * - For "Applicant" role: Displays jobs they have applied for with application statuses.
  *
- * The component interacts with various stores (UserStore, JobStore, ApplicationStore) to 
+ * The component interacts with various stores (UserStore, JobStore, ApplicationStore) to
  * manage and display user data, job listings, and applications.
  */
 const Dashboard = () => {
@@ -115,7 +115,7 @@ const Dashboard = () => {
         updateJobList(res.data.jobs as Job[]);
       });
   }, []); // Empty dependency array ensures this effect runs only once after component mount
-   // Filter and display jobs based on the user's role (Manager or Applicant)
+  // Filter and display jobs based on the user's role (Manager or Applicant)
   useEffect(() => {
     if (role === "Manager") {
       const temp = jobList.filter((item) => {

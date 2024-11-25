@@ -47,7 +47,7 @@ const Notifications = () => {
         // Update the application list in the store
         updateApplicationList(res.data.application);
       });
-     // Fetching jobs data
+    // Fetching jobs data
     axios
       .get("http://localhost:8000/api/v1/users", {
         params: { page: 1, limit: 25 },
@@ -59,7 +59,7 @@ const Notifications = () => {
         }
         updateJobList(res.data.jobs);
       });
-  }, []);// Empty dependency array means this effect runs once after the first render
+  }, []); // Empty dependency array means this effect runs once after the first render
   /**
    * useEffect hook that filters accepted and rejected jobs based on the application status.
    * It updates the state for accepted and rejected jobs accordingly.
@@ -85,13 +85,13 @@ const Notifications = () => {
   }, [applicationList, jobList]);
   /**
    * Handles the click event on a job notification. Navigates to the dashboard with the selected job's ID.
-   * 
+   *
    * @param {string} jobId - The ID of the selected job.
    */
   const handleJobClick = (jobId) => {
     navigate("/dashboard", { state: { selectedJobId: jobId } });
   };
-   /**
+  /**
    * Toggles the visibility of the accepted job notifications.
    */
   const toggleAcceptedVisibility = () => {

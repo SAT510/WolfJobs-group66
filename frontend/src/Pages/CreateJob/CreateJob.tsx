@@ -26,7 +26,7 @@ type FormValues = {
  * Component for creating a new job listing.
  * It allows the user to fill in the details of the job (role, type, location, pay, etc.)
  * and navigate to the next page to fill in the job questionnaire.
- * 
+ *
  * @returns {JSX.Element} Rendered CreateJob component
  */
 const CreateJob = () => {
@@ -34,7 +34,7 @@ const CreateJob = () => {
   const navigate = useNavigate();
   // Local state for tracking required skills entered by the user
   const [requiredSkills, setRequiredSkills] = useState("");
-   // React Hook Form hook for form handling and validation
+  // React Hook Form hook for form handling and validation
   const form = useForm<FormValues>({
     defaultValues: {
       role: "",
@@ -53,7 +53,7 @@ const CreateJob = () => {
   /**
    * Handles form submission. This function processes the form data
    * and navigates to the next page with the job listing details.
-   * 
+   *
    * @param {FormValues} data - Form data containing job listing information
    */
   const onSubmit = (data: FormValues) => {
@@ -107,7 +107,7 @@ const CreateJob = () => {
           className="w-9/12 pt-10 pl-10"
           style={{ height: "calc(100vh - 72px)" }}
         >
-           {/* Form for adding job details */}
+          {/* Form for adding job details */}
           <div className="text-2xl translate-x-10">Add Details</div>
           <div className="flex flex-col">
             <form
@@ -190,7 +190,7 @@ const CreateJob = () => {
                     },
                   }}
                 />
-                 {/* Job Description Input */}
+                {/* Job Description Input */}
                 <TextField
                   label="Job Description"
                   type="text"

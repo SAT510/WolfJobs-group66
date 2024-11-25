@@ -6,7 +6,7 @@ import { getFormBody } from "./apiUtils";
  *
  * This function makes a POST request to the `createJobURL` endpoint with the provided job details.
  * On success, it navigates the user to the dashboard and displays a success toast message.
- * 
+ *
  * @param {string} name - The name of the job.
  * @param {string} id - The unique identifier for the job (e.g., job ID).
  * @param {string} status - The status of the job (e.g., active, inactive).
@@ -71,7 +71,7 @@ export const createJob = async (
  *
  * This function makes a POST request to the `loginURL` endpoint with the user's email and password.
  * On successful login, the user's token is stored in `localStorage` and they are redirected to the dashboard.
- * 
+ *
  * @param {string} email - The user's email address.
  * @param {string} password - The user's password.
  * @param {function} navigate - A function to navigate the user to a different page, typically used to redirect to the dashboard after login.
