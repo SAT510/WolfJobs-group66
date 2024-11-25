@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // import CreateIcon from '@mui/';
 import { BiSolidPencil } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";

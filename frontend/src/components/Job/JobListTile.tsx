@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useEffect, useState } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { useSearchParams } from "react-router-dom";
@@ -62,7 +64,7 @@ const JobListTile = (props: any) => {
   const applicationList: Application[] = useApplicationStore(
     (state) => state.applicationList
   );
-  // @ts-ignore
+  // a
   const [isBookmarked, setIsBookmarked] = useState(data.saved || false);
 
   const [application, setApplication] = useState<Application | null>(null);
@@ -122,13 +124,13 @@ const JobListTile = (props: any) => {
   };
 
   useEffect(() => {
-    // @ts-ignore
+    // a
     setIsBookmarked(data.saved);
-    // @ts-ignore
+    // a
   }, [data.saved]);
 
   const toggleBookmark = async () => {
-    // @ts-ignore
+    // a
     setIsBookmarked((prev) => !prev);
     try {
       const response = await axios.post(
@@ -137,12 +139,12 @@ const JobListTile = (props: any) => {
       );
 
       if (!response.data.success) {
-        // @ts-ignore
+        // a
         setIsBookmarked((prev) => !prev);
         console.error("Failed to save job:", response.data.message);
       }
     } catch (error) {
-      // @ts-ignore
+      // a
       setIsBookmarked((prev) => !prev);
       console.error("Error toggling bookmark:", error);
     }

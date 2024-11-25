@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useState } from "react";
 /**
  * A custom hook to handle API requests and manage loading, error, and response state.

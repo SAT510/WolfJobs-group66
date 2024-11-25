@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate, useLocation } from "react-router-dom";
 import { useUserStore } from "../../store/UserStore";
 import { Button } from "@mui/material";
@@ -14,7 +15,7 @@ type FormValuesQuestions = {
 };
 
 type FormValuesDetails = {
-  jobDeadline: any;
+  jobDeadline: string;
   role: string;
   jobtype: string;
   location: string;

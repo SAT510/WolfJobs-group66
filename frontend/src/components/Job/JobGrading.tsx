@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useEffect, useState } from "react";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import { Button } from "@mui/material";

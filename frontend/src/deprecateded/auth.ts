@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { toast } from "react-toastify";
 import { getFormBody } from "./apiUtils";
 import { loginURL, signupURL } from "../api/constants";

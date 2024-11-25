@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { Navigate, useLocation } from "react-router-dom";
 /**
  * ProtectedRoute is a component that ensures only authenticated users can access

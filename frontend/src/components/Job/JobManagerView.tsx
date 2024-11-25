@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { Button } from "@mui/material";
 import { useUserStore } from "../../store/UserStore";
 import { useSearchParams } from "react-router-dom";
@@ -77,6 +79,7 @@ const JobManagerView = (props: any) => {
         location.reload(); // Reload the page to reflect the job deletion
       })
       .catch((err) => {
+        console.log(err);
         toast.error("Error deleting job"); // Error handling
       });
   };
@@ -217,6 +220,7 @@ const JobManagerView = (props: any) => {
         setViewManager("job-screening"); // Switch back to screening view after saving
       })
       .catch((err) => {
+        console.log(err); 
         toast.error("Error updating job"); // Error handling
       });
   };

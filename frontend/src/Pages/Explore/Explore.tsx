@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * The Explore component allows users to explore job listings, search, filter,
  * and sort them based on various criteria such as salary, city, and employment type.

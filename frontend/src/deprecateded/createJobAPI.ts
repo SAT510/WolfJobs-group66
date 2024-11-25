@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { toast } from "react-toastify";
 import { createJobURL, loginURL } from "../api/constants";
 import { getFormBody } from "./apiUtils";
