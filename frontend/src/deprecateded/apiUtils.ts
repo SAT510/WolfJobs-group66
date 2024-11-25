@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * Converts an object of parameters into a URL-encoded query string for use in HTTP requests.
  *

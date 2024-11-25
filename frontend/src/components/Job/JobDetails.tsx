@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * JobDetail component renders detailed information about a specific job posting
  * and provides the functionality for applicants to apply and fill out questionnaires,

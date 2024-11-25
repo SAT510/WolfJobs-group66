@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { useUserStore } from "../../store/UserStore";
 import { useJobStore } from "../../store/JobStore";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import JobListTile from "../../components/Job/JobListTile";

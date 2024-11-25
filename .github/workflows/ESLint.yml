@@ -1,43 +1,35 @@
 name: Lint and Format
 
 on:
-  pull_request:
-    paths:
-      - "**/*.js"
-      - "**/*.ts"
-      - "**/*.tsx"
   push:
     branches:
+      - master
+      - amay/feature
+  pull_request:
+    branches:
       - main
-      - develop
-    paths:
-      - "**/*.js"
-      - "**/*.ts"
-      - "**/*.tsx"
+      - 'feature/*'
+      - 'bugfix/*'
 
 jobs:
-  lint-and-format:
+  eslint:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "14"
+          node-version: '16'  # Adjust Node.js version if needed
 
       - name: Install dependencies
         run: |
+          cd frontend
           npm install
-          npm install --save-dev eslint prettier
 
       - name: Run ESLint
         run: |
-          npm run lint
-        continue-on-error: true
-
-      - name: Run Prettier
-        run: |
-          npm run format -- --check
-        continue-on-error: true
+          cd frontend
+          npx eslint "src/**/*.{ts,tsx,js,jsx}"

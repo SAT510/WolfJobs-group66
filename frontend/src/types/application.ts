@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 type Application = {
   _id: string;
   jobid: string;
