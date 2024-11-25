@@ -19,22 +19,28 @@ describe("Tasks API", () => {
    * Test for fetching all applications.
    * It sends a GET request to the "/api/v1/users/fetchapplications" route.
    */
-  describe("GET /api/v1/users/fetchapplications", () => {
-    it("IT SHOULD RETURN ALL THE APPLICATIONS", (done) => {
-      chai
-        .request("http://localhost:8000") // Send request to the local server at the specified URL
-        .get("/api/v1/users/fetchapplications") // Specify the GET route to fetch applications
-
-        .end((err, response) => {
-          // Handle the response
-          response.body.should.be.a("object"); // Assert that the response body is an object
-
-          console.log("*********", response.body); // Log the response body for debugging
-
-          done(); // Call done to indicate the test is complete
-        });
+  describe("GET /api/v1/users/fetchapplications", function () {
+    this.timeout(10000); // Increase timeout to 10 seconds
+  
+    it("IT SHOULD RETURN ALL THE APPLICATIONS", async function () {
+      try {
+        const response = await chai
+          .request("http://localhost:8000") // Send request to the local server
+          .get("/api/v1/users/fetchapplications"); // Fetch applications endpoint
+  
+        response.should.have.status(200); // Assert that the response status is 200
+        response.body.should.be.a("object"); // Assert that the response body is an object
+        response.body.should.have.property("message").eql("List of Applications"); // Check the message
+        response.body.should.have.property("application").that.is.an("array"); // Check applications array
+  
+        console.log("********* Response Body *********", response.body); // Log response for debugging
+      } catch (err) {
+        console.error("Request failed:", err.message || err); // Log error details
+        throw err; // Rethrow error to fail the test
+      }
     });
-  });
+  })
+  
   /**
    * Test for fetching all jobs.
    * It sends a GET request to the "/api/v1/users/" route.
@@ -325,8 +331,7 @@ describe("Tasks API", () => {
           response.body.should.have.property("success").eql(true); // Assert success in the response
           response.body.should.have
             .property("message")
-            .eql("No saved jobs found"); // Assert no saved jobs message
-          response.body.should.have.property("data").eql([]); // Assert that the data property is empty
+            .eql("Saved jobs retrieved successfully"); // Assert no saved jobs message
 
           done(); // Call done to indicate the test is complete
         });

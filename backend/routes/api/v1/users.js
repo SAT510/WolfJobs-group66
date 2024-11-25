@@ -138,5 +138,6 @@ router.post("/saveJob", jsonParser, usersApi.saveJob);
  * Calls the saveJobList method in usersApi.
  */
 router.get("/saveJobList/:id", jsonParser, usersApi.saveJobList);
+router.post("/getJobId", jsonParser, usersApi.findJobIdByName);
 
 module.exports = router; // Exports the router instance for use in other parts of the application
