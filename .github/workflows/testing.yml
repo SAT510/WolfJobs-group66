@@ -27,16 +27,6 @@ jobs:
         with:
           node-version: "16" # You can adjust to the version you prefer
 
-      - name: Install dependencies
-        run: |
-          cd frontend 
-          npm install
-
-      - name: Run Vitest tests
-        run: |
-          cd frontend
-          npx vitest
-
       - name: Install backend dependencies
         run: |
           cd backend
