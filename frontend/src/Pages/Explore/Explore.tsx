@@ -1,9 +1,28 @@
+/**
+ * The Explore component allows users to explore job listings, search, filter, 
+ * and sort them based on various criteria such as salary, city, and employment type.
+ * 
+ * It fetches job data from the backend API, manages user-related state using 
+ * the UserStore and ApplicationStore, and updates the global job list and 
+ * application list accordingly.
+ * 
+ * Key Features:
+ * - Search for jobs by name
+ * - Sort jobs by salary, city, or employment type
+ * - Filter jobs by location, salary range, and employment type
+ * - Toggle between showing open and closed jobs
+ * - Displays job list and job details side-by-side
+ * 
+ * @component
+ * @example
+ * return <Explore />;
+ */
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../../store/UserStore";
 import { toast } from "react-toastify";
-
+// State hooks for storing user data and job listings
 import JobsListView from "../../components/Job/JobListView";
 import JobDetailView from "../../components/Job/JobDetailView";
 import { useJobStore } from "../../store/JobStore";
@@ -44,7 +63,7 @@ const Explore = () => {
   const updateEmail = useUserStore((state) => state.updateEmail);
   const updateJobList = useJobStore((state) => state.updateJobList);
   const jobList: Job[] = useJobStore((state) => state.jobList);
-
+  // State hooks for sorting and filtering job listings
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredJobList, setFilteredJobList] = useState<Job[]>([]);
   const [sortHighestPay, setSortHighestPay] = useState(false);
@@ -63,23 +82,33 @@ const Explore = () => {
   const handleSearchChange = (event: any) => {
     setSearchTerm(event.target.value);
   };
-
+  /**
+   * Handles search input change, updating the search term state.
+   * 
+   * @param {any} event - The input change event.
+   */
   const handleSortChange = () => {
     setSortHighestPay(!sortHighestPay);
   };
-
+  /**
+   * Toggles the sort order by city alphabetically.
+   */
   const handleSortCityChange = () => {
     setSortAlphabeticallyByCity(!sortAlphabeticallyByCity);
   };
-
+  /**
+   * Toggles the sort order by employment type.
+   */
   const handleSortEmploymenyTypeChange = () => {
     setSortByEmploymentType(!sortByEmploymentType);
   };
-
+  /**
+   * Toggles the job status between open and closed.
+   */
   const toggleJobStatus = () => {
     setShowOpenJobs(!showOpenJobs);
   };
-
+  // Fetches user data and updates the state on component mount
   useEffect(() => {
     const token: string = localStorage.getItem("token")!;
     if (!!!token) {
@@ -88,7 +117,7 @@ const Explore = () => {
     if (!!token) {
       const tokenInfo = token.split(".");
       const userInfo = JSON.parse(atob(tokenInfo[1]));
-
+      // Updates the user data from token payload
       updateName(userInfo.name);
       updateEmail(userInfo.email);
       updateAddress(userInfo.address);
@@ -109,7 +138,7 @@ const Explore = () => {
       updateResumeId(userInfo.resumeId);
     }
   }, []);
-
+  // Fetches job and application data on component mount
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/v1/users/fetchapplications")
@@ -143,16 +172,20 @@ const Explore = () => {
         updateJobList(res.data.jobs as Job[]);
       });
   }, []);
-
+  /**
+   * Filters and sorts the job list based on search, sorting, and filtering criteria.
+   * 
+   * @returns {void}
+   */
   useEffect(() => {
     let updatedList = jobList;
-
+    // Filters jobs based on search term
     if (searchTerm !== "") {
       updatedList = updatedList.filter((job) =>
         job.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-
+    // Sorts jobs by highest pay, city, or employment type
     if (sortHighestPay) {
       updatedList = [...updatedList].sort(
         (a, b) => parseFloat(b.pay) - parseFloat(a.pay)
@@ -170,12 +203,13 @@ const Explore = () => {
         return a.type.localeCompare(b.type);
       });
     }
+    // Filters jobs based on selected job type
     if (jobType !== "all-jobs") {
       updatedList = updatedList.filter((job) =>
         job.type.toLowerCase().includes(jobType.toLowerCase())
       );
     }
-
+     // Filters jobs by location, salary range, and employment type
     if (filterLocation !== "") {
       updatedList = updatedList.filter((job) =>
         job.location.toLowerCase().includes(filterLocation.toLowerCase())
