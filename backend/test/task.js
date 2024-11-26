@@ -6,16 +6,22 @@ let chai = require("chai");
 let chaiHttp = require("chai-http");
 let server = require("../index");
 const SavedJob = require("../models/savedApplication");
-const Application = require('../models/application');
+const Application = require("../models/application");
 const Job = require("../models/job");
-const { sendMail } = require('../models/nodemailer');
-const User = require('../models/user');
+const { sendMail } = require("../models/nodemailer");
+const User = require("../models/user");
 
-const { acceptApplication, createSession, signUp, editProfile, deleteJob, editJob } = require('../controllers/api/v1/users_api');
+const {
+  acceptApplication,
+  createSession,
+  signUp,
+  editProfile,
+  deleteJob,
+  editJob,
+} = require("../controllers/api/v1/users_api");
 
-
-const httpMocks = require('node-mocks-http');
-const sinon = require('sinon');
+const httpMocks = require("node-mocks-http");
+const sinon = require("sinon");
 const { expect } = chai;
 
 // Should assertion style for Chai
@@ -26,15 +32,13 @@ chai.use(chaiHttp);
  * Test suite for the API endpoints related to tasks.
  */
 describe("Tasks API", () => {
-
-
   describe("PUT /api/v1/jobs/edit", function () {
     this.timeout(10000); // Optional timeout adjustment
-  
+
     afterEach(() => {
       sinon.restore(); // Restore Sinon stubs after each test
     });
-  
+
     it("should successfully edit a job", async function () {
       const req = httpMocks.createRequest({
         method: "PUT",
@@ -46,7 +50,7 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       const mockJob = {
         _id: "job123",
         name: "Old Job Name",
@@ -57,20 +61,23 @@ describe("Tasks API", () => {
         pay: 50000,
         save: sinon.stub().resolves(), // Simulate successful save
       };
-  
+
       sinon.stub(Job, "findById").resolves(mockJob);
-  
+
       await editJob(req, res);
-  
+
       res.statusCode.should.equal(200);
       const responseData = res._getJSONData();
-      responseData.should.have.property("message").eql("Job updated successfully");
+      responseData.should.have
+        .property("message")
+        .eql("Job updated successfully");
       responseData.should.have.property("success").eql(true);
       responseData.should.have.property("job").that.is.an("object");
       responseData.job.should.have.property("name").eql("Updated Job Name");
-      responseData.job.should.have.property("description").eql("Updated Description");
+      responseData.job.should.have
+        .property("description")
+        .eql("Updated Description");
     });
-
 
     it("should return 404 if the job is not found", async function () {
       const req = httpMocks.createRequest({
@@ -81,17 +88,16 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       sinon.stub(Job, "findById").resolves(null); // Simulate no job found
-  
+
       await editJob(req, res);
-  
+
       res.statusCode.should.equal(404);
       const responseData = res._getJSONData();
       responseData.should.have.property("message").eql("Job not found");
       responseData.should.have.property("success").eql(false);
     });
-
 
     it("should return 500 if a server error occurs", async function () {
       const req = httpMocks.createRequest({
@@ -102,29 +108,24 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       sinon.stub(Job, "findById").rejects(new Error("Database error"));
-  
+
       await editJob(req, res);
-  
+
       res.statusCode.should.equal(500);
       const responseData = res._getJSONData();
       responseData.should.have.property("message").eql("Internal Server Error");
       responseData.should.have.property("success").eql(false);
     });
-
-    
-    
   });
-
 
   describe("DELETE /api/v1/jobs/delete", function () {
     this.timeout(10000); // Optional timeout adjustment
-  
+
     afterEach(() => {
       sinon.restore(); // Restore Sinon stubs after each test
     });
-
 
     it("should return 500 if a server error occurs", async function () {
       const req = httpMocks.createRequest({
@@ -135,18 +136,16 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       sinon.stub(Job, "findByIdAndDelete").rejects(new Error("Database error"));
-  
+
       await deleteJob(req, res);
-  
+
       res.statusCode.should.equal(500);
       const responseData = res._getJSONData();
       responseData.should.have.property("message").eql("Internal Server Error");
       responseData.should.have.property("success").eql(false);
     });
-
-
 
     it("should return 404 if the job does not exist", async function () {
       const req = httpMocks.createRequest({
@@ -157,18 +156,16 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       sinon.stub(Job, "findByIdAndDelete").resolves(null); // Simulate no job found
-  
+
       await deleteJob(req, res);
-  
+
       res.statusCode.should.equal(404);
       const responseData = res._getJSONData();
       responseData.should.have.property("message").eql("Job not found");
       responseData.should.have.property("success").eql(false);
     });
-
-
 
     it("should delete a job successfully", async function () {
       const req = httpMocks.createRequest({
@@ -179,30 +176,29 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       const mockJob = {
         _id: "job123",
         title: "Test Job",
         description: "This is a test job",
       };
-  
+
       sinon.stub(Job, "findByIdAndDelete").resolves(mockJob);
-  
+
       await deleteJob(req, res);
-  
+
       res.statusCode.should.equal(200);
       const responseData = res._getJSONData();
-      responseData.should.have.property("message").eql("Job deleted successfully");
+      responseData.should.have
+        .property("message")
+        .eql("Job deleted successfully");
       responseData.should.have.property("success").eql(true);
     });
-
-
-
   });
 
   describe("POST /api/v1/users/edit-profile", function () {
     this.timeout(10000); // Optional timeout adjustment
-  
+
     afterEach(() => {
       sinon.restore(); // Restore Sinon stubs after each test
     });
@@ -228,45 +224,54 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       const mockUser = {
         _id: "user123",
         name: "Old Name",
         save: sinon.stub().resolves(),
       };
-  
+
       sinon.stub(User, "findById").resolves(mockUser);
-  
+
       await editProfile(req, res);
-  
+
       res.statusCode.should.equal(200);
       const responseData = res._getJSONData();
-      responseData.should.have.property("message").eql("User is updated Successfully");
+      responseData.should.have
+        .property("message")
+        .eql("User is updated Successfully");
       responseData.should.have.property("success").eql(true);
       responseData.data.should.have.property("user");
       responseData.data.user.should.have.property("name").eql("Updated Name");
-      responseData.data.user.should.have.property("password").eql("newpassword123");
+      responseData.data.user.should.have
+        .property("password")
+        .eql("newpassword123");
       responseData.data.user.should.have.property("unityid").eql("unity123");
       responseData.data.user.should.have.property("role").eql("admin");
-      responseData.data.user.should.have.property("address").eql("123 New Street");
-      responseData.data.user.should.have.property("phonenumber").eql("1234567890");
+      responseData.data.user.should.have
+        .property("address")
+        .eql("123 New Street");
+      responseData.data.user.should.have
+        .property("phonenumber")
+        .eql("1234567890");
       responseData.data.user.should.have.property("hours").eql("9-5");
-      responseData.data.user.should.have.property("availability").eql("Full-time");
+      responseData.data.user.should.have
+        .property("availability")
+        .eql("Full-time");
       responseData.data.user.should.have.property("gender").eql("Other");
-      responseData.data.user.should.have.property("skills").eql(["JavaScript", "Node.js"]);
-      responseData.data.user.should.have.property("projects").eql(["Project A", "Project B"]);
+      responseData.data.user.should.have
+        .property("skills")
+        .eql(["JavaScript", "Node.js"]);
+      responseData.data.user.should.have
+        .property("projects")
+        .eql(["Project A", "Project B"]);
       responseData.data.user.should.have.property("experience").eql("3 years");
     });
-
-
-
-  
   });
-
 
   describe("POST /api/v1/users/sign-up", function () {
     this.timeout(10000); // Optional timeout adjustment
-  
+
     afterEach(() => {
       sinon.restore(); // Restore Sinon stubs after each test
     });
@@ -277,19 +282,18 @@ describe("Tasks API", () => {
         status: "0",
         save: sinon.stub().resolves(),
       };
-  
+
       sinon.stub(Application, "findById").resolves(mockApplication);
       sinon.stub(sendMail).throws(new Error("Email service not available"));
-  
+
       const response = await chai
         .request("http://localhost:8000")
         .post("/api/v1/applications/accept")
         .send({ applicationid: "123" });
-  
+
       response.should.have.status(404);
       response.body.should.be.a("object");
     });
-
 
     it("should return 200 if user already exists and provide token", async function () {
       const user = {
@@ -299,7 +303,7 @@ describe("Tasks API", () => {
           return { email: this.email };
         },
       };
-  
+
       const req = httpMocks.createRequest({
         method: "POST",
         url: "/api/v1/users/sign-up",
@@ -310,16 +314,18 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
-      sinon.stub(User, "findOne").callsFake((query, callback) => callback(null, user));  
+
+      sinon
+        .stub(User, "findOne")
+        .callsFake((query, callback) => callback(null, user));
       await signUp(req, res);
-  
+
       res.statusCode.should.equal(200);
       const responseData = res._getJSONData();
-      responseData.should.have.property("message").eql("Sign Up Successful, here is your token, plz keep it safe");
+      responseData.should.have
+        .property("message")
+        .eql("Sign Up Successful, here is your token, plz keep it safe");
     });
-
-
 
     it("should return 422 if passwords do not match", async function () {
       const req = httpMocks.createRequest({
@@ -332,22 +338,17 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       await signUp(req, res);
-
     });
-
-
-
   });
 
   describe("POST /api/v1/sessions/create", function () {
     this.timeout(10000); // Optional timeout adjustment
-  
+
     afterEach(() => {
       sinon.restore(); // Restore Sinon stubs after each test
     });
-
 
     it("should return 500 for server errors", async function () {
       const req = httpMocks.createRequest({
@@ -359,22 +360,23 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       sinon.stub(User, "findOne").throws(new Error("Database error")); // Simulate an error
-  
+
       await createSession(req, res);
-  
+
       res.statusCode.should.equal(500);
       const responseData = res._getJSONData();
       responseData.should.have.property("message").eql("Internal Server Error");
     });
 
-
     it("should return 200 and a JWT token for valid credentials", async function () {
-      const user = { 
-        email: "user@example.com", 
+      const user = {
+        email: "user@example.com",
         password: "correctpassword",
-        toJSON: function () { return { email: this.email }; }
+        toJSON: function () {
+          return { email: this.email };
+        },
       };
       const req = httpMocks.createRequest({
         method: "POST",
@@ -385,16 +387,17 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       sinon.stub(User, "findOne").resolves(user); // Simulate finding the user
-  
+
       await createSession(req, res);
-  
+
       res.statusCode.should.equal(200);
       const responseData = res._getJSONData();
-      responseData.should.have.property("message").eql("Sign In Successful, here is your token, please keep it safe");
+      responseData.should.have
+        .property("message")
+        .eql("Sign In Successful, here is your token, please keep it safe");
     });
-
 
     it("should return 422 if password does not match", async function () {
       const req = httpMocks.createRequest({
@@ -406,18 +409,19 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
-      sinon.stub(User, "findOne").resolves({ email: "user@example.com", password: "correctpassword" });
-  
+
+      sinon
+        .stub(User, "findOne")
+        .resolves({ email: "user@example.com", password: "correctpassword" });
+
       await createSession(req, res);
-  
+
       res.statusCode.should.equal(422);
       const responseData = res._getJSONData();
-      responseData.should.have.property("message").eql("Invalid username or password");
+      responseData.should.have
+        .property("message")
+        .eql("Invalid username or password");
     });
-
-    
-
 
     it("should return 422 for invalid credentials", async function () {
       const req = httpMocks.createRequest({
@@ -429,18 +433,18 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       sinon.stub(User, "findOne").resolves(null); // Simulate user not found
-  
+
       await createSession(req, res);
-  
+
       res.statusCode.should.equal(422);
       const responseData = res._getJSONData();
-      responseData.should.have.property("message").eql("Invalid username or password");
+      responseData.should.have
+        .property("message")
+        .eql("Invalid username or password");
     });
-
   });
-
 
   describe("POST /api/v1/applications/accept", function () {
     this.timeout(10000); // Increase timeout to handle async operations
@@ -463,11 +467,11 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       sinon.stub(User, "findById").rejects(new Error("Database error"));
-  
+
       await editProfile(req, res);
-  
+
       res.statusCode.should.equal(500);
       const responseData = res._getJSONData();
       responseData.should.have.property("message").eql("Internal Server Error");
@@ -482,105 +486,98 @@ describe("Tasks API", () => {
         },
       });
       const res = httpMocks.createResponse();
-  
+
       sinon.stub(User, "findById").resolves(null);
-  
+
       await editProfile(req, res);
-  
+
       res.statusCode.should.equal(500);
       const responseData = res._getJSONData();
       responseData.should.have.property("message").eql("Internal Server Error");
     });
 
-
-    it('should handle unexpected errors', async function () {
+    it("should handle unexpected errors", async function () {
       const req = httpMocks.createRequest({
-        body: { applicationid: '123' },
+        body: { applicationid: "123" },
       });
       const res = httpMocks.createResponse();
-  
-      sinon.stub(Application, 'findById').throws(new Error('Database connection error'));
-  
+
+      sinon
+        .stub(Application, "findById")
+        .throws(new Error("Database connection error"));
+
       await acceptApplication(req, res);
-  
+
       expect(res.statusCode).to.equal(500);
       const responseData = res._getJSONData();
-      expect(responseData.message).to.equal('Internal Server Error');
+      expect(responseData.message).to.equal("Internal Server Error");
     });
 
-
-    it('should update application and send email successfully', async function () {
+    it("should update application and send email successfully", async function () {
       const req = httpMocks.createRequest({
-        body: { applicationid: '123' },
+        body: { applicationid: "123" },
       });
       const res = httpMocks.createResponse();
-  
+
       const mockApplication = {
-        applicantemail: 'applicant@example.com',
-        status: '0',
+        applicantemail: "applicant@example.com",
+        status: "0",
         save: sinon.stub().resolves(),
       };
-  
-      sinon.stub(Application, 'findById').resolves(mockApplication);
+
+      sinon.stub(Application, "findById").resolves(mockApplication);
       const sendMailStub = sinon.stub(sendMail).resolves();
-  
+
       await acceptApplication(req, res);
-  
+
       expect(res.statusCode).to.equal(200);
       const responseData = res._getJSONData();
       expect(responseData.message).to.equal(
-        'Application is updated successfully, and email has been sent.'
+        "Application is updated successfully, and email has been sent."
       );
       expect(responseData.success).to.be.true;
-  
-      expect(mockApplication.status).to.equal('1'); // Verify application status update
+
+      expect(mockApplication.status).to.equal("1"); // Verify application status update
       sinon.assert.calledOnce(mockApplication.save); // Ensure save was called
     });
 
-
-
-    it('should return 500 if email sending fails', async function () {
+    it("should return 500 if email sending fails", async function () {
       const req = httpMocks.createRequest({
-        body: { applicationid: '123' },
+        body: { applicationid: "123" },
       });
       const res = httpMocks.createResponse();
-  
+
       const mockApplication = {
-        applicantemail: 'applicant@example.com',
-        status: '0',
+        applicantemail: "applicant@example.com",
+        status: "0",
         save: sinon.stub().resolves(),
       };
-  
-      sinon.stub(Application, 'findById').resolves(mockApplication);
-      sinon.stub(sendMail).throws(new Error('Email service not available'));
-  
+
+      sinon.stub(Application, "findById").resolves(mockApplication);
+      sinon.stub(sendMail).throws(new Error("Email service not available"));
+
       await acceptApplication(req, res);
-  
+
       expect(res.statusCode).to.equal(200);
       const responseData = res._getJSONData();
-      expect(responseData.message).to.equal('Application is updated successfully, and email has been sent.');
+      expect(responseData.message).to.equal(
+        "Application is updated successfully, and email has been sent."
+      );
     });
-
-
 
     it("should return 404 if applicant email is missing", async function () {
       sinon.stub(Application, "findById").resolves({
         applicantemail: null,
       });
-  
+
       const response = await chai
         .request("http://localhost:8000")
         .post("/api/v1/applications/accept")
         .send({ applicationid: "123" });
-  
+
       response.should.have.status(404);
       response.body.should.be.a("object");
     });
-
-
-
-
-
   });
   /**
    * Test for fetching all applications.
@@ -588,27 +585,28 @@ describe("Tasks API", () => {
    */
   describe("GET /api/v1/users/fetchapplications", function () {
     this.timeout(10000); // Increase timeout to 10 seconds
-  
+
     it("IT SHOULD RETURN ALL THE APPLICATIONS", async function () {
       try {
         const response = await chai
           .request("http://localhost:8000") // Send request to the local server
           .get("/api/v1/users/fetchapplications"); // Fetch applications endpoint
-  
+
         response.should.have.status(200); // Assert that the response status is 200
         response.body.should.be.a("object"); // Assert that the response body is an object
-        response.body.should.have.property("message").eql("List of Applications"); // Check the message
+        response.body.should.have
+          .property("message")
+          .eql("List of Applications"); // Check the message
         response.body.should.have.property("application").that.is.an("array"); // Check applications array
-  
+
         console.log("********* Response Body *********", response.body); // Log response for debugging
       } catch (err) {
         console.error("Request failed:", err.message || err); // Log error details
         throw err; // Rethrow error to fail the test
       }
     });
+  });
 
-  })
-  
   /**
    * Test for fetching all jobs.
    * It sends a GET request to the "/api/v1/users/" route.

@@ -21,7 +21,7 @@ export default [
       globals: {
         ...globals.browser, // Default browser globals
         require: "readonly", // Add `require` as a global variable
-        module: "readonly"   // Add `module` as a global variable
+        module: "readonly", // Add `module` as a global variable
       },
     },
   },
