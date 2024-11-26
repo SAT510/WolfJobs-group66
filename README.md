@@ -39,6 +39,8 @@ The job market for students seeking short-term roles lacks dedicated platforms, 
 
 # Demo Video
 
+Explore a demo of our application [here!](https://drive.google.com/file/d/1iDKu0wVObe1uhlkvdeGFtsWn6NcDUkAn/view?usp=sharing)
+
 # Animated Video
 
 [Click Here to Watch the Video!](https://drive.google.com/file/d/1jmqm_GN57bxXIxNtgrHaiSMENukPQFnC/view)
