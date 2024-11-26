@@ -13,15 +13,39 @@
 ![last commit](https://img.shields.io/github/last-commit/SAT510/WolfJobs-group66)
 ![Lines of code](https://tokei.rs/b1/github/SAT510/wolfJobs-group66)
 
-# Tech Stack:
+To gain a deeper understanding of the changes and improvements from the original project to the newly enhanced version, please watch the demo video. This video showcases the new functionalities and highlights the enhancements made throughout the project.
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-![RestAPI](https://img.shields.io/badge/RestAPI-005571?style=for-the-badge&logo=restapi)
+## Table of contents
 
-# What's New:
+- [Introduction](#Introduction)
+- [Demo Video](#demo-video)
+- [Animated Video](#animated-video)
+- [Newly Enhanced Features](#newly-enhanced-features)
+- [Future Scope](#future-scope)
+- [Why WolfJobs?](#why-wolfjobs)
+- [Installation](#installation)
+- [License](#license)
+- [Contributions](#contributions)
+- [CODE-OF-CONDUCT](#code-of-conduct)
+- [Technology Stack](#technology-stack)
+- [Documentation](#documentation)
+- [Team Members](#team-members)
+
+# Introduction
+
+Eager to dive into a side hustle or seize a full-time job opportunity? Look no further than WolfJobs. Our platform is the ultimate connector between recruiters in need of talent for both short-term and full-time roles and candidates seeking the freedom to choose. Dive in, earn your share, and opt out whenever you want – or stay on for a longer journey!
+
+The job market for students seeking short-term roles lacks dedicated platforms, as traditional portals overwhelm users with permanent listings and complicate applications with inconsistent formats and poor job matching. The WolfJobs job portal aims to connect the student fraternity with the recruiters for both temporary and full-time job openings. The different recruiters can post temporary jobs, for which candidates apply without bothering about permanent associations.
+
+# Demo Video
+
+Explore a demo of our application [here!](https://drive.google.com/file/d/1iDKu0wVObe1uhlkvdeGFtsWn6NcDUkAn/view?usp=sharing)
+
+# Animated Video
+
+[Click Here to Watch the Video!](https://drive.google.com/file/d/1jmqm_GN57bxXIxNtgrHaiSMENukPQFnC/view)
+
+# Newly Enhanced Features
 
 Email Services: Implemented an automated notification system that sends acceptance and rejection emails to applicants, ensuring clear and timely communication at every stage of the application review process.
 
@@ -35,140 +59,7 @@ Browser Extension: Developed a browser extension that integrates with the cloud 
 
 Application Status Tracking: Enhanced features to display real-time application statuses—Not Applied, Accepted, Rejected, or In-Review—on the applicant's end, ensuring transparency at every stage of the process.
 
-# Animated Video About Project
-
-[Click Here to Watch the Video!](https://drive.google.com/file/d/1jmqm_GN57bxXIxNtgrHaiSMENukPQFnC/view?usp=sharing)
-
-# Presentation Video
-
-[![Watch the video](https://github.com/user-attachments/assets/270d0730-d5f2-48e6-813e-b4c63be2a2e4)
-
-# About Us
-
-Eager to dive into a side hustle or seize a full-time job opportunity? Look no further than WolfJobs. Our platform is the ultimate connector between recruiters in need of talent for both short-term and full-time roles and candidates seeking the freedom to choose. Dive in, earn your share, and opt out whenever you want – or stay on for a longer journey!
-
-The job market for students seeking short-term roles lacks dedicated platforms, as traditional portals overwhelm users with permanent listings and complicate applications with inconsistent formats and poor job matching. The WolfJobs job portal aims to connect the student fraternity with the recruiters for both temporary and full-time job openings. The different recruiters can post temporary jobs, for which candidates apply without bothering about permanent associations.
-
-# Why WolfJobs?
-
-At WolfJobs, it’s not just about work – it's about joining a vibrant pack where every wolf (err, student!) counts. Step in and find your howl!🐺🎉
-
-- **Competitive & Rewarding:** As part of the WolfJobs family, we pride ourselves on offering competitive wages paired with flexible schedules. Your time is valuable, and we recognize that.
-
-- **Holistic Growth & Learning:** With our commitment to fostering a culture rich in learning and opportunity, every job position at WolfJobs paves the way for personal and professional growth.
-
-- **A Confluence of Values:** Our foundation rests on unwavering values: integrity, respect for diversity, responsibility, stewardship, and relentless pursuit of excellence. Every job posted resonates with these ideals, ensuring a harmonious and enriching work environment.
-
-- **Inclusivity & Belonging:** At WolfJobs, every student is a valuable asset. Our emphasis on inclusion ensures that you're not just taking up a job; you're becoming a part of a diverse, dynamic community where your voice matters.
-
-# Application Preview:
-
-## Applicant Side
-
-### Signup & Login
-
-![Signup & Login](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Student%20-%20Sign%20Up%20%26%20Login.gif)
-
-### Job filter by Location
-
-![Filter by Location](https://github.com/user-attachments/assets/02e3a305-1ddb-46b8-b547-eb55c36c05f5)
-
-### Filter by Maximum and Minimum Salary
-
-![Filter by Max and Min salary](https://github.com/user-attachments/assets/496e6b18-5d82-4590-9f6d-a9437c5c9342)
-
-### Filter by Employment Type
-
-![Filter by Employment Type ](https://github.com/user-attachments/assets/7309d1d7-a21d-4d28-bb0e-3add5fffeaeb)
-
-### Save Jobs Screen
-
-![Save Jobs Screen](https://github.com/user-attachments/assets/824b4a50-2c08-4474-8f4c-e33e58b65ef1)
-
-### Student Applies for Job
-
-![Apply for Job](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Student%20Applies%20to%20a%20Job.gif)
-
-### Application Status & Questionaire
-
-![Questionaire](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Applicant%20Filling%20answers.gif)
-
-## Manager Side
-
-### Manager Sign Up
-
-![Manager Sign Up](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Sign%20Up.gif)
-
-### Manager Login
-
-![Manager Login](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Login.gif)
-
-### Edit Profile
-
-![Edit Profile](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Open%20%26%20Edit%20Profile.gif)
-
-### Add/Close Job
-
-![Add/Close Job](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Add%20%26%20Close%20Job.gif)
-
-### Screening
-
-![Screening](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Screening.gif)
-
-### Review & Accept Applications
-
-![Review Applications](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Grade%2C%20Review%20%26%20Accept%20Candidates.gif)
-
-# Installation Instructions for Project Setup
-
-**Prerequisites:**
-
-- Ensure that you have Node.js version 18.0 installed. If not, download and install it from [Node.js Official Website.](https://nodejs.org/en/download/)
-- Download and install the latest version of MongoDB from [MongoDB Official Website.](https://www.mongodb.com/try/download/community)
-- Make sure you have React version 18.0
-
-**Step 1: Clone the Repository from this [link](https://github.com/karthikeya7746/WolfJobs)**
-
-**Step 2: Backend Setup**
-
-- Open a terminal window and navigate to the backend directory by executing the command: _cd backend_
-
-- Install the necessary packages by running: _npm install_
-
-- Start the backend service with the following command: _npm start_
-
-**Step 3: Frontend Setup**
-
-- Open a new terminal window and navigate to the frontend directory: _cd frontend_
-
-- Install the required packages: _npm install_
-
-- Start the development server: _npm run dev_
-
-**Step 4: Open [http://localhost:5173](http://localhost:5173) to view it in the browser.**
-
-**Congratulations! The project should now be up and running successfully.**
-
-# Additional commands for React App
-
-## Available Scripts
-
-In the project directory, you can run:
-
-#### `npm test` for backend
-
-#### `npx vitest` for backend
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-- Frontend Tests:
-  Navigate to the frontend directory to run tests using Vitest, a modern JavaScript test framework.
-
-- Backend Tests:
-  Navigate to the backend directory to run tests using Mocha, a widely-used JavaScript test framework.
-
-# Future Improvements✨
+# Future Scope
 
 **1. Interview Video Submission** - Managers can request applicants to submit a video screening file and applicants can upload a video on their side of the portal.
 
@@ -183,6 +74,63 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 **6. Matching based on Resume** – WolfJobs applicants will be able to parse their resume and WolfJobs will extract key skills from the resume and compare it with required job skills to give candidates job matching status.
 
 **7. Community Features**: Introduce a forum or discussion board where users can share experiences, ask questions, and provide advice on job applications and interviews. This could foster a community around job hunting and reviews.
+
+# Why WolfJobs?
+
+At WolfJobs, it’s not just about work – it's about joining a vibrant pack where every wolf (err, student!) counts. Step in and find your howl!🐺🎉
+
+- **Competitive & Rewarding:** As part of the WolfJobs family, we pride ourselves on offering competitive wages paired with flexible schedules. Your time is valuable, and we recognize that.
+
+- **Holistic Growth & Learning:** With our commitment to fostering a culture rich in learning and opportunity, every job position at WolfJobs paves the way for personal and professional growth.
+
+- **A Confluence of Values:** Our foundation rests on unwavering values: integrity, respect for diversity, responsibility, stewardship, and relentless pursuit of excellence. Every job posted resonates with these ideals, ensuring a harmonious and enriching work environment.
+
+- **Inclusivity & Belonging:** At WolfJobs, every student is a valuable asset. Our emphasis on inclusion ensures that you're not just taking up a job; you're becoming a part of a diverse, dynamic community where your voice matters.
+
+# Installation
+
+For detailed installation steps tailored to your operating system, please refer to the [INSTALL.md](https://github.com/SAT510/WolfJobs-group66/blob/master/INSTALL.MD) file. This guide aims to provide you comprehensive instructions as to how to set up and run your project smoothly, regardless of whether you are using Windows or macOS. We highly recommend that you follow the steps in a chronological manner to ensure a successful installation.
+
+# License
+
+This project is licensed under the Apache License. For further details, please refer to the [License](https://github.com/SAT510/WolfJobs-group66/blob/master/LICENSE.md).
+
+# Contributions
+
+We invite you to check our [CONTRIBUTING.md](https://github.com/SAT510/WolfJobs-group66/blob/master/CONTRIBUTING.md) for guidelines on contributing to the repository and helping us enhance the project. We encourage and apprecite collaboration and would love to hear new ideas and any suggestions. We appreciate all types of collaboration whether you are a developer, a designer, or someone wih new ideas. Join our community and help us make this project even better for everyone!
+
+# CODE-OF-CONDUCT
+
+We encourage any contributions, but please make sure that these steps are taken in a respectful manner,in accordance with our [CODE-OF-CONDUCT](https://github.com/SAT510/WolfJobs-group66/blob/master/CODE_OF_CONDUCT.md). We strive to make this project a good experience for everyone and we value an inclusive environment as a paramount in our project.
+
+# Technology Stack:
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![RestAPI](https://img.shields.io/badge/RestAPI-005571?style=for-the-badge&logo=restapi)
+
+# Documentation
+
+Explore our methodologies in developing the Wolf Jobs application through this comprehensive guide.
+
+1. Use Case Mini Tutorial: Discover the enhanced features of the application by following along with engaging use cases illustrated through various gifs. [Click here to get started!](https://github.com/SAT510/WolfJobs-group66/blob/master/Usecase-tutorial.md)
+
+2. Outline of the development and specifications of the WolfJobs project including technical details, project goals, architecture, feature implementations, and potential areas for future development. This document includes the point description of all the classes and methods of the system include that of API Endpoints. [Click here to get started!](https://github.com/SAT510/WolfJobs-group66/blob/master/ProjectDocs/SE_project2.pdf)
+
+3. [Check out the file tree!](https://github.com/SAT510/WolfJobs-group66/blob/master/ProjectDocs/FileTree.txt)
+
+# Team Members
+
+- Amay Gada
+  - ahgada@ncsu.edu
+- Tahreem Yasir
+  - tyasir@ncsu.edu
+- Shazia Muckram
+  - smuckra@ncsu.edu
+
+Feel free to reach out to us for any questions or concerns. We are happy to help and would love to meet you all!
 
 # Contributors
 

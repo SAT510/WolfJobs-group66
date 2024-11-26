@@ -6,11 +6,13 @@ on:
       - shazia_docs/feature
       - master
       - tahreem/docs
+      - "*/feature"
   pull_request:
     branches:
       - shazia_docs/feature
       - master
       - tahreem/docs
+      - "*/feature"
 
 jobs:
   prettier:
