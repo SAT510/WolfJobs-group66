@@ -12,7 +12,7 @@
 
 ![last commit](https://img.shields.io/github/last-commit/SAT510/WolfJobs-group66)
 ![Lines of code](https://tokei.rs/b1/github/SAT510/wolfJobs-group66)
-[![codecov](https://codecov.io/gh/SAT510/WolfJobs-group66/branch/master/graph/badge.svg?token=mX7PNgYtF5)](https://codecov.io/gh/SAT510/WolfJobs-group66)
+[![codecov](https://codecov.io/gh/SAT510/WolfJobs-group66/branch/master/graph/badge.svg?token=mX7PNgYtF5)](https://app.codecov.io/gh/SAT510/WolfJobs-group66/tree/master)
 
 To gain a deeper understanding of the changes and improvements from the original project to the newly enhanced version, please watch the demo video. This video showcases the new functionalities and highlights the enhancements made throughout the project.
 
