@@ -39,3 +39,12 @@ jobs:
         if: ${{ failure() }}
         run: |
           npx prettier --write ./frontend/
+
+      - name: Run Prettier check backend
+        run: |
+          npx prettier --check ./backend/
+
+      - name: Run Prettier and format code backend
+        if: ${{ failure() }}
+        run: |
+          npx prettier --write ./backend/
