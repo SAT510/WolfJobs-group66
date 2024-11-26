@@ -3,13 +3,16 @@ name: Lint and Format
 on:
   push:
     branches:
+      - shazia_docs/feature
       - master
       - amay/feature
   pull_request:
     branches:
       - main
+      - shazia_docs/feature
       - "feature/*"
       - "bugfix/*"
+      - master
 
 jobs:
   eslint:
