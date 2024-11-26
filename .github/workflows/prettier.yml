@@ -33,9 +33,9 @@ jobs:
 
       - name: Run Prettier check
         run: |
-          npx prettier --check .
+          npx prettier --check ./frontend/
 
       - name: Run Prettier and format code
         if: ${{ failure() }}
         run: |
-          npx prettier --write .
+          npx prettier --write ./frontend/
