@@ -8,8 +8,8 @@ on:
   pull_request:
     branches:
       - main
-      - 'feature/*'
-      - 'bugfix/*'
+      - "feature/*"
+      - "bugfix/*"
 
 jobs:
   eslint:
@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Adjust Node.js version if needed
+          node-version: "16" # Adjust Node.js version if needed
 
       - name: Install dependencies
         run: |
