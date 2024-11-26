@@ -6,6 +6,7 @@ on:
       - shazia_docs/feature
       - master
       - amay/feature
+      - "*/feature"
   pull_request:
     branches:
       - main
@@ -13,6 +14,7 @@ on:
       - "feature/*"
       - "bugfix/*"
       - master
+      - "*/feature"
 
 jobs:
   eslint:
