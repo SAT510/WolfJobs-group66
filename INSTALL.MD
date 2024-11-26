@@ -44,5 +44,16 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - Frontend Tests:
   Navigate to the frontend directory to run tests using Vitest, a modern JavaScript test framework.
 
+
 - Backend Tests:
   Navigate to the backend directory to run tests using Mocha, a widely-used JavaScript test framework.
+
+
+# Browser Extension
+
+### Enter any Chromium browser
+### Click on the extensions tab
+### Click on "manage extensions"
+### Turn on developer mode
+### Click on "Load Unpacked"
+### Select the "extension" folder in the code base
