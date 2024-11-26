@@ -5,18 +5,14 @@
 [![GitHub open issues](https://img.shields.io/github/issues-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aopen+is%3Aissue)  [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aissue+is%3Aclosed)
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-68.7%25-blue)](https://github.com/SAT510/WolfJobs-group66?tab=readme-ov-file)
-[![JavaScript](https://img.shields.io/badge/TypeScript-30.2%25-yellow)](https://github.com/SAT510/WolfJobs-group66?tab=readme-ov-file)
+[![JavaScript](https://img.shields.io/badge/JavaScript-30.2%25-yellow)](https://github.com/SAT510/WolfJobs-group66?tab=readme-ov-file)
 
 [![Mocha Tests (Backend)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml) [![Vitest (Frontend)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/vitest.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/vitest.yml)
-[![ESLint](https://github.com/SAT510/WolfJobs-group66/actions/workflows/ESLint.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/ESLint.yml)
+[![ESLint](https://github.com/SAT510/WolfJobs-group66/actions/workflows/ESLint.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/ESLint.yml)[![Prettier](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml)
 
 ![last commit](https://img.shields.io/github/last-commit/SAT510/WolfJobs-group66)
 ![Lines of code](https://tokei.rs/b1/github/SAT510/wolfJobs-group66)
-[![Repo-size](https://img.shields.io/github/repo-size/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
-[![file_count](https://img.shields.io/github/directory-file-count/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
-[![language_count](https://img.shields.io/github/languages/count/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
-[![Downloads](https://img.shields.io/github/downloads/SAT510/wolfJobs-group66/total)](https://GitHub.com/deepr41/Wolfjobs/)
-[![Top Language](https://img.shields.io/github/languages/top/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
+
 
 # Tech Stack:
 
