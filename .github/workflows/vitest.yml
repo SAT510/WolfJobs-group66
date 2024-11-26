@@ -1,4 +1,4 @@
-name: Vitest - Frontend Testing 
+name: Vitest - Frontend Testing
 
 on:
   push:

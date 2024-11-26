@@ -49,7 +49,7 @@ const JobListTile = (props: any) => {
     let deadline = new Date(date);
     let diff = deadline.getTime() - today.getTime();
     let diffDays = Math.ceil(diff / (1000 * 3600 * 24));
-    if(diffDays < 0) {
+    if (diffDays < 0) {
       return "Deadline passed";
     }
     return diffDays.toString() + " days to go";

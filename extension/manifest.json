@@ -4,7 +4,11 @@
   "version": "1.0",
   "description": "Display job reviews on campusenterprises.ncsu.edu",
   "permissions": ["activeTab", "scripting"],
-  "host_permissions": ["https://campusenterprises.ncsu.edu/*", "https://your-django-api-url.com/*",  "http://localhost:8000/*"],
+  "host_permissions": [
+    "https://campusenterprises.ncsu.edu/*",
+    "https://your-django-api-url.com/*",
+    "http://localhost:8000/*"
+  ],
   "action": {
     "default_popup": "extension.html"
   },
@@ -13,7 +17,9 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://campusenterprises.ncsu.edu/dept/hr/opportunities/student/view/*"],
+      "matches": [
+        "https://campusenterprises.ncsu.edu/dept/hr/opportunities/student/view/*"
+      ],
       "js": ["content.js"]
     }
   ]

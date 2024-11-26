@@ -220,7 +220,7 @@ const JobManagerView = (props: any) => {
         setViewManager("job-screening"); // Switch back to screening view after saving
       })
       .catch((err) => {
-        console.log(err); 
+        console.log(err);
         toast.error("Error updating job"); // Error handling
       });
   };

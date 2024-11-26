@@ -432,7 +432,7 @@ module.exports.findJobIdByName = async function (req, res) {
   try {
     // Extract the job name from the request body or query parameters
     const jobName = req.body.name || req.query.name;
-    
+
     if (!jobName) {
       return res.status(400).json({
         message: "Job name is required",
@@ -466,7 +466,6 @@ module.exports.findJobIdByName = async function (req, res) {
     });
   }
 };
-
 
 /**
  * createJob - Creates a new job posting in the database.

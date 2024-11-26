@@ -36,7 +36,6 @@ export default [
       react: pluginReact,
     },
     rules: {
-      
       "@typescript-eslint/no-explicit-any": "off", // Disable this rule
     },
   },

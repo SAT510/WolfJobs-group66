@@ -1,4 +1,4 @@
-name: Mocha Tests - Backend Testing 
+name: Mocha Tests - Backend Testing
 
 on:
   push:

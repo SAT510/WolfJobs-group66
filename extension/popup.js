@@ -16,7 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (chrome.runtime.lastError) {
-      console.error("Error fetching API result:", chrome.runtime.lastError.message);
+      console.error(
+        "Error fetching API result:",
+        chrome.runtime.lastError.message
+      );
       popupContent.textContent = "Error retrieving data.";
       return;
     }
@@ -27,17 +30,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (apiResult.message === "Job ID found successfully") {
         popupContent.textContent = `Job ID: ${apiResult.data.jobId}`;
-        
+
         // Set the redirect button to go to the explore page with the jobId
-        redirectButton.addEventListener('click', () => {
-          window.open(`http://localhost:5173/explore?jobId=${apiResult.data.jobId}`, '_blank');
+        redirectButton.addEventListener("click", () => {
+          window.open(
+            `http://localhost:5173/explore?jobId=${apiResult.data.jobId}`,
+            "_blank"
+          );
         });
       } else {
-        popupContent.textContent = "Job not found in the database. If you are a manager, please add the job to the database.";
-        
+        popupContent.textContent =
+          "Job not found in the database. If you are a manager, please add the job to the database.";
+
         // Set the redirect button to go to the register page
-        redirectButton.addEventListener('click', () => {
-          window.open('http://localhost:5173/register', '_blank');
+        redirectButton.addEventListener("click", () => {
+          window.open("http://localhost:5173/register", "_blank");
         });
       }
     } else {

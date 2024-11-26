@@ -2,21 +2,16 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/) [![DOI](https://zenodo.org/badge/888755936.svg)](https://doi.org/10.5281/zenodo.14207641)
 
-[![GitHub open issues](https://img.shields.io/github/issues-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aopen+is%3Aissue)  [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub open issues](https://img.shields.io/github/issues-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aopen+is%3Aissue) [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/SAT510/WolfJobs-group66)](https://github.com/SAT510/WolfJobs-group66/issues?q=is%3Aissue+is%3Aclosed)
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-68.7%25-blue)](https://github.com/SAT510/WolfJobs-group66?tab=readme-ov-file)
-[![JavaScript](https://img.shields.io/badge/TypeScript-30.2%25-yellow)](https://github.com/SAT510/WolfJobs-group66?tab=readme-ov-file)
+[![JavaScript](https://img.shields.io/badge/JavaScript-30.2%25-yellow)](https://github.com/SAT510/WolfJobs-group66?tab=readme-ov-file)
 
 [![Mocha Tests (Backend)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/testing.yml) [![Vitest (Frontend)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/vitest.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/vitest.yml)
-[![ESLint](https://github.com/SAT510/WolfJobs-group66/actions/workflows/ESLint.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/ESLint.yml)
+[![ESLint](https://github.com/SAT510/WolfJobs-group66/actions/workflows/ESLint.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/ESLint.yml)[![Prettier](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml/badge.svg)](https://github.com/SAT510/WolfJobs-group66/actions/workflows/prettier.yml)
 
 ![last commit](https://img.shields.io/github/last-commit/SAT510/WolfJobs-group66)
 ![Lines of code](https://tokei.rs/b1/github/SAT510/wolfJobs-group66)
-[![Repo-size](https://img.shields.io/github/repo-size/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
-[![file_count](https://img.shields.io/github/directory-file-count/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
-[![language_count](https://img.shields.io/github/languages/count/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
-[![Downloads](https://img.shields.io/github/downloads/SAT510/wolfJobs-group66/total)](https://GitHub.com/deepr41/Wolfjobs/)
-[![Top Language](https://img.shields.io/github/languages/top/SAT510/wolfJobs-group66)](https://GitHub.com/deepr41/Wolfjobs/)
 
 # Tech Stack:
 
@@ -161,6 +156,7 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 In the project directory, you can run:
 
 #### `npm test` for backend
+
 #### `npx vitest` for backend
 
 Launches the test runner in the interactive watch mode.\
@@ -171,7 +167,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 - Backend Tests:
   Navigate to the backend directory to run tests using Mocha, a widely-used JavaScript test framework.
-
 
 # Future Improvements✨
 
